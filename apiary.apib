@@ -1,0 +1,4457 @@
+FORMAT: 1A
+HOST: https://api.simpleshop.cz/2.0/
+
+# SimpleShop.cz API (v2)
+
+API [SimpleShop.cz](https://www.simpleshop.cz/), verze 2.
+
+# Základní informace
+
+SimpleShop.cz využívá REST API. Aktuálně je dostupné pouze API verze 2, starší již není možné použít.
+
+Najdete-li v dokumentace chybu, [nahlaste nám](https://github.com/redbitcz/vyfakturuj-apiary/issues) ji prosím.
+V případě nejasností nás prosím [kontaktujte](https://www.simpleshop.cz/kontakt/).
+
+## Zásady
+
+V zájmu zachování spolehlivosti a bezpečnosti prosíme dbejte na dodržení těchto zásad.
+
+- Vždy se připojujte přes `HTTPS`, které zajišťuje bezpečnost vašich dat.
+- Dbejte opatrnosti, aby se autorizační údaje (jméno a klíč) nedostaly do nepovolaných rukou.
+- Pokud Váš server nezná náš SSL/TLS certifikát a odmítá se k němu připojit, **nevypínejte kontrolu certifikátu**,
+ale požádejte správce vašeho serveru, aby aktualizoval v systému seznam důvěryhodných certifikátů, případně
+použijte vhodný CA Bundle.
+
+## Autorizace
+
+Protože API pracuje s citlivými uživatelskými daty, nelze jej používat bez autorizace.
+
+Autorizace požadavků se prování standardní [Basic access authentication](https://cs.wikipedia.org/wiki/Basic_access_authentication).
+Jako přihlašovací jméno je použit e-mail uživatele, jako heslo použijte API klíč, který
+získáte v [administraci API SimpleShop.cz](https://app.vyfakturuj.cz/nastaveni/api/).
+
+## Příklady volání API
+
+V následujících příkladech je použito přihlašovací jméno `user@gmail.com` a klíč `fTZ5VjopEQ`.
+
+### cURL
+
+Zavolání požadavku:
+```shell
+curl --user user@gmail.com:fTZ5VjopEQ https://api.simpleshop.cz/2.0/test/
+```
+
+Navrácená hodnota:
+```json
+{
+    "method": "GET",
+    "message": "Welcome in SimpleShop.cz",
+    "date": "2020-08-12 20:40:53"
+}
+```
+
+### PHP
+
+S využitím [Vyfakturuj.cz API SDK pro PHP](https://github.com/redbitcz/vyfakturuj-api-php)
+
+```
+<?php
+$simpleshop_api = new VyfakturujAPI('user@gmail.com', 'fTZ5VjopEQ');
+$result = $simpleshop_api->test();
+```
+
+## SimpleShop.cz + Vyfakturuj
+
+Toto API je možné použít i pro náš druhý produkt [Vyfakturuj.cz](https://www.vyfakturuj.cz/). Pro správné fungování je potřeba směřovat requesty na URL:
+
+```
+https://api.vyfakturuj.cz/2.0/
+```
+
+
+# Group Produkty
+
+## Produkty
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>ID produktu</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>type (povinné)</td>
+        <td>string100</td>
+        <td>Typ produktu
+        <blockquote>
+            <code>1</code> E-book<br>
+            <code>2</code> Video nahrávka<br>
+            <code>3</code> Audio nahrávka<br>
+            <code>6</code> Členství<br>
+            <code>11</code> Seminář / webinář / kurz / školení<br>
+            <code>7</code> Fyzické zboží<br>
+            <code>12</code> Voucher<br>
+            <code>9</code> Vstupenka<br>
+            <code>14</code> Služba<br>
+            <code>13</code> Prodejní formulář
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>name (povinné)</td>
+        <td>string100</td>
+        <td>Název produktu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>title (povinné)</td>
+        <td>string100</td>
+        <td>Titulek produktu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>price (povinné)</td>
+        <td>double</td>
+        <td>Cena</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>store</td>
+        <td>int</td>
+        <td>Skladem</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>mj</td>
+        <td>string3</td>
+        <td>Množstevní jednotka</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>amount_type</td>
+        <td>int</td>
+        <td>Množství</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>coupon_type</td>
+        <td>int</td>
+        <td>Slevový kupón</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_billing_config</td>
+        <td>array</td>
+        <td>Konfigurace formuláře - fakturační údaje</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_text_header_main</td>
+        <td>string100</td>
+        <td>Hlavní nadpis</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_text_header_payment_method</td>
+        <td>string100</td>
+        <td>Nadpis pro výběr platební metody</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_text_header_billing</td>
+        <td>string100</td>
+        <td>Nadpis pro zadání fakturačních údajů</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_text_button_send</td>
+        <td>string100</td>
+        <td>Tlačítko pro odeslání formuláře</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_text_button_add_person</td>
+        <td>string100</td>
+        <td>Tlačítko pro přidání dalšího jména</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_person_enable</td>
+        <td>bool</td>
+        <td>Konfigurace formuláře - prodej na jmeno</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_person_config</td>
+        <td>array</td>
+        <td>Konfigurace formuláře - prodej na jmeno</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>url_product</td>
+        <td>string100</td>
+        <td>URL po uhrazení</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>url_thank_you</td>
+        <td>string100</td>
+        <td>URL po objednani</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>sentence</td>
+        <td>array</td>
+        <td>Obchodní podmínky a jiné texty</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>form_html_code</td>
+        <td>string2000</td>
+        <td>JS, CSS a jiné kódy</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_1</td>
+        <td>int</td>
+        <td>Volitelná hodnota 1 (např. ID ve Vašem systému)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>code</td>
+        <td>string100</td>
+        <td>Kód produktu</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>script_iframe</td>
+        <td>string1000</td>
+        <td>JS kód pro vložení formuláře na stránku</td>
+        <td>R</td>
+    </tr>
+</table>
+
+## Varianty produktu
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>string100</td>
+        <td>Název varianty</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>string100</td>
+        <td>Popis varianty</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td>double</td>
+        <td>Cena varianty</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>quantity</td>
+        <td>int</td>
+        <td>Množství</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>unit</td>
+        <td>string10</td>
+        <td>Množstevní jednotka (ks, kg, ...)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>vat</td>
+        <td>double</td>
+        <td>Daň</td>
+        <td>R</td>
+    </tr>
+</table>
+
+## Práce s produktem [/product/{id}/]
+
+### Získání produktu [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            [
+                {
+                    "id": "1728",
+                    "type": "12",
+                    "name": "Vstupenka",
+                    "title": "Vstupenka",
+                    "price": "1000.00",
+                    "store": "",
+                    "mj": "ks",
+                    "amount_type": "1",
+                    "coupon_type": "2",
+                    "form_text_header_main": "",
+                    "form_text_header_payment_method": "",
+                    "form_text_header_billing": "",
+                    "form_text_button_send": "",
+                    "form_text_button_add_person": "",
+                    "form_person_enable": "2",
+                    "form_person_config": [],
+                    "url_product": "",
+                    "url_thank_you": "",
+                    "sentence": [],
+                    "form_html_code": "",
+                    "X_1": "0",
+                    "variants": [],
+                    "form_billing_config": {
+                        "FIWSXXA3": {
+                            "name": "-none-",
+                            "type": "-email-",
+                            "required": "4",
+                            "id": "FIWSXXA3"
+                        },
+                        "hTDw3gQa": {
+                            "name": "Jméno a příjmení (název firmy)",
+                            "type": "-company-",
+                            "required": "1",
+                            "id": "hTDw3gQa"
+                        },
+                        "c1zwzuaR": {
+                            "name": "-none-",
+                            "type": "-address-",
+                            "required": "1",
+                            "id": "c1zwzuaR"
+                        },
+                        "p5gzYnZu": {
+                            "name": "-none-",
+                            "type": "-tel-",
+                            "required": "2",
+                            "id": "p5gzYnZu"
+                        },
+                        "VMcIACCH": {
+                            "name": "-none-",
+                            "type": "-note-",
+                            "required": "2",
+                            "id": "VMcIACCH"
+                        },
+                        "m54fbLgd": {
+                            "name": "-none-",
+                            "type": "-ic-dic-",
+                            "required": "2",
+                            "id": "m54fbLgd"
+                        },
+                        "name": 1,
+                        "address": 1,
+                        "company": 1,
+                        "tel": 2,
+                        "note": 2,
+                        "coupon": 2
+                    },
+                    "code": "dPVo",
+                    "script_iframe": "<!-- www.SimpleShop.cz form#1728 start -->\n<script>\n (function(i, s, o, g, r, a, m){\n  i[r] = i[r] || function(){\n   (i[r].q = i[r].q || []).push(arguments)\n  }, i[r].l = 1 * new Date();\n  a = s.createElement(o),\n  m = s.getElementsByTagName(o)[0];\n  a.async = 1;\n  a.src = g;\n  m.parentNode.insertBefore(a, m)\n })(window, document, \"script\", \"https://form.simpleshop.cz/prj/js/SimpleShopService.js\", \"sss\");\n sss(\"createForm\", \"dPVo\");\n</script>\n<div data-SimpleShopForm=\"dPVo\"><div>Prodejní formulář je vytvořen v systému <a href=\"https://www.simpleshop.cz/\" target=\"_blank\">SimpleShop.cz</a>.</div></div>\n<!-- www.SimpleShop.cz form#1728 end -->\n"
+                },
+                {
+                    "id": "1729",
+                    "type": "11",
+                    "name": "test",
+                    "title": "",
+                    "price": "0.00",
+                    "store": "",
+                    "mj": "",
+                    "amount_type": "0",
+                    "coupon_type": 2,
+                    "url_product": "",
+                    "url_thank_you": "",
+                    "X_1": "0",
+                    "variants": [],
+                    "form_billing_config": {
+                        "0": {
+                            "name": "-none-",
+                            "type": "-email-",
+                            "required": 4
+                        },
+                        "1": {
+                            "name": "Jméno a příjmení (název firmy)",
+                            "type": "-company-",
+                            "required": 1
+                        },
+                        "2": {
+                            "name": "-none-",
+                            "type": "-address-",
+                            "required": 1
+                        },
+                        "4": {
+                            "name": "-none-",
+                            "type": "-tel-",
+                            "required": 2
+                        },
+                        "5": {
+                            "name": "-none-",
+                            "type": "-note-",
+                            "required": 2
+                        }
+                    },
+                    "code": "16EY",
+                    "script_iframe": "<!-- www.SimpleShop.cz form#1729 start -->\n<script>\n (function(i, s, o, g, r, a, m){\n  i[r] = i[r] || function(){\n   (i[r].q = i[r].q || []).push(arguments)\n  }, i[r].l = 1 * new Date();\n  a = s.createElement(o),\n  m = s.getElementsByTagName(o)[0];\n  a.async = 1;\n  a.src = g;\n  m.parentNode.insertBefore(a, m)\n })(window, document, \"script\", \"https://form.simpleshop.cz/prj/js/SimpleShopService.js\", \"sss\");\n sss(\"createForm\", \"16EY\");\n</script>\n<div data-SimpleShopForm=\"16EY\"><div>Prodejní formulář je vytvořen v systému <a href=\"https://www.simpleshop.cz/\" target=\"_blank\">SimpleShop.cz</a>.</div></div>\n<!-- www.SimpleShop.cz form#1729 end -->\n"
+                }
+            ]
+
+
+# Group Faktury
+
+## Faktury
+
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>ID dokumentu</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>id_identity</td>
+        <td>int</td>
+        <td>ID identity</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_customer</td>
+        <td>int</td>
+        <td>ID zaznamu v adresáři</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_number_series</td>
+        <td>int</td>
+        <td>ID číselné řady</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_payment_method</td>
+        <td>int</td>
+        <td>ID platební metody</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_center</td>
+        <td>int</td>
+        <td>ID střediska</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_predkontace</td>
+        <td>int</td>
+        <td>ID předkontace</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_cleneniDPH</td>
+        <td>int</td>
+        <td>ID členění DPH</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_coupon</td>
+        <td>int</td>
+        <td>ID slevového kupónu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_parent</td>
+        <td>int</td>
+        <td>ID nadřazeného dokumentu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>int</td>
+        <td>Typ dokladu
+        <blockquote>
+            <code>1</code> Faktura<br>
+            <code>2</code> Zálohová faktura<br>
+            <code>4</code> Proforma faktura<br>
+            <code>8</code> Výzva k platbě<br>
+            <code>16</code> Daňový doklad<br>
+            <code>32</code> Opravný daňový doklad<br>
+            <code>64</code> Příjmový doklad<br>
+            <code>128</code> Opravný doklad<br>
+            <code>512</code> Objednávka
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>flags</td>
+        <td>int</td>
+        <td>Příznaky
+        <blockquote>
+            <code>1</code> Dokument obsahuje DPH<br>
+            <code>2</code> Uhrazeno<br>
+            <code>4</code> Odesláno e-mailem zákazníkovi<br>
+            <code>8</code> Doklad je stornován<br>
+            <code>16</code> Odeslána e-mailem zákazníkovi upomínka<br>
+            <code>32</code> Přeplatek<br>
+            <code>64</code> Nedoplatek<br>
+            <code>256</code> Doklad byl stažen účetním
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>tags</td>
+        <td>int</td>
+        <td>Použité štítky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>eet_status</td>
+        <td>int</td>
+        <td>Stav EET
+        <blockquote>
+            <code>1</code> Nevstupuje - doklad nesplňuje podmínky pro vstup do EET<br>
+            <code>2</code> Neodesílat - doklad nebude odeslán do EET<br>
+            <code>4</code> K odeslání - doklad je určen k odeslání do EET<br>
+            <code>8</code> Externě - záznam o tržbě evidován jiným zařízením<br>
+            <code>16</code> ODESLÁNO - doklad byl odeslán do EET.<br>
+            <code>32</code> CHYBA - nastala chyba při odeslání.
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>eet_data</td>
+        <td>array</td>
+        <td>EET data
+        <blockquote>
+            <code>fik</code> FIK kód<br>
+            <code>bkp</code> BKP kód<br>
+            <code>pkp</code> PKP kód<br>
+            <code>id_provoz</code> ID provozovny<br>
+            <code>id_pokl</code> ID pokladny<br>
+            <code>dat_trzby</code> Datum tržby<br>
+            <code>rezim</code> Režim 0 - běžný, 1 - zjednodušený
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>number</td>
+        <td>string</td>
+        <td>Číslo dokumentu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_created</td>
+        <td>date</td>
+        <td>Datum vytvoření</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_due</td>
+        <td>date</td>
+        <td>Datum splatnosti</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>date_taxable_supply</td>
+        <td>date</td>
+        <td>Datum zdaňitelného plnění</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_paid</td>
+        <td>date</td>
+        <td>Uhrazeno dne</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_reminder</td>
+        <td>date</td>
+        <td>Datum zaslání 1. připomínky</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>date_reminder_2</td>
+        <td>date</td>
+        <td>Datum zaslání 2. připomínky</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>date_reminder_3</td>
+        <td>date</td>
+        <td>Datum zaslání 3. připomínky</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>days_due</td>
+        <td>int</td>
+        <td>Splatnost (dny)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_IC</td>
+        <td>string20</td>
+        <td>Dodavatel - IČ</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_DIC</td>
+        <td>string20</td>
+        <td>Dodavatel - DIČ</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_IDNUM3</td>
+        <td>string20</td>
+        <td>Dodavatel - Třetí identifikátor firmy (např. DIČ pro SK)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_name</td>
+        <td>string100</td>
+        <td>Dodavatel - název firmy</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_street</td>
+        <td>string50</td>
+        <td>Dodavatel - ulice</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_city</td>
+        <td>string50</td>
+        <td>Dodavatel - město</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_zip</td>
+        <td>int</td>
+        <td>Dodavatel - PSČ</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_country_code</td>
+        <td>string20</td>
+        <td>Dodavatel - Kód země (ISO 3166-2)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_contact_name</td>
+        <td>string30</td>
+        <td>Dodavatel - kontaktní osoba</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_contact_tel</td>
+        <td>string30</td>
+        <td>Dodavatel - kontaktní telefon</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_contact_mail</td>
+        <td>string30</td>
+        <td>Dodavatel - kontaktní mail</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>supplier_contact_web</td>
+        <td>string100</td>
+        <td>Dodavatel - web</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_IC</td>
+        <td>string20</td>
+        <td>Odběratel - IČ, IČO, ...</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_DIC</td>
+        <td>string20</td>
+        <td>Odběratel - DIČ, IČ DPH, ...</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_IDNUM3</td>
+        <td>string20</td>
+        <td>Odběratel - Třetí identifikátor firmy (např. DIČ pro SK)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_name</td>
+        <td>string100</td>
+        <td>Odběratel - název firmy</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_firstname</td>
+        <td>string100</td>
+        <td>Odběratel - jméno</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_lastname</td>
+        <td>string100</td>
+        <td>Odběratel - příjmení</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_street</td>
+        <td>string50</td>
+        <td>Odběratel - ulice</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_city</td>
+        <td>string50</td>
+        <td>Odběratel - město</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_zip</td>
+        <td>int</td>
+        <td>Odběratel - PSČ</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_country_code</td>
+        <td>string2</td>
+        <td>Odběratel - kód země (ISO 3166-2)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_tel</td>
+        <td>string30</td>
+        <td>Odběratel - kontaktní telefon</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_company</td>
+        <td>string100</td>
+        <td>Odběratel - název firmy</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_firstname</td>
+        <td>string100</td>
+        <td>Odběratel - jméno</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_lastname</td>
+        <td>string100</td>
+        <td>Odběratel - příjmení</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_street</td>
+        <td>string50</td>
+        <td>Odběratel - ulice</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_city</td>
+        <td>string50</td>
+        <td>Odběratel - město</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_zip</td>
+        <td>int</td>
+        <td>Odběratel - PSČ</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_country_code</td>
+        <td>string2</td>
+        <td>Odběratel - kód země (ISO 3166-2)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>customer_delivery_tel</td>
+        <td>string30</td>
+        <td>Dodavatel - kontaktní telefon</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>bank_account_number</td>
+        <td>string20</td>
+        <td>Číslo bankovního účtu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>bank_IBAN</td>
+        <td>string60</td>
+        <td>Mezinárodní bankovní číslo (IBAN)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>bank_BIC</td>
+        <td>string20</td>
+        <td>Mezinárodní kód banky (SWIFT/BIC)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>payment_method</td>
+        <td>int</td>
+        <td>Způsob platby
+        <blockquote>
+            <code>1</code> Bankovní převod<br>
+            <code>2</code> Hotovost<br>
+            <code>4</code> Dobírka<br>
+            <code>8</code> Kartou online<br>
+            <code>128</code> PayPal<br>
+            <code>16</code> Záloha<br>
+            <code>32</code> Zápočet
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>calculate_vat</td>
+        <td>int</td>
+        <td>Výpočet DPH
+        <blockquote>
+            <code>1</code> Položky jsou uvedeny jako základ daně<br>
+            <code>2</code> Položky mají koncovou cenu s DPH<br>
+            <code>3</code> DPH je účtováno ve speciálním režimu<br>
+            <code>4</code> DPH je v režimu prenesené daňové povinnosti<br>
+            <code>6</code> Daň odvede zákazník<br>
+            <code>5</code> Neplátce DPH
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>round_invoice</td>
+        <td>int</td>
+        <td>Zaokrouhlení dokumentu
+        <blockquote>
+            <code>1</code> Nezaokrouhlovat<br>
+            <code>2</code> Zaokrouhlit (háleřové vyrovnání)
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>order_number</td>
+        <td>string255</td>
+        <td>ID objednávky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>text_under_subscriber</td>
+        <td>string255</td>
+        <td>Text pod dodavatelem</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>text_under_customer</td>
+        <td>string255</td>
+        <td>Text pod odběratelem</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>text_before_items</td>
+        <td>string255</td>
+        <td>Text před položkami faktury</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>text_invoice_footer</td>
+        <td>string255</td>
+        <td>Text v patičce dokumentu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>mail_to</td>
+        <td>array</td>
+        <td>Emailové adresy kam bude (byl) odeslán email</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>language</td>
+        <td>string</td>
+        <td>Jazyková mutace faktury
+        <blockquote>
+            <code>cs</code> Česky<br>
+            <code>sk</code> Slovensky<br>
+            <code>en</code> Anglicky<br>
+            <code>de</code> Německy<br>
+            <code>it</code> Italsky
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>VS</td>
+        <td>string10</td>
+        <td>Variabilní symbol</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>KS</td>
+        <td>string4</td>
+        <td>Konstantní symbol</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>SS</td>
+        <td>string10</td>
+        <td>Specifický symbol</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>currency</td>
+        <td>string3</td>
+        <td>Měna</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>currency_domestic</td>
+        <td>string3</td>
+        <td>Domácí měna</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>search</td>
+        <td>string255</td>
+        <td>String pro vyhledávání mezi fakturami</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>exchange_rate</td>
+        <td>double</td>
+        <td>Převodní kurz měny</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>double</td>
+        <td>Celková částka k úhradě</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>total_without_vat</td>
+        <td>double</td>
+        <td>Celková částka k úhradě bez DPH</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>webhook_paid</td>
+        <td>string255</td>
+        <td>URL která bude zavolána při úhradě dokumentu. Lze zde použít zástupné API znaky.<br/>Příklad: https://www.domena.cz/script.php?id_faktury={id}&zakaznik={customer_name}</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>url_public_webpage</td>
+        <td>string255</td>
+        <td>URL s veřejnou stránkou dokumentu</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>url_online_payment</td>
+        <td>string255</td>
+        <td>URL pro online uhrazení dokumentu. Na této adrese je přímo platební brána.</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>url_download_pdf</td>
+        <td>string255</td>
+        <td>URL pro stažení dokumentu v PDF</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>url_download_pdf_no_stamp</td>
+        <td>string255</td>
+        <td>URL pro stažení dokumentu v PDF bez razítka</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>url_simpleshop_order_status</td>
+        <td>string255</td>
+        <td>URL pro zobrazení stavu objecnávky (pouze SimpleShop objednávky)</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>disable_automated_mails</td>
+        <td>bool</td>
+        <td>Vypne automatické zasílání e-mailu (uhrazení, upomínka)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>storno</td>
+        <td>bool</td>
+        <td>Stornuje doklad</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>moss</td>
+        <td>bool</td>
+        <td>Elektronická služba neplátci DPH</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>need_attention</td>
+        <td>bool</td>
+        <td>Objednávka vyžaduje pozornost</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>log</td>
+        <td>array</td>
+        <td>Historie objednavky</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>X_1</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 1 (např. ID dokumentu ve Vašem systému)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_2</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 2 (např. ID kontaktu ve Vašem systému)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_3</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 3</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_{anything}</td>
+        <td>mixed</td>
+        <td>Volitelná hodnota s vlastním názvem klíče (např. X_phone)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>items (povinné)</td>
+        <td>array</td>
+        <td>Položky dokumentu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>related_documents</td>
+        <td>array</td>
+        <td>Souvisejici dokumenty</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>action_after_create_send_to_eet</td>
+        <td>bool</td>
+        <td>Akce: po vytvoření dokladu, zaslat automaticky do EET.</td>
+        <td>W</td>
+    </tr>
+</table>
+
+## Položky faktury
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>quantity</td>
+        <td>double</td>
+        <td>Množství</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>unit</td>
+        <td>string10</td>
+        <td>Množstevní jednotka (ks, kg, ...)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>text (povinné)</td>
+        <td>string255</td>
+        <td>Text položky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>unit_price (povinné)</td>
+        <td>double</td>
+        <td>Cena položky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>vat_rate</td>
+        <td>double</td>
+        <td>Sazba DPH (%)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>vat_rate_type</td>
+        <td>int</td>
+        <td>Typ DPH
+        <blockquote>
+            <code>1</code> Vlastní / historická<br>
+            <code>2</code> Základní<br>
+            <code>4</code> Zvýšená<br>
+            <code>8</code> Snížená<br>
+            <code>16</code> Druhá snížená<br>
+            <code>32</code> Nulová<br>
+            <code>128</code> Třetí snížená
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>vat</td>
+        <td>double</td>
+        <td>Daň</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>double</td>
+        <td>Částka k úhradě</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>total_without_vat</td>
+        <td>double</td>
+        <td>Částka k úhradě bez DPH</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>data</td>
+        <td>array</td>
+        <td>Skrytá data k položce</td>
+        <td>R/W</td>
+    </tr>
+</table>
+
+## Daně
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>base</td>
+        <td>double</td>
+        <td>Základ daně</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>vat</td>
+        <td>double</td>
+        <td>Daň</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>double</td>
+        <td>Celkem s DPH</td>
+        <td>R</td>
+    </tr>
+</table>
+
+## GET parametry při vyhledávání dokladu
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>id_customer</td>
+        <td>int</td>
+        <td>ID zaznamu v adresáři</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_number_series</td>
+        <td>int</td>
+        <td>ID číselné řady</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_center</td>
+        <td>int</td>
+        <td>ID střediska</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_parent</td>
+        <td>int</td>
+        <td>ID nadřazeného dokumentu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>int</td>
+        <td>Typ dokladu
+        <blockquote>
+            <code>1</code> Faktura<br>
+            <code>2</code> Zálohová faktura<br>
+            <code>4</code> Proforma faktura<br>
+            <code>8</code> Výzva k platbě<br>
+            <code>16</code> Daňový doklad<br>
+            <code>32</code> Opravný daňový doklad<br>
+            <code>64</code> Příjmový doklad<br>
+            <code>128</code> Opravný doklad<br>
+            <code>512</code> Objednávka
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>flags</td>
+        <td>int</td>
+        <td>Příznaky
+        <blockquote>
+            <code>1</code> Dokument obsahuje DPH<br>
+            <code>2</code> Uhrazeno<br>
+            <code>4</code> Odesláno e-mailem zákazníkovi<br>
+            <code>8</code> Doklad je stornován<br>
+            <code>16</code> Odeslána e-mailem zákazníkovi upomínka<br>
+            <code>32</code> Přeplatek<br>
+            <code>64</code> Nedoplatek<br>
+            <code>256</code> Doklad byl stažen účetním
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>tags</td>
+        <td>int</td>
+        <td>Použité štítky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>eet_status</td>
+        <td>int</td>
+        <td>Stav EET
+        <blockquote>
+            <code>1</code> Nevstupuje - doklad nesplňuje podmínky pro vstup do EET<br>
+            <code>2</code> Neodesílat - doklad nebude odeslán do EET<br>
+            <code>4</code> K odeslání - doklad je určen k odeslání do EET<br>
+            <code>8</code> Externě - záznam o tržbě evidován jiným zařízením<br>
+            <code>16</code> ODESLÁNO - doklad byl odeslán do EET.<br>
+            <code>32</code> CHYBA - nastala chyba při odeslání.
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>number</td>
+        <td>string</td>
+        <td>Číslo dokumentu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_created</td>
+        <td>date</td>
+        <td>Datum vytvoření</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_due</td>
+        <td>date</td>
+        <td>Datum splatnosti</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_taxable_supply</td>
+        <td>date</td>
+        <td>Datum zdaňitelného plnění</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_paid</td>
+        <td>date</td>
+        <td>Uhrazeno dne</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_reminder</td>
+        <td>date</td>
+        <td>Datum zaslání 1. připomínky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_reminder_2</td>
+        <td>date</td>
+        <td>Datum zaslání 2. připomínky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_reminder_3</td>
+        <td>date</td>
+        <td>Datum zaslání 3. připomínky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>days_due</td>
+        <td>int</td>
+        <td>Splatnost (dny)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>days_reminder</td>
+        <td>int</td>
+        <td>Za jak dlouho zaslat připomínku po splatnosti (dny)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>VS</td>
+        <td>string10</td>
+        <td>Variabilní symbol</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>currency</td>
+        <td>string5</td>
+        <td>Měna</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>double</td>
+        <td>Celková částka k úhradě</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>total_without_vat</td>
+        <td>double</td>
+        <td>Celková částka k úhradě bez DPH</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_1</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 1 (např. ID dokumentu ve Vašem systému)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_2</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 2 (např. ID kontaktu ve Vašem systému)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_3</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 3</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_created_from</td>
+        <td>date</td>
+        <td>Datum vytvoření od (nelze použít v parametru filter)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_created_to</td>
+        <td>date</td>
+        <td>Datum vytvoření do (nelze použít v parametru filter)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>rows_limit</td>
+        <td>int</td>
+        <td>Počet dokladů, které se mají načíst</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>rows_offset</td>
+        <td>int</td>
+        <td>Počet dokladů, které se mají přeskočit</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>sort</td>
+        <td>string</td>
+        <td>Řazení dokladů dle určitého sloupce nebo více sloupců (oddělovač je svislítko). Lze řadit vzestupně (asc) i sestupně (desc) Syntaxe {NAZEV_SLOUPCE}~{ZPUSOB_RAZENI}|{NAZEV_SLOUPCE}~{ZPUSOB_RAZENI} ...</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>filter</td>
+        <td>string</td>
+        <td>(BETA) Filtrování dokladů, Syntaxe {NAZEV_SLOUPCE}~{OPERATOR}~{HODNOTA}|AND|{NAZEV_SLOUPCE}~{OPERATOR}~{HODNOTA} ...</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>q</td>
+        <td>string</td>
+        <td>Vyhledani podle retezce</td>
+        <td>R/W</td>
+    </tr>
+</table>
+
+### Filtrování
+
+<table>
+    <tr>
+        <td>{NAZEV_SLOUPCE}</td>
+        <td>Hodnota z tabulky "GET parametry při vyhledávání dokladu"</td>
+    </tr>
+    <tr>
+        <td>{OPERATOR}</td>
+        <td>
+            <ul>
+                <li>LT (less than) "<"</li>
+                <li>GT (greater than) ">"</li>
+                <li>LTEQ (less than/equal) "<="</li>
+                <li>GTEQ (greater than/equal) ">="</li>
+                <li>CTSTR (contains string) "LIKE"</li>
+                <li>CTBIT (contains bits) "&"</li>
+                <li>EQ (equals) "="</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<a href="https://github.com/redbitcz/vyfakturuj-api-php/blob/master/examples/09-invoice_search.php">Ukázka použití filtru</a>
+
+
+## Vytvoření faktury [/invoice/]
+
+### Vytvoření faktury [POST]
+
++ Request (application/json)
+
+        {
+            "type": 1,
+            "id_payment_method": 33662,
+            "customer_IC": "123456789",
+            "customer_DIC": "CZ123456789",
+            "customer_name": "Ukázková Firma",
+            "customer_street": "Pouliční 79/C",
+            "customer_city": "Praha",
+            "customer_zip": "10300",
+            "customer_country": "Česká republika",
+            "items": [
+                {
+                    "text": "Stěrač na ponorku",
+                    "unit_price": 990.25,
+                    "vat_rate": 15
+                },
+                {
+                    "text": "Kapalina do ostřikovačů 250 ml",
+                    "unit_price": 59,
+                    "vat_rate": 15
+                },
+                {
+                    "text": "Doprava",
+                    "unit_price": 0,
+                    "vat_rate": 0
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": 1520525,
+                "id_identity": "0",
+                "id_customer": "-1",
+                "id_number_series": "28437",
+                "id_payment_method": "33662",
+                "id_center": "0",
+                "id_predkontace": "0",
+                "id_cleneniDPH": "0",
+                "id_coupon": "0",
+                "id_parent": "0",
+                "id_eet_pokl": "0",
+                "type": "1",
+                "flags": "1",
+                "tags": "0",
+                "eet_status": "1",
+                "eet_data": "",
+                "number": "20200119",
+                "date_created": "2020-08-14",
+                "date_due": "2020-08-25",
+                "date_taxable_supply": "2020-08-14",
+                "date_paid": "0000-00-00",
+                "date_reminder": "0000-00-00",
+                "date_reminder_2": "0000-00-00",
+                "date_reminder_3": "0000-00-00",
+                "days_due": "11",
+                "supplier_IC": "00000019",
+                "supplier_DIC": "CZ00000019",
+                "supplier_IDNUM3": "",
+                "supplier_name": "Demo s.r.o. plátce",
+                "supplier_street": "Ukázková 123",
+                "supplier_city": "Ukázkov",
+                "supplier_zip": "12334",
+                "supplier_country": "Česká republika",
+                "supplier_country_code": "CZ",
+                "supplier_contact_name": "",
+                "supplier_contact_tel": "",
+                "supplier_contact_mail": "",
+                "supplier_contact_web": "",
+                "customer_IC": "123456789",
+                "customer_DIC": "CZ123456789",
+                "customer_IDNUM3": "",
+                "customer_name": "Ukázková Firma",
+                "customer_firstname": "",
+                "customer_lastname": "",
+                "customer_street": "Pouliční 79/C",
+                "customer_city": "Praha",
+                "customer_zip": "10300",
+                "customer_country": "Česká republika",
+                "customer_country_code": "",
+                "customer_tel": "",
+                "customer_delivery_company": "",
+                "customer_delivery_firstname": "",
+                "customer_delivery_lastname": "",
+                "customer_delivery_street": "",
+                "customer_delivery_city": "",
+                "customer_delivery_zip": "",
+                "customer_delivery_country_code": "",
+                "customer_delivery_tel": "",
+                "bank_account_number": "",
+                "bank_IBAN": "",
+                "bank_BIC": "",
+                "payment_method": "8",
+                "calculate_vat": "1",
+                "round_invoice": "1",
+                "order_number": "",
+                "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                "text_under_customer": "",
+                "text_before_items": "olalala",
+                "text_invoice_footer": "",
+                "mail_to": [],
+                "language": "cs",
+                "VS": "20200119",
+                "KS": "0308",
+                "SS": "",
+                "currency": "CZK",
+                "currency_domestic": "CZK",
+                "search": "20200119 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "exchange_rate": 1,
+                "total": "1206.64",
+                "total_without_vat": "1049.25",
+                "webhook_paid": "",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": "990.25",
+                        "vat_rate": 15,
+                        "vat_rate_type": 8,
+                        "vat": 148.54,
+                        "total": 1138.79,
+                        "total_without_vat": 990.25,
+                        "domestic-unit_price": 990.25,
+                        "domestic-vat": 148.54,
+                        "domestic-total": 1138.79,
+                        "domestic-total_without_vat": 990.25
+                    },
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Kapalina do ostřikovačů 250 ml",
+                        "unit_price": "59",
+                        "vat_rate": 15,
+                        "vat_rate_type": 8,
+                        "vat": 8.85,
+                        "total": 67.85,
+                        "total_without_vat": 59,
+                        "domestic-unit_price": 59,
+                        "domestic-vat": 8.85,
+                        "domestic-total": 67.85,
+                        "domestic-total_without_vat": 59
+                    },
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Doprava",
+                        "unit_price": "0",
+                        "vat_rate": 0,
+                        "vat_rate_type": 32,
+                        "vat": 0,
+                        "total": 0,
+                        "total_without_vat": 0,
+                        "domestic-unit_price": 0,
+                        "domestic-vat": 0,
+                        "domestic-total": 0,
+                        "domestic-total_without_vat": 0
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 0,
+                        "base": 0,
+                        "vat": 0,
+                        "total": 0
+                    },
+                    {
+                        "vat_rate": 15,
+                        "base": 1049.25,
+                        "vat": 157.39,
+                        "total": 1206.64
+                    }
+                ],
+                "disable_automated_mails": false,
+                "storno": false,
+                "moss": false,
+                "need_attention": false,
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520525/4766cc/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520525/4766cc/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520525/",
+                "log": [
+                    {
+                        "date": "2020-08-14 08:28:26",
+                        "text": "Vytvoření dokumentu."
+                    }
+                ],
+                "related_documents": []
+            }
+
+
+### Vytvoření opravného daňového dokladu k faktuře [POST]
+
++ Request (application/json)
+
+        {
+            "type": 32,
+            "id_parent": 1520525
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": 1520526,
+                "id_identity": "0",
+                "id_customer": "-1",
+                "id_number_series": "28443",
+                "id_payment_method": "33662",
+                "id_center": "0",
+                "id_predkontace": "0",
+                "id_cleneniDPH": "0",
+                "id_coupon": "0",
+                "id_parent": "1520525",
+                "id_eet_pokl": "0",
+                "type": "32",
+                "flags": "1",
+                "tags": "0",
+                "eet_status": "1",
+                "eet_data": "",
+                "number": "520200004",
+                "date_created": "2020-08-14",
+                "date_due": "2020-08-14",
+                "date_taxable_supply": "2020-08-14",
+                "date_paid": "0000-00-00",
+                "date_reminder": "0000-00-00",
+                "date_reminder_2": "0000-00-00",
+                "date_reminder_3": "0000-00-00",
+                "days_due": "0",
+                "supplier_IC": "00000019",
+                "supplier_DIC": "CZ00000019",
+                "supplier_IDNUM3": "",
+                "supplier_name": "Demo s.r.o. plátce",
+                "supplier_street": "Ukázková 123",
+                "supplier_city": "Ukázkov",
+                "supplier_zip": "12334",
+                "supplier_country": "Česká republika",
+                "supplier_country_code": "CZ",
+                "supplier_contact_name": "",
+                "supplier_contact_tel": "",
+                "supplier_contact_mail": "",
+                "supplier_contact_web": "",
+                "customer_IC": "123456789",
+                "customer_DIC": "CZ123456789",
+                "customer_IDNUM3": "",
+                "customer_name": "Ukázková Firma",
+                "customer_firstname": "",
+                "customer_lastname": "",
+                "customer_street": "Pouliční 79/C",
+                "customer_city": "Praha",
+                "customer_zip": "10300",
+                "customer_country": "Česká republika",
+                "customer_country_code": "",
+                "customer_tel": "",
+                "customer_delivery_company": "",
+                "customer_delivery_firstname": "",
+                "customer_delivery_lastname": "",
+                "customer_delivery_street": "",
+                "customer_delivery_city": "",
+                "customer_delivery_zip": "",
+                "customer_delivery_country_code": "",
+                "customer_delivery_tel": "",
+                "bank_account_number": "",
+                "bank_IBAN": "",
+                "bank_BIC": "",
+                "payment_method": "8",
+                "calculate_vat": "1",
+                "round_invoice": "1",
+                "order_number": "",
+                "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                "text_under_customer": "",
+                "text_before_items": "",
+                "text_invoice_footer": "",
+                "mail_to": [],
+                "language": "cs",
+                "VS": "20200119",
+                "KS": "0308",
+                "SS": "",
+                "currency": "CZK",
+                "currency_domestic": "CZK",
+                "search": "520200004 20200119 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "exchange_rate": "1",
+                "total": "-1206.64",
+                "total_without_vat": "-1049.25",
+                "webhook_paid": "",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": "-990.25",
+                        "vat_rate": 15,
+                        "vat_rate_type": 8,
+                        "vat": -148.54,
+                        "total": -1138.79,
+                        "total_without_vat": -990.25,
+                        "domestic-unit_price": -990.25,
+                        "domestic-vat": -148.54,
+                        "domestic-total": -1138.79,
+                        "domestic-total_without_vat": -990.25
+                    },
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Kapalina do ostřikovačů 250 ml",
+                        "unit_price": "-59",
+                        "vat_rate": 15,
+                        "vat_rate_type": 8,
+                        "vat": -8.85,
+                        "total": -67.85,
+                        "total_without_vat": -59,
+                        "domestic-unit_price": -59,
+                        "domestic-vat": -8.85,
+                        "domestic-total": -67.85,
+                        "domestic-total_without_vat": -59
+                    },
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Doprava",
+                        "unit_price": "0",
+                        "vat_rate": 0,
+                        "vat_rate_type": 32,
+                        "vat": 0,
+                        "total": 0,
+                        "total_without_vat": 0,
+                        "domestic-unit_price": 0,
+                        "domestic-vat": 0,
+                        "domestic-total": 0,
+                        "domestic-total_without_vat": 0
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 0,
+                        "base": 0,
+                        "vat": 0,
+                        "total": 0
+                    },
+                    {
+                        "vat_rate": 15,
+                        "base": -1049.25,
+                        "vat": -157.39,
+                        "total": -1206.64
+                    }
+                ],
+                "disable_automated_mails": false,
+                "storno": false,
+                "moss": false,
+                "need_attention": false,
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520526/40dadc/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520526/40dadc/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520526/",
+                "log": [
+                    {
+                        "date": "2020-08-14 08:28:26",
+                        "text": "Vytvořen opravný doklad k {vfiid:1520525:FA 20200119} "
+                    },
+                    {
+                        "date": "2020-08-14 08:28:26",
+                        "text": "Vytvoření dokumentu."
+                    }
+                ],
+                "related_documents": {
+                    "1520525": {
+                        "id": "1520525",
+                        "id_identity": "0",
+                        "id_customer": "-1",
+                        "id_number_series": "28437",
+                        "id_payment_method": "33662",
+                        "id_center": "0",
+                        "id_predkontace": "0",
+                        "id_cleneniDPH": "0",
+                        "id_coupon": "0",
+                        "id_parent": "0",
+                        "id_eet_pokl": "0",
+                        "type": "1",
+                        "flags": "1",
+                        "tags": "0",
+                        "eet_status": "1",
+                        "eet_data": "",
+                        "number": "20200119",
+                        "date_created": "2020-08-14",
+                        "date_due": "2020-08-25",
+                        "date_taxable_supply": "2020-08-14",
+                        "date_paid": "0000-00-00",
+                        "date_reminder": "0000-00-00",
+                        "date_reminder_2": "0000-00-00",
+                        "date_reminder_3": "0000-00-00",
+                        "days_due": "11",
+                        "supplier_IC": "00000019",
+                        "supplier_DIC": "CZ00000019",
+                        "supplier_IDNUM3": "",
+                        "supplier_name": "Demo s.r.o. plátce",
+                        "supplier_street": "Ukázková 123",
+                        "supplier_city": "Ukázkov",
+                        "supplier_zip": "12334",
+                        "supplier_country": "Česká republika",
+                        "supplier_country_code": "CZ",
+                        "supplier_contact_name": "",
+                        "supplier_contact_tel": "",
+                        "supplier_contact_mail": "",
+                        "supplier_contact_web": "",
+                        "customer_IC": "123456789",
+                        "customer_DIC": "CZ123456789",
+                        "customer_IDNUM3": "",
+                        "customer_name": "Ukázková Firma",
+                        "customer_firstname": "",
+                        "customer_lastname": "",
+                        "customer_street": "Pouliční 79/C",
+                        "customer_city": "Praha",
+                        "customer_zip": "10300",
+                        "customer_country": "Česká republika",
+                        "customer_country_code": "",
+                        "customer_tel": "",
+                        "customer_delivery_company": "",
+                        "customer_delivery_firstname": "",
+                        "customer_delivery_lastname": "",
+                        "customer_delivery_street": "",
+                        "customer_delivery_city": "",
+                        "customer_delivery_zip": "",
+                        "customer_delivery_country_code": "",
+                        "customer_delivery_tel": "",
+                        "bank_account_number": "",
+                        "bank_IBAN": "",
+                        "bank_BIC": "",
+                        "payment_method": "8",
+                        "calculate_vat": "1",
+                        "round_invoice": "1",
+                        "order_number": "",
+                        "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                        "text_under_customer": "",
+                        "text_before_items": "olalala",
+                        "text_invoice_footer": "",
+                        "mail_to": [],
+                        "language": "cs",
+                        "VS": "20200119",
+                        "KS": "0308",
+                        "SS": "",
+                        "currency": "CZK",
+                        "currency_domestic": "CZK",
+                        "search": "20200119 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "exchange_rate": 1,
+                        "total": "1206.64",
+                        "total_without_vat": "1049.25",
+                        "webhook_paid": "",
+                        "X_1": "",
+                        "X_2": "",
+                        "X_3": "",
+                        "items": [
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Stěrač na ponorku",
+                                "unit_price": "990.25",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": 148.54,
+                                "total": 1138.79,
+                                "total_without_vat": 990.25,
+                                "domestic-unit_price": 990.25,
+                                "domestic-vat": 148.54,
+                                "domestic-total": 1138.79,
+                                "domestic-total_without_vat": 990.25
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Kapalina do ostřikovačů 250 ml",
+                                "unit_price": "59",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": 8.85,
+                                "total": 67.85,
+                                "total_without_vat": 59,
+                                "domestic-unit_price": 59,
+                                "domestic-vat": 8.85,
+                                "domestic-total": 67.85,
+                                "domestic-total_without_vat": 59
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Doprava",
+                                "unit_price": "0",
+                                "vat_rate": 0,
+                                "vat_rate_type": 32,
+                                "vat": 0,
+                                "total": 0,
+                                "total_without_vat": 0,
+                                "domestic-unit_price": 0,
+                                "domestic-vat": 0,
+                                "domestic-total": 0,
+                                "domestic-total_without_vat": 0
+                            }
+                        ],
+                        "vats": [
+                            {
+                                "vat_rate": 0,
+                                "base": 0,
+                                "vat": 0,
+                                "total": 0
+                            },
+                            {
+                                "vat_rate": 15,
+                                "base": 1049.25,
+                                "vat": 157.39,
+                                "total": 1206.64
+                            }
+                        ],
+                        "disable_automated_mails": false,
+                        "storno": false,
+                        "moss": false,
+                        "need_attention": false,
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520525/4766cc/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520525/4766cc/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520525/",
+                        "log": [
+                            {
+                                "date": "2020-08-14 08:28:26",
+                                "text": "Vytvoření dokumentu."
+                            }
+                        ]
+                    }
+                }
+            }
+
+
+## Práce s fakturou [/invoice/{id}/]
+
+### Získání faktury [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": "1520525",
+                "id_identity": "0",
+                "id_customer": "-1",
+                "id_number_series": "28437",
+                "id_payment_method": "33662",
+                "id_center": "0",
+                "id_predkontace": "0",
+                "id_cleneniDPH": "0",
+                "id_coupon": "0",
+                "id_parent": "0",
+                "id_eet_pokl": "0",
+                "type": "1",
+                "flags": "1",
+                "tags": "0",
+                "eet_status": "1",
+                "eet_data": "",
+                "number": "20200119",
+                "date_created": "2020-08-14",
+                "date_due": "2020-08-25",
+                "date_taxable_supply": "2020-08-14",
+                "date_paid": "0000-00-00",
+                "date_reminder": "0000-00-00",
+                "date_reminder_2": "0000-00-00",
+                "date_reminder_3": "0000-00-00",
+                "days_due": "11",
+                "supplier_IC": "00000019",
+                "supplier_DIC": "CZ00000019",
+                "supplier_IDNUM3": "",
+                "supplier_name": "Demo s.r.o. plátce",
+                "supplier_street": "Ukázková 123",
+                "supplier_city": "Ukázkov",
+                "supplier_zip": "12334",
+                "supplier_country": "Česká republika",
+                "supplier_country_code": "CZ",
+                "supplier_contact_name": "",
+                "supplier_contact_tel": "",
+                "supplier_contact_mail": "",
+                "supplier_contact_web": "",
+                "customer_IC": "123456789",
+                "customer_DIC": "CZ123456789",
+                "customer_IDNUM3": "",
+                "customer_name": "Ukázková Firma",
+                "customer_firstname": "",
+                "customer_lastname": "",
+                "customer_street": "Pouliční 79/C",
+                "customer_city": "Praha",
+                "customer_zip": "10300",
+                "customer_country": "Česká republika",
+                "customer_country_code": "",
+                "customer_tel": "",
+                "customer_delivery_company": "",
+                "customer_delivery_firstname": "",
+                "customer_delivery_lastname": "",
+                "customer_delivery_street": "",
+                "customer_delivery_city": "",
+                "customer_delivery_zip": "",
+                "customer_delivery_country_code": "",
+                "customer_delivery_tel": "",
+                "bank_account_number": "",
+                "bank_IBAN": "",
+                "bank_BIC": "",
+                "payment_method": "8",
+                "calculate_vat": "1",
+                "round_invoice": "1",
+                "order_number": "",
+                "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                "text_under_customer": "",
+                "text_before_items": "olalala",
+                "text_invoice_footer": "",
+                "mail_to": [],
+                "language": "cs",
+                "VS": "20200119",
+                "KS": "0308",
+                "SS": "",
+                "currency": "CZK",
+                "currency_domestic": "CZK",
+                "search": "20200119 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "exchange_rate": 1,
+                "total": "1206.64",
+                "total_without_vat": "1049.25",
+                "webhook_paid": "",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": "990.25",
+                        "vat_rate": 15,
+                        "vat_rate_type": 8,
+                        "vat": 148.54,
+                        "total": 1138.79,
+                        "total_without_vat": 990.25,
+                        "domestic-unit_price": 990.25,
+                        "domestic-vat": 148.54,
+                        "domestic-total": 1138.79,
+                        "domestic-total_without_vat": 990.25
+                    },
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Kapalina do ostřikovačů 250 ml",
+                        "unit_price": "59",
+                        "vat_rate": 15,
+                        "vat_rate_type": 8,
+                        "vat": 8.85,
+                        "total": 67.85,
+                        "total_without_vat": 59,
+                        "domestic-unit_price": 59,
+                        "domestic-vat": 8.85,
+                        "domestic-total": 67.85,
+                        "domestic-total_without_vat": 59
+                    },
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Doprava",
+                        "unit_price": "0",
+                        "vat_rate": 0,
+                        "vat_rate_type": 32,
+                        "vat": 0,
+                        "total": 0,
+                        "total_without_vat": 0,
+                        "domestic-unit_price": 0,
+                        "domestic-vat": 0,
+                        "domestic-total": 0,
+                        "domestic-total_without_vat": 0
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 0,
+                        "base": 0,
+                        "vat": 0,
+                        "total": 0
+                    },
+                    {
+                        "vat_rate": 15,
+                        "base": 1049.25,
+                        "vat": 157.39,
+                        "total": 1206.64
+                    }
+                ],
+                "disable_automated_mails": false,
+                "storno": false,
+                "moss": false,
+                "need_attention": false,
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520525/4766cc/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520525/4766cc/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520525/",
+                "log": [
+                    {
+                        "date": "2020-08-14 08:28:26",
+                        "text": "Vytvoření dokumentu."
+                    }
+                ],
+                "related_documents": {
+                    "1520526": {
+                        "id": "1520526",
+                        "id_identity": "0",
+                        "id_customer": "-1",
+                        "id_number_series": "28443",
+                        "id_payment_method": "33662",
+                        "id_center": "0",
+                        "id_predkontace": "0",
+                        "id_cleneniDPH": "0",
+                        "id_coupon": "0",
+                        "id_parent": "1520525",
+                        "id_eet_pokl": "0",
+                        "type": "32",
+                        "flags": "1",
+                        "tags": "0",
+                        "eet_status": "1",
+                        "eet_data": "",
+                        "number": "520200004",
+                        "date_created": "2020-08-14",
+                        "date_due": "2020-08-14",
+                        "date_taxable_supply": "2020-08-14",
+                        "date_paid": "0000-00-00",
+                        "date_reminder": "0000-00-00",
+                        "date_reminder_2": "0000-00-00",
+                        "date_reminder_3": "0000-00-00",
+                        "days_due": "0",
+                        "supplier_IC": "00000019",
+                        "supplier_DIC": "CZ00000019",
+                        "supplier_IDNUM3": "",
+                        "supplier_name": "Demo s.r.o. plátce",
+                        "supplier_street": "Ukázková 123",
+                        "supplier_city": "Ukázkov",
+                        "supplier_zip": "12334",
+                        "supplier_country": "Česká republika",
+                        "supplier_country_code": "CZ",
+                        "supplier_contact_name": "",
+                        "supplier_contact_tel": "",
+                        "supplier_contact_mail": "",
+                        "supplier_contact_web": "",
+                        "customer_IC": "123456789",
+                        "customer_DIC": "CZ123456789",
+                        "customer_IDNUM3": "",
+                        "customer_name": "Ukázková Firma",
+                        "customer_firstname": "",
+                        "customer_lastname": "",
+                        "customer_street": "Pouliční 79/C",
+                        "customer_city": "Praha",
+                        "customer_zip": "10300",
+                        "customer_country": "Česká republika",
+                        "customer_country_code": "",
+                        "customer_tel": "",
+                        "customer_delivery_company": "",
+                        "customer_delivery_firstname": "",
+                        "customer_delivery_lastname": "",
+                        "customer_delivery_street": "",
+                        "customer_delivery_city": "",
+                        "customer_delivery_zip": "",
+                        "customer_delivery_country_code": "",
+                        "customer_delivery_tel": "",
+                        "bank_account_number": "",
+                        "bank_IBAN": "",
+                        "bank_BIC": "",
+                        "payment_method": "8",
+                        "calculate_vat": "1",
+                        "round_invoice": "1",
+                        "order_number": "",
+                        "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                        "text_under_customer": "",
+                        "text_before_items": "",
+                        "text_invoice_footer": "",
+                        "mail_to": [],
+                        "language": "cs",
+                        "VS": "20200119",
+                        "KS": "0308",
+                        "SS": "",
+                        "currency": "CZK",
+                        "currency_domestic": "CZK",
+                        "search": "520200004 20200119 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "exchange_rate": "1",
+                        "total": "-1206.64",
+                        "total_without_vat": "-1049.25",
+                        "webhook_paid": "",
+                        "X_1": "",
+                        "X_2": "",
+                        "X_3": "",
+                        "items": [
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Stěrač na ponorku",
+                                "unit_price": "-990.25",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": -148.54,
+                                "total": -1138.79,
+                                "total_without_vat": -990.25,
+                                "domestic-unit_price": -990.25,
+                                "domestic-vat": -148.54,
+                                "domestic-total": -1138.79,
+                                "domestic-total_without_vat": -990.25
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Kapalina do ostřikovačů 250 ml",
+                                "unit_price": "-59",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": -8.85,
+                                "total": -67.85,
+                                "total_without_vat": -59,
+                                "domestic-unit_price": -59,
+                                "domestic-vat": -8.85,
+                                "domestic-total": -67.85,
+                                "domestic-total_without_vat": -59
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Doprava",
+                                "unit_price": "0",
+                                "vat_rate": 0,
+                                "vat_rate_type": 32,
+                                "vat": 0,
+                                "total": 0,
+                                "total_without_vat": 0,
+                                "domestic-unit_price": 0,
+                                "domestic-vat": 0,
+                                "domestic-total": 0,
+                                "domestic-total_without_vat": 0
+                            }
+                        ],
+                        "vats": [
+                            {
+                                "vat_rate": 0,
+                                "base": 0,
+                                "vat": 0,
+                                "total": 0
+                            },
+                            {
+                                "vat_rate": 15,
+                                "base": -1049.25,
+                                "vat": -157.39,
+                                "total": -1206.64
+                            }
+                        ],
+                        "disable_automated_mails": false,
+                        "storno": false,
+                        "moss": false,
+                        "need_attention": false,
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520526/40dadc/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520526/40dadc/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520526/",
+                        "log": [
+                            {
+                                "date": "2020-08-14 08:28:26",
+                                "text": "Vytvořen opravný doklad k {vfiid:1520525:FA 20200119} "
+                            },
+                            {
+                                "date": "2020-08-14 08:28:26",
+                                "text": "Vytvoření dokumentu."
+                            }
+                        ]
+                    }
+                }
+            }
+
+
+### Editace faktury [PUT]
+
++ Request (application/json)
+
+        {
+            "customer_name": "Ukázková Firma po úpravě",
+            "items": [
+                {
+                    "text": "Stěrač na ponorku",
+                    "unit_price": 990.25,
+                    "vat_rate": 15
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": "1520525",
+                "id_identity": "0",
+                "id_customer": -1,
+                "id_number_series": "28437",
+                "id_payment_method": "33662",
+                "id_center": "0",
+                "id_predkontace": "0",
+                "id_cleneniDPH": "0",
+                "id_coupon": "0",
+                "id_parent": "0",
+                "id_eet_pokl": "0",
+                "type": "1",
+                "flags": "1",
+                "tags": "0",
+                "eet_status": "1",
+                "eet_data": "",
+                "number": "20200119",
+                "date_created": "2020-08-14",
+                "date_due": "2020-08-25",
+                "date_taxable_supply": "2020-08-14",
+                "date_paid": "0000-00-00",
+                "date_reminder": "0000-00-00",
+                "date_reminder_2": "0000-00-00",
+                "date_reminder_3": "0000-00-00",
+                "days_due": "11",
+                "supplier_IC": "00000019",
+                "supplier_DIC": "CZ00000019",
+                "supplier_IDNUM3": "",
+                "supplier_name": "Demo s.r.o. plátce",
+                "supplier_street": "Ukázková 123",
+                "supplier_city": "Ukázkov",
+                "supplier_zip": "12334",
+                "supplier_country": "Česká republika",
+                "supplier_country_code": "CZ",
+                "supplier_contact_name": "",
+                "supplier_contact_tel": "",
+                "supplier_contact_mail": "",
+                "supplier_contact_web": "",
+                "customer_IC": "123456789",
+                "customer_DIC": "CZ123456789",
+                "customer_IDNUM3": "",
+                "customer_name": "Ukázková Firma po úpravě",
+                "customer_firstname": "",
+                "customer_lastname": "",
+                "customer_street": "Pouliční 79/C",
+                "customer_city": "Praha",
+                "customer_zip": "10300",
+                "customer_country": "Česká republika",
+                "customer_country_code": "",
+                "customer_tel": "",
+                "customer_delivery_company": "",
+                "customer_delivery_firstname": "",
+                "customer_delivery_lastname": "",
+                "customer_delivery_street": "",
+                "customer_delivery_city": "",
+                "customer_delivery_zip": "",
+                "customer_delivery_country_code": "",
+                "customer_delivery_tel": "",
+                "bank_account_number": "",
+                "bank_IBAN": "",
+                "bank_BIC": "",
+                "payment_method": "8",
+                "calculate_vat": "1",
+                "round_invoice": "1",
+                "order_number": "",
+                "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                "text_under_customer": "",
+                "text_before_items": "olalala",
+                "text_invoice_footer": "",
+                "mail_to": [],
+                "language": "cs",
+                "VS": "20200119",
+                "KS": "0308",
+                "SS": "",
+                "currency": "CZK",
+                "currency_domestic": "CZK",
+                "search": "20200119 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "exchange_rate": 1,
+                "total": "1206.64",
+                "total_without_vat": "1049.25",
+                "webhook_paid": "",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "text": "Stěrač na ponorku",
+                        "unit_price": 990.25,
+                        "vat_rate": 15
+                    },
+                    {
+                        "quantity": 1,
+                        "text": "Stěrač na ponorku",
+                        "unit_price": "990.25",
+                        "vat_rate": "15",
+                        "vat_rate_type": 8
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 0,
+                        "base": 0,
+                        "vat": 0,
+                        "total": 0
+                    },
+                    {
+                        "vat_rate": 15,
+                        "base": 1049.25,
+                        "vat": 157.39,
+                        "total": 1206.64
+                    }
+                ],
+                "disable_automated_mails": false,
+                "storno": false,
+                "moss": false,
+                "need_attention": false,
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520525/4766cc/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520525/4766cc/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520525/",
+                "log": [
+                    {
+                        "date": "2020-08-14 08:28:26",
+                        "text": "Vytvoření dokumentu."
+                    }
+                ],
+                "related_documents": {
+                    "1520526": {
+                        "id": "1520526",
+                        "id_identity": "0",
+                        "id_customer": "-1",
+                        "id_number_series": "28443",
+                        "id_payment_method": "33662",
+                        "id_center": "0",
+                        "id_predkontace": "0",
+                        "id_cleneniDPH": "0",
+                        "id_coupon": "0",
+                        "id_parent": "1520525",
+                        "id_eet_pokl": "0",
+                        "type": "32",
+                        "flags": "1",
+                        "tags": "0",
+                        "eet_status": "1",
+                        "eet_data": "",
+                        "number": "520200004",
+                        "date_created": "2020-08-14",
+                        "date_due": "2020-08-14",
+                        "date_taxable_supply": "2020-08-14",
+                        "date_paid": "0000-00-00",
+                        "date_reminder": "0000-00-00",
+                        "date_reminder_2": "0000-00-00",
+                        "date_reminder_3": "0000-00-00",
+                        "days_due": "0",
+                        "supplier_IC": "00000019",
+                        "supplier_DIC": "CZ00000019",
+                        "supplier_IDNUM3": "",
+                        "supplier_name": "Demo s.r.o. plátce",
+                        "supplier_street": "Ukázková 123",
+                        "supplier_city": "Ukázkov",
+                        "supplier_zip": "12334",
+                        "supplier_country": "Česká republika",
+                        "supplier_country_code": "CZ",
+                        "supplier_contact_name": "",
+                        "supplier_contact_tel": "",
+                        "supplier_contact_mail": "",
+                        "supplier_contact_web": "",
+                        "customer_IC": "123456789",
+                        "customer_DIC": "CZ123456789",
+                        "customer_IDNUM3": "",
+                        "customer_name": "Ukázková Firma",
+                        "customer_firstname": "",
+                        "customer_lastname": "",
+                        "customer_street": "Pouliční 79/C",
+                        "customer_city": "Praha",
+                        "customer_zip": "10300",
+                        "customer_country": "Česká republika",
+                        "customer_country_code": "",
+                        "customer_tel": "",
+                        "customer_delivery_company": "",
+                        "customer_delivery_firstname": "",
+                        "customer_delivery_lastname": "",
+                        "customer_delivery_street": "",
+                        "customer_delivery_city": "",
+                        "customer_delivery_zip": "",
+                        "customer_delivery_country_code": "",
+                        "customer_delivery_tel": "",
+                        "bank_account_number": "",
+                        "bank_IBAN": "",
+                        "bank_BIC": "",
+                        "payment_method": "8",
+                        "calculate_vat": "1",
+                        "round_invoice": "1",
+                        "order_number": "",
+                        "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                        "text_under_customer": "",
+                        "text_before_items": "",
+                        "text_invoice_footer": "",
+                        "mail_to": [],
+                        "language": "cs",
+                        "VS": "20200119",
+                        "KS": "0308",
+                        "SS": "",
+                        "currency": "CZK",
+                        "currency_domestic": "CZK",
+                        "search": "520200004 20200119 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "exchange_rate": "1",
+                        "total": "-1206.64",
+                        "total_without_vat": "-1049.25",
+                        "webhook_paid": "",
+                        "X_1": "",
+                        "X_2": "",
+                        "X_3": "",
+                        "items": [
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Stěrač na ponorku",
+                                "unit_price": "-990.25",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": -148.54,
+                                "total": -1138.79,
+                                "total_without_vat": -990.25,
+                                "domestic-unit_price": -990.25,
+                                "domestic-vat": -148.54,
+                                "domestic-total": -1138.79,
+                                "domestic-total_without_vat": -990.25
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Kapalina do ostřikovačů 250 ml",
+                                "unit_price": "-59",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": -8.85,
+                                "total": -67.85,
+                                "total_without_vat": -59,
+                                "domestic-unit_price": -59,
+                                "domestic-vat": -8.85,
+                                "domestic-total": -67.85,
+                                "domestic-total_without_vat": -59
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Doprava",
+                                "unit_price": "0",
+                                "vat_rate": 0,
+                                "vat_rate_type": 32,
+                                "vat": 0,
+                                "total": 0,
+                                "total_without_vat": 0,
+                                "domestic-unit_price": 0,
+                                "domestic-vat": 0,
+                                "domestic-total": 0,
+                                "domestic-total_without_vat": 0
+                            }
+                        ],
+                        "vats": [
+                            {
+                                "vat_rate": 0,
+                                "base": 0,
+                                "vat": 0,
+                                "total": 0
+                            },
+                            {
+                                "vat_rate": 15,
+                                "base": -1049.25,
+                                "vat": -157.39,
+                                "total": -1206.64
+                            }
+                        ],
+                        "disable_automated_mails": false,
+                        "storno": false,
+                        "moss": false,
+                        "need_attention": false,
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520526/40dadc/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520526/40dadc/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520526/",
+                        "log": [
+                            {
+                                "date": "2020-08-14 08:28:26",
+                                "text": "Vytvořen opravný doklad k {vfiid:1520525:FA 20200119} "
+                            },
+                            {
+                                "date": "2020-08-14 08:28:26",
+                                "text": "Vytvoření dokumentu."
+                            }
+                        ]
+                    }
+                }
+            }
+
+
+## Zaslání do EET [/invoice/{id}/do/send-eet/]
+
+### Zaslání do EET [POST /invoice/{id}/do/send-eet/]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "status": "error",
+                "message": {
+                    "global": [
+                        "Dokument nemá nastavený EET status na hotnotu 4"
+                    ]
+                }
+            }
+
+
+
+## Odeslání faktury e-mailem [/invoice/{id}/do/send-mail/]
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>int</td>
+        <td>Typ mailu
+        <blockquote>
+            <code>1</code> Nový doklad<br>
+            <code>2</code> Upomínka<br>
+            <code>3</code> Doklad byl uhrazen
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>to</td>
+        <td>string255</td>
+        <td>Adresát(i) např: "demo1@vyfakturuj.cz, demo2@vyfakturuj.cz"</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>cc</td>
+        <td>string255</td>
+        <td>Kopie</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>bcc</td>
+        <td>string255</td>
+        <td>Slepá kopie</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>subject</td>
+        <td>string255</td>
+        <td>Předmět e-mailu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>body</td>
+        <td>text</td>
+        <td>Obsah e-mailu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>pdfAttachment</td>
+        <td>bool</td>
+        <td>Má se zaslat doklad jako PDF v příloze</td>
+        <td>R/W</td>
+    </tr>
+</table>
+
+### Odeslání faktury e-mailem  [POST]
+
++ Request (application/json)
+
+        {
+            "type": 3,
+            "to": "demo@vyfakturuj.cz, demo.copy@vyfakturuj.cz",
+            "pdfAttachment": true,
+            "test": true
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "message": "Mail is NOT sent. Return only mail pattern.",
+                "mailPattern": {
+                    "to": "demo@vyfakturuj.cz, demo.copy@vyfakturuj.cz",
+                    "cc": "",
+                    "bcc": "",
+                    "subject": "Faktura č. 20200119 - uhrazena",
+                    "pdfAttachment": true,
+                    "body": "Dobrý den\r\n\r\nVaše platba byla přijata (Faktura č. 20200119).\r\n\r\nFakturu č. 20200119 naleznete na adrese: https://www.vyfakturuj.cz/print/document/1520525/4766cc/\r\n\r\nS pozdravem\r\n\r\nDemo s.r.o. plátce"
+                }
+            }
+
+
+## Uhrazení faktury [/invoice/{id}/do/pay/]
+
+### Uhrazení faktury  [POST /invoice/{id}/do/pay/]
+
++ Request (application/json)
+
+        {
+            "date": "2016-12-31"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": "1520525",
+                "id_identity": "0",
+                "id_customer": "-1",
+                "id_number_series": "28437",
+                "id_payment_method": "33662",
+                "id_center": "0",
+                "id_predkontace": "0",
+                "id_cleneniDPH": "0",
+                "id_coupon": "0",
+                "id_parent": "0",
+                "id_eet_pokl": "0",
+                "type": "1",
+                "flags": "1",
+                "tags": "0",
+                "eet_status": "1",
+                "eet_data": "",
+                "number": "20200119",
+                "date_created": "2020-08-14",
+                "date_due": "2020-08-25",
+                "date_taxable_supply": "2020-08-14",
+                "date_paid": "0000-00-00",
+                "date_reminder": "0000-00-00",
+                "date_reminder_2": "0000-00-00",
+                "date_reminder_3": "0000-00-00",
+                "days_due": "11",
+                "supplier_IC": "00000019",
+                "supplier_DIC": "CZ00000019",
+                "supplier_IDNUM3": "",
+                "supplier_name": "Demo s.r.o. plátce",
+                "supplier_street": "Ukázková 123",
+                "supplier_city": "Ukázkov",
+                "supplier_zip": "12334",
+                "supplier_country": "Česká republika",
+                "supplier_country_code": "CZ",
+                "supplier_contact_name": "",
+                "supplier_contact_tel": "",
+                "supplier_contact_mail": "",
+                "supplier_contact_web": "",
+                "customer_IC": "123456789",
+                "customer_DIC": "CZ123456789",
+                "customer_IDNUM3": "",
+                "customer_name": "Ukázková Firma po úpravě",
+                "customer_firstname": "",
+                "customer_lastname": "",
+                "customer_street": "Pouliční 79/C",
+                "customer_city": "Praha",
+                "customer_zip": "10300",
+                "customer_country": "Česká republika",
+                "customer_country_code": "",
+                "customer_tel": "",
+                "customer_delivery_company": "",
+                "customer_delivery_firstname": "",
+                "customer_delivery_lastname": "",
+                "customer_delivery_street": "",
+                "customer_delivery_city": "",
+                "customer_delivery_zip": "",
+                "customer_delivery_country_code": "",
+                "customer_delivery_tel": "",
+                "bank_account_number": "",
+                "bank_IBAN": "",
+                "bank_BIC": "",
+                "payment_method": "8",
+                "calculate_vat": "1",
+                "round_invoice": "1",
+                "order_number": "",
+                "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                "text_under_customer": "",
+                "text_before_items": "olalala",
+                "text_invoice_footer": "",
+                "mail_to": [],
+                "language": "cs",
+                "VS": "20200119",
+                "KS": "0308",
+                "SS": "",
+                "currency": "CZK",
+                "currency_domestic": "CZK",
+                "search": "20200119 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                "exchange_rate": "1",
+                "total": "1138.79",
+                "total_without_vat": "990.25",
+                "webhook_paid": "",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": 1,
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": "990.25",
+                        "vat_rate": 15,
+                        "vat_rate_type": 8,
+                        "vat": 148.54,
+                        "total": 1138.79,
+                        "total_without_vat": 990.25,
+                        "domestic-unit_price": 990.25,
+                        "domestic-vat": 148.54,
+                        "domestic-total": 1138.79,
+                        "domestic-total_without_vat": 990.25
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 15,
+                        "base": 990.25,
+                        "vat": 148.54,
+                        "total": 1138.79
+                    }
+                ],
+                "disable_automated_mails": false,
+                "storno": false,
+                "moss": false,
+                "need_attention": false,
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520525/4766cc/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520525/4766cc/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520525/",
+                "log": [
+                    {
+                        "date": "2020-08-14 08:28:26",
+                        "text": "Vytvoření dokumentu."
+                    },
+                    {
+                        "date": "2020-08-14 08:28:27",
+                        "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
+                    }
+                ],
+                "related_documents": {
+                    "1520526": {
+                        "id": "1520526",
+                        "id_identity": "0",
+                        "id_customer": "-1",
+                        "id_number_series": "28443",
+                        "id_payment_method": "33662",
+                        "id_center": "0",
+                        "id_predkontace": "0",
+                        "id_cleneniDPH": "0",
+                        "id_coupon": "0",
+                        "id_parent": "1520525",
+                        "id_eet_pokl": "0",
+                        "type": "32",
+                        "flags": "1",
+                        "tags": "0",
+                        "eet_status": "1",
+                        "eet_data": "",
+                        "number": "520200004",
+                        "date_created": "2020-08-14",
+                        "date_due": "2020-08-14",
+                        "date_taxable_supply": "2020-08-14",
+                        "date_paid": "0000-00-00",
+                        "date_reminder": "0000-00-00",
+                        "date_reminder_2": "0000-00-00",
+                        "date_reminder_3": "0000-00-00",
+                        "days_due": "0",
+                        "supplier_IC": "00000019",
+                        "supplier_DIC": "CZ00000019",
+                        "supplier_IDNUM3": "",
+                        "supplier_name": "Demo s.r.o. plátce",
+                        "supplier_street": "Ukázková 123",
+                        "supplier_city": "Ukázkov",
+                        "supplier_zip": "12334",
+                        "supplier_country": "Česká republika",
+                        "supplier_country_code": "CZ",
+                        "supplier_contact_name": "",
+                        "supplier_contact_tel": "",
+                        "supplier_contact_mail": "",
+                        "supplier_contact_web": "",
+                        "customer_IC": "123456789",
+                        "customer_DIC": "CZ123456789",
+                        "customer_IDNUM3": "",
+                        "customer_name": "Ukázková Firma",
+                        "customer_firstname": "",
+                        "customer_lastname": "",
+                        "customer_street": "Pouliční 79/C",
+                        "customer_city": "Praha",
+                        "customer_zip": "10300",
+                        "customer_country": "Česká republika",
+                        "customer_country_code": "",
+                        "customer_tel": "",
+                        "customer_delivery_company": "",
+                        "customer_delivery_firstname": "",
+                        "customer_delivery_lastname": "",
+                        "customer_delivery_street": "",
+                        "customer_delivery_city": "",
+                        "customer_delivery_zip": "",
+                        "customer_delivery_country_code": "",
+                        "customer_delivery_tel": "",
+                        "bank_account_number": "",
+                        "bank_IBAN": "",
+                        "bank_BIC": "",
+                        "payment_method": "8",
+                        "calculate_vat": "1",
+                        "round_invoice": "1",
+                        "order_number": "",
+                        "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                        "text_under_customer": "",
+                        "text_before_items": "",
+                        "text_invoice_footer": "",
+                        "mail_to": [],
+                        "language": "cs",
+                        "VS": "20200119",
+                        "KS": "0308",
+                        "SS": "",
+                        "currency": "CZK",
+                        "currency_domestic": "CZK",
+                        "search": "520200004 20200119 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "exchange_rate": "1",
+                        "total": "-1206.64",
+                        "total_without_vat": "-1049.25",
+                        "webhook_paid": "",
+                        "X_1": "",
+                        "X_2": "",
+                        "X_3": "",
+                        "items": [
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Stěrač na ponorku",
+                                "unit_price": "-990.25",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": -148.54,
+                                "total": -1138.79,
+                                "total_without_vat": -990.25,
+                                "domestic-unit_price": -990.25,
+                                "domestic-vat": -148.54,
+                                "domestic-total": -1138.79,
+                                "domestic-total_without_vat": -990.25
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Kapalina do ostřikovačů 250 ml",
+                                "unit_price": "-59",
+                                "vat_rate": 15,
+                                "vat_rate_type": 8,
+                                "vat": -8.85,
+                                "total": -67.85,
+                                "total_without_vat": -59,
+                                "domestic-unit_price": -59,
+                                "domestic-vat": -8.85,
+                                "domestic-total": -67.85,
+                                "domestic-total_without_vat": -59
+                            },
+                            {
+                                "quantity": 1,
+                                "unit": "",
+                                "text": "Doprava",
+                                "unit_price": "0",
+                                "vat_rate": 0,
+                                "vat_rate_type": 32,
+                                "vat": 0,
+                                "total": 0,
+                                "total_without_vat": 0,
+                                "domestic-unit_price": 0,
+                                "domestic-vat": 0,
+                                "domestic-total": 0,
+                                "domestic-total_without_vat": 0
+                            }
+                        ],
+                        "vats": [
+                            {
+                                "vat_rate": 0,
+                                "base": 0,
+                                "vat": 0,
+                                "total": 0
+                            },
+                            {
+                                "vat_rate": 15,
+                                "base": -1049.25,
+                                "vat": -157.39,
+                                "total": -1206.64
+                            }
+                        ],
+                        "disable_automated_mails": false,
+                        "storno": false,
+                        "moss": false,
+                        "need_attention": false,
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520526/40dadc/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520526/40dadc/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520526/40dadc/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520526/",
+                        "log": [
+                            {
+                                "date": "2020-08-14 08:28:26",
+                                "text": "Vytvořen opravný doklad k {vfiid:1520525:FA 20200119} "
+                            },
+                            {
+                                "date": "2020-08-14 08:28:26",
+                                "text": "Vytvoření dokumentu."
+                            }
+                        ]
+                    }
+                }
+            }
+
+
+
+## Smazání faktury [/invoice/{id}/]
+
+### Smazání faktury [DELETE]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Deleted"
+            }
+
+
+## Vyhledávání [/invoice/]
+
+
+### Vyhledávání [GET]
+
+Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</code>, který určuje, kolik dokladů se má přeskočit.<br/>
+<b>POZOR:</b> Tato funkce bude v budoucnu omezena na 25 záznamů. Doporučujeme s tím počítat v návrhu již dopředu.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            [
+                {
+                    "id": "1520525",
+                    "id_identity": "0",
+                    "id_customer": "-1",
+                    "id_number_series": "28437",
+                    "id_payment_method": "33662",
+                    "id_center": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "3",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "20200119",
+                    "date_created": "2020-08-14",
+                    "date_due": "2020-08-25",
+                    "date_taxable_supply": "2020-08-14",
+                    "date_paid": "2016-12-31",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "",
+                    "supplier_contact_web": "",
+                    "customer_IC": "123456789",
+                    "customer_DIC": "CZ123456789",
+                    "customer_IDNUM3": "",
+                    "customer_name": "Ukázková Firma po úpravě",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "Pouliční 79/C",
+                    "customer_city": "Praha",
+                    "customer_zip": "10300",
+                    "customer_country": "Česká republika",
+                    "customer_country_code": "",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "",
+                    "bank_IBAN": "",
+                    "bank_BIC": "",
+                    "payment_method": "8",
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
+                    "text_under_customer": "",
+                    "text_before_items": "olalala",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "20200119",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "20200119 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "exchange_rate": "1",
+                    "total": "1138.79",
+                    "total_without_vat": "990.25",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": 1,
+                            "unit": "",
+                            "text": "Stěrač na ponorku",
+                            "unit_price": "990.25",
+                            "vat_rate": 15,
+                            "vat_rate_type": 8,
+                            "vat": 148.54,
+                            "total": 1138.79,
+                            "total_without_vat": 990.25,
+                            "domestic-unit_price": 990.25,
+                            "domestic-vat": 148.54,
+                            "domestic-total": 1138.79,
+                            "domestic-total_without_vat": 990.25
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 15,
+                            "base": 990.25,
+                            "vat": 148.54,
+                            "total": 1138.79
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520525/4766cc/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520525/4766cc/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520525/4766cc/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520525/",
+                    "log": [
+                        {
+                            "date": "2020-08-14 08:28:26",
+                            "text": "Vytvoření dokumentu."
+                        },
+                        {
+                            "date": "2020-08-14 08:28:27",
+                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
+                        },
+                        {
+                            "date": "2020-08-14 08:28:27",
+                            "text": "Doklad byl plně uhrazen k datu 31.12.2016"
+                        }
+                    ],
+                    "related_documents": []
+                }
+            ]
+
+# Group Adresář
+
+ApiaryHelper::echoTable($pattern['directory']['object']); ?>
+
+
+## Vytvoření kontaktu [/contact/]
+
+### Vytvoření kontaktu [POST]
+
++ Request (application/json)
+
+        {
+            "IC": "123456789",
+            "name": "#API - Ukázkový kontakt",
+            "note": "Kontakt vytvořený přes API",
+            "company": "Ukázkový kontakt",
+            "street": "Pouliční 79/C",
+            "city": "Praha",
+            "zip": "10300",
+            "country": "Česká republika",
+            "mail_to": "info@examle.com"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": 467220,
+                "IC": "123456789",
+                "DIC": "",
+                "name": "#API - Ukázkový kontakt",
+                "note": "Kontakt vytvořený přes API",
+                "company": "Ukázkový kontakt",
+                "street": "Pouliční 79/C",
+                "city": "Praha",
+                "zip": "10300",
+                "country": "Česká republika",
+                "tel": "",
+                "mail_to": "info@examle.com",
+                "X_1": "",
+                "X_2": "",
+                "X_3": ""
+            }
+
+
+## Operace s kontaktem [/contact/{id}/]
+
+### Získání kontaktu [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": "467220",
+                "IC": "123456789",
+                "DIC": "",
+                "name": "#API - Ukázkový kontakt",
+                "note": "Kontakt vytvořený přes API",
+                "company": "Ukázkový kontakt",
+                "street": "Pouliční 79/C",
+                "city": "Praha",
+                "zip": "10300",
+                "country": "Česká republika",
+                "tel": "",
+                "mail_to": "info@examle.com",
+                "X_1": "",
+                "X_2": "",
+                "X_3": ""
+            }
+
+
+### Editace kontaktu [PUT]
+
+
++ Request (application/json)
+
+        {
+            "name": "#API - Ukázkový kontakt - po úpravě"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": "467220",
+                "IC": "123456789",
+                "DIC": "",
+                "name": "#API - Ukázkový kontakt - po úpravě",
+                "note": "Kontakt vytvořený přes API",
+                "company": "Ukázkový kontakt",
+                "street": "Pouliční 79/C",
+                "city": "Praha",
+                "zip": "10300",
+                "country": "Česká republika",
+                "tel": "",
+                "mail_to": "info@examle.com",
+                "X_1": "",
+                "X_2": "",
+                "X_3": ""
+            }
+
+
+
+### Smazání kontaktu [DELETE]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Deleted"
+            }
+
+
+# Group Šablony, pravidelné faktury
+
+## Šablony a pravidelné faktury
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>ID záznamu</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>id_customer (povinné)</td>
+        <td>int</td>
+        <td>ID zaznamu v adresáři</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>name (povinné)</td>
+        <td>string100</td>
+        <td>Název</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>type (povinné)</td>
+        <td>int</td>
+        <td>Typ
+        <blockquote>
+            <code>1</code> Šablona<br>
+            <code>2</code> Pravidelná faktura
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>start_type (povinné)</td>
+        <td>int</td>
+        <td>Nastavení začátku
+        <blockquote>
+            <code>1</code> Přesné datum<br>
+            <code>2</code> První den v měsíci<br>
+            <code>4</code> Poslední den v měsíci
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>end_type (povinné)</td>
+        <td>int</td>
+        <td>Nastavení konce
+        <blockquote>
+            <code>1</code> Bez ukončení<br>
+            <code>2</code> Podle data<br>
+            <code>4</code> Podle počtu dokladů<br>
+            <code>8</code> Zastavit při prvním neuhrazeném dokladu<br>
+            <code>16</code> ZASTAVENO (další se již nebudou generovat)
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_start</td>
+        <td>date</td>
+        <td>Datum, kdy se má vystavit první faktura</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>repeat_period</td>
+        <td>int</td>
+        <td>Opakovat po (měsíce)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>repeat_count</td>
+        <td>int</td>
+        <td>Kolik faktur se má vystavit <small>(pokud end_type=4)</small></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_end</td>
+        <td>date</td>
+        <td>Datum, kdy se může vystavit poslední faktura <small>(pokud end_type=2)</small></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>date_created_last</td>
+        <td>date</td>
+        <td>Kdy byla vystavena poslední faktura</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>date_create_next</td>
+        <td>date</td>
+        <td>Kdy se vystaví příští faktura</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>doc_id_number_series</td>
+        <td>int</td>
+        <td>ID číselné řady</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_id_payment_method</td>
+        <td>int</td>
+        <td>ID platební metody</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_id_center</td>
+        <td>int</td>
+        <td>ID střediska</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_type</td>
+        <td>int</td>
+        <td>Typ dokladu
+        <blockquote>
+            <code>1</code> Faktura<br>
+            <code>2</code> Zálohová faktura<br>
+            <code>4</code> Proforma faktura<br>
+            <code>8</code> Výzva k platbě<br>
+            <code>16</code> Daňový doklad<br>
+            <code>32</code> Opravný daňový doklad<br>
+            <code>64</code> Příjmový doklad<br>
+            <code>128</code> Opravný doklad<br>
+            <code>512</code> Objednávka
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_flags</td>
+        <td>int</td>
+        <td>Příznaky
+        <blockquote>
+            <code>1</code> Dokument obsahuje DPH<br>
+            <code>2</code> Uhrazeno<br>
+            <code>4</code> Odesláno e-mailem zákazníkovi<br>
+            <code>8</code> Doklad je stornován<br>
+            <code>16</code> Odeslána e-mailem zákazníkovi upomínka<br>
+            <code>32</code> Přeplatek<br>
+            <code>64</code> Nedoplatek<br>
+            <code>256</code> Doklad byl stažen účetním
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>doc_tags</td>
+        <td>int</td>
+        <td>Použité štítky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_days_due</td>
+        <td>int</td>
+        <td>Splatnost (dny)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_days_reminder</td>
+        <td>int</td>
+        <td>Za jak dlouho zaslat připomínku po splatnosti (dny)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_bank_account_number</td>
+        <td>string20</td>
+        <td>Číslo bankovního účtu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_payment_method</td>
+        <td>int</td>
+        <td>Způsob platby
+        <blockquote>
+            <code>1</code> Bankovní převod<br>
+            <code>2</code> Hotovost<br>
+            <code>4</code> Dobírka<br>
+            <code>8</code> Kartou online<br>
+            <code>128</code> PayPal<br>
+            <code>16</code> Záloha<br>
+            <code>32</code> Zápočet
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_calculate_vat</td>
+        <td>int</td>
+        <td>Výpočet DPH
+        <blockquote>
+            <code>1</code> Položky jsou uvedeny jako základ daně<br>
+            <code>2</code> Položky mají koncovou cenu s DPH<br>
+            <code>3</code> DPH je účtováno ve speciálním režimu<br>
+            <code>4</code> DPH je v režimu prenesené daňové povinnosti<br>
+            <code>6</code> Daň odvede zákazník<br>
+            <code>5</code> Neplátce DPH
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_round_invoice</td>
+        <td>int</td>
+        <td>Zaokrouhlení dokumentu
+        <blockquote>
+            <code>1</code> Nezaokrouhlovat<br>
+            <code>2</code> Zaokrouhlit (háleřové vyrovnání)
+        </blockquote></td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_text_before_items</td>
+        <td>string255</td>
+        <td>Text před položkami faktury</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_text_invoice_footer</td>
+        <td>string255</td>
+        <td>Text v patičce dokumentu</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_VS</td>
+        <td>int</td>
+        <td>Variabilní symbol</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_KS</td>
+        <td>int</td>
+        <td>Konstantní symbol</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_SS</td>
+        <td>int</td>
+        <td>Specifický symbol</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_currency</td>
+        <td>string5</td>
+        <td>Měna</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_1</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 1 (např. ID ve Vašem systému)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_2</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 2</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_3</td>
+        <td>string100</td>
+        <td>Volitelná hodnota 3</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>X_{anything}</td>
+        <td>mixed</td>
+        <td>Volitelná hodnota s vlastním názvem klíče (např. X_phone)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>doc_items (povinné)</td>
+        <td>array</td>
+        <td>Položky dokumentu</td>
+        <td>R/W</td>
+    </tr>
+</table>
+
+## Položky šablon a pravidelných faktur
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>quantity</td>
+        <td>int</td>
+        <td>Množství</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>unit</td>
+        <td>string10</td>
+        <td>Množstevní jednotka (ks, kg, ...)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>text (povinné)</td>
+        <td>string255</td>
+        <td>Text položky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>unit_price (povinné)</td>
+        <td>double</td>
+        <td>Cena položky</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>vat_rate</td>
+        <td>double</td>
+        <td>Sazba DPH (%)</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>vat</td>
+        <td>double</td>
+        <td>Daň</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>double</td>
+        <td>Částka k úhradě</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>total_without_vat</td>
+        <td>double</td>
+        <td>Částka k úhradě bez DPH</td>
+        <td>R</td>
+    </tr>
+</table>
+
+
+## Vytvoření šablony [/template/]
+
+### Vytvoření šablony [POST]
+
++ Request (application/json)
+
+        {
+            "type": 1,
+            "name": "#API - Test šablony1",
+            "items": [
+                {
+                    "text": "Stěrač na ponorku",
+                    "unit_price": 990.25,
+                    "vat_rate": 15
+                },
+                {
+                    "text": "Kapalina do ostřikovačů 250 ml",
+                    "unit_price": 59,
+                    "vat_rate": 15
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": 13017,
+                "id_customer": "0",
+                "name": "#API - Test šablony1",
+                "type": "1",
+                "start_type": "1",
+                "end_type": "0",
+                "date_start": "0000-00-00",
+                "repeat_period": "1",
+                "repeat_count": "0",
+                "date_end": "0000-00-00",
+                "date_created_last": "0000-00-00",
+                "date_create_next": "0000-00-00",
+                "doc_id_number_series": "0",
+                "doc_id_payment_method": "0",
+                "doc_type": 1,
+                "doc_flags": 1,
+                "doc_days_due": "11",
+                "doc_days_reminder": null,
+                "doc_calculate_vat": 1,
+                "doc_round_invoice": 1,
+                "doc_text_before_items": "olalala",
+                "doc_text_invoice_footer": "",
+                "doc_currency": "CZK",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": "",
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": 990.25,
+                        "vat_rate": 15,
+                        "vat": 148.54,
+                        "total": 1138.79,
+                        "total_without_vat": 990.25
+                    },
+                    {
+                        "quantity": "",
+                        "unit": "",
+                        "text": "Kapalina do ostřikovačů 250 ml",
+                        "unit_price": 59,
+                        "vat_rate": 15,
+                        "vat": 8.85,
+                        "total": 67.85,
+                        "total_without_vat": 59
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 15,
+                        "base": 1049.25,
+                        "vat": 157.39,
+                        "total": 1206.64
+                    }
+                ]
+            }
+
+
+## Operace s šablonou [/template/{id}/]
+
+### Získání šablony [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": "13017",
+                "id_customer": "0",
+                "name": "#API - Test šablony1",
+                "type": "1",
+                "start_type": "1",
+                "end_type": "0",
+                "date_start": "0000-00-00",
+                "repeat_period": "1",
+                "repeat_count": "0",
+                "date_end": "0000-00-00",
+                "date_created_last": "0000-00-00",
+                "date_create_next": "0000-00-00",
+                "doc_id_number_series": "0",
+                "doc_id_payment_method": "0",
+                "doc_type": 1,
+                "doc_flags": 1,
+                "doc_days_due": "11",
+                "doc_days_reminder": null,
+                "doc_calculate_vat": 1,
+                "doc_round_invoice": 1,
+                "doc_text_before_items": "olalala",
+                "doc_text_invoice_footer": "",
+                "doc_currency": "CZK",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": "",
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": 990.25,
+                        "vat_rate": 15,
+                        "vat": 148.54,
+                        "total": 1138.79,
+                        "total_without_vat": 990.25
+                    },
+                    {
+                        "quantity": "",
+                        "unit": "",
+                        "text": "Kapalina do ostřikovačů 250 ml",
+                        "unit_price": 59,
+                        "vat_rate": 15,
+                        "vat": 8.85,
+                        "total": 67.85,
+                        "total_without_vat": 59
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 15,
+                        "base": 1049.25,
+                        "vat": 157.39,
+                        "total": 1206.64
+                    }
+                ]
+            }
+
+
+### Editace šablony [PUT]
+
+
++ Request (application/json)
+
+        {
+            "name": "#API - Změna názvu"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": "13017",
+                "id_customer": "0",
+                "name": "#API - Změna názvu",
+                "type": "1",
+                "start_type": "1",
+                "end_type": 0,
+                "date_start": "0000-00-00",
+                "repeat_period": "1",
+                "repeat_count": 0,
+                "date_end": "0000-00-00",
+                "date_created_last": "0000-00-00",
+                "date_create_next": "0000-00-00",
+                "doc_id_number_series": "0",
+                "doc_id_payment_method": "0",
+                "doc_type": 1,
+                "doc_flags": 1,
+                "doc_days_due": "11",
+                "doc_days_reminder": null,
+                "doc_calculate_vat": 1,
+                "doc_round_invoice": 1,
+                "doc_text_before_items": "olalala",
+                "doc_text_invoice_footer": "",
+                "doc_currency": "CZK",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": "",
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": 990.25,
+                        "vat_rate": 15,
+                        "vat": 148.54,
+                        "total": 1138.79,
+                        "total_without_vat": 990.25
+                    },
+                    {
+                        "quantity": "",
+                        "unit": "",
+                        "text": "Kapalina do ostřikovačů 250 ml",
+                        "unit_price": 59,
+                        "vat_rate": 15,
+                        "vat": 8.85,
+                        "total": 67.85,
+                        "total_without_vat": 59
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 15,
+                        "base": 1049.25,
+                        "vat": 157.39,
+                        "total": 1206.64
+                    }
+                ]
+            }
+
+
+
+### Smazání šablony [DELETE]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Deleted"
+            }
+
+
+# Group Nastavení
+
+## Platební metody
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>id_payment_method</td>
+        <td>int</td>
+        <td>ID platební metody</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>id_eet_pokl</td>
+        <td>int</td>
+        <td>ID EET pokladny</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>flags</td>
+        <td>int</td>
+        <td>příznaky</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>int</td>
+        <td>Typ platební metody
+        <blockquote>
+            <code>1</code> Bankovní převod<br>
+            <code>2</code> Hotovost<br>
+            <code>4</code> Dobírka<br>
+            <code>8</code> Online kartou<br>
+            <code>64</code> Zrychlený převod<br>
+            <code>128</code> PayPal<br>
+            <code>32</code> Zápočtem<br>
+            <code>256</code> Vlastní
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>provider</td>
+        <td>int</td>
+        <td>Poskytovatel
+        <blockquote>
+            <code>1</code> GoPay.cz<br>
+            <code>2</code> ThePay.cz<br>
+            <code>4</code> PayPal.com
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>string50</td>
+        <td>Uživatelský název</td>
+        <td>R</td>
+    </tr>
+</table>
+
+## Platební metody [/settings/payment-method/]
+
+### Získání seznamu platebních metod [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            [
+                {
+                    "id_payment_method": "58087",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "8",
+                    "provider": "8",
+                    "name": "Kartou ComGate"
+                },
+                {
+                    "id_payment_method": "58086",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "64",
+                    "provider": "8",
+                    "name": "Zrychlený převod ComGate"
+                },
+                {
+                    "id_payment_method": "57520",
+                    "id_eet_pokl": "282",
+                    "flags": "0",
+                    "type": "2",
+                    "provider": "0",
+                    "name": "Hotovost_2"
+                },
+                {
+                    "id_payment_method": "43739",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Test - 1"
+                },
+                {
+                    "id_payment_method": "33661",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "128",
+                    "provider": "0",
+                    "name": "PayPal"
+                },
+                {
+                    "id_payment_method": "10380",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Fio CZK"
+                },
+                {
+                    "id_payment_method": "54356",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "1024",
+                    "provider": "1",
+                    "name": "superCASH GoPay"
+                },
+                {
+                    "id_payment_method": "52387",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52386",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52381",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "10456",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "8",
+                    "provider": "2",
+                    "name": "ThePay - testovací"
+                },
+                {
+                    "id_payment_method": "52385",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52380",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52384",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52379",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52383",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "33665",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "8",
+                    "provider": "1",
+                    "name": "Kartou GoPay"
+                },
+                {
+                    "id_payment_method": "52382",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "33662",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "8",
+                    "provider": "2",
+                    "name": "Kartou ThePay"
+                },
+                {
+                    "id_payment_method": "8437",
+                    "id_eet_pokl": "61",
+                    "flags": "0",
+                    "type": "2",
+                    "provider": "0",
+                    "name": "Hotovost"
+                },
+                {
+                    "id_payment_method": "8436",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "4",
+                    "provider": "0",
+                    "name": "Dobírka"
+                },
+                {
+                    "id_payment_method": "52332",
+                    "id_eet_pokl": "0",
+                    "flags": "0",
+                    "type": "256",
+                    "provider": "0",
+                    "name": "Po dodání"
+                }
+            ]
+
+
+## Číselné řady
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>id_number_series</td>
+        <td>int</td>
+        <td>ID číselné řady</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>id_number_series_child</td>
+        <td>int</td>
+        <td>ID číselné řady, které bude uplatněna na potomka dokumentu. Např. pokud bude uhrazena proforma faktura, tak toto ID se použije u automaticky vytvořené faktury.</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>int</td>
+        <td>Pro jaky typ dokumentu je číselná řada určena
+        <blockquote>
+            <code>1</code> Faktura<br>
+            <code>2</code> Zálohová faktura<br>
+            <code>4</code> Proforma faktura<br>
+            <code>8</code> Výzva k platbě<br>
+            <code>16</code> Daňový doklad<br>
+            <code>32</code> Opravný daňový doklad<br>
+            <code>64</code> Příjmový doklad<br>
+            <code>128</code> Opravný doklad<br>
+            <code>512</code> Objednávka<br>
+            <code>256</code> Objednávka VF<br>
+            <code>1024</code> Náklad
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>string255</td>
+        <td>Název</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>pattern</td>
+        <td>string50</td>
+        <td>Šablona pro generování čísla</td>
+        <td>R</td>
+    </tr>
+</table>
+
+## Číselné řady [/settings/number-series/]
+
+### Získání seznamu číselných řad [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            [
+                {
+                    "id_number_series": "28437",
+                    "id_number_series_child": "0",
+                    "type": "1",
+                    "name": "Faktura",
+                    "pattern": "{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28438",
+                    "id_number_series_child": "0",
+                    "type": "2",
+                    "name": "Zálohová faktura",
+                    "pattern": "7{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28439",
+                    "id_number_series_child": "0",
+                    "type": "4",
+                    "name": "Proforma faktura",
+                    "pattern": "9{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28440",
+                    "id_number_series_child": "0",
+                    "type": "8",
+                    "name": "Výzva k platbě",
+                    "pattern": "8{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28441",
+                    "id_number_series_child": "0",
+                    "type": "16",
+                    "name": "Daňový doklad",
+                    "pattern": "6{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28442",
+                    "id_number_series_child": "0",
+                    "type": "64",
+                    "name": "Příjmový doklad",
+                    "pattern": "6{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28443",
+                    "id_number_series_child": "0",
+                    "type": "32",
+                    "name": "Opravný daňový doklad",
+                    "pattern": "5{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28444",
+                    "id_number_series_child": "0",
+                    "type": "128",
+                    "name": "Opravný doklad",
+                    "pattern": "5{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "28445",
+                    "id_number_series_child": "28437",
+                    "type": "512",
+                    "name": "Objednávka",
+                    "pattern": "4{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "129272",
+                    "id_number_series_child": "0",
+                    "type": "1024",
+                    "name": "N2",
+                    "pattern": "3-{yyyy}-{cccc}"
+                },
+                {
+                    "id_number_series": "195160",
+                    "id_number_series_child": "0",
+                    "type": "1",
+                    "name": "test",
+                    "pattern": "FAS{cccc}"
+                },
+                {
+                    "id_number_series": "28446",
+                    "id_number_series_child": "0",
+                    "type": "1024",
+                    "name": "Náklad",
+                    "pattern": "N{yyyy}{cccc}"
+                },
+                {
+                    "id_number_series": "53970",
+                    "id_number_series_child": "0",
+                    "type": "1",
+                    "name": "Faktura 2",
+                    "pattern": "{c}/{yyyy}"
+                },
+                {
+                    "id_number_series": "105505",
+                    "id_number_series_child": "0",
+                    "type": "1",
+                    "name": "test",
+                    "pattern": "{yy}{ccc}"
+                },
+                {
+                    "id_number_series": "168035",
+                    "id_number_series_child": "0",
+                    "type": "4",
+                    "name": "UNI",
+                    "pattern": "PF{yyyy}{ccc}"
+                },
+                {
+                    "id_number_series": "170162",
+                    "id_number_series_child": "0",
+                    "type": "1",
+                    "name": "test 03/04",
+                    "pattern": "{y-12m} iFV9{cccc}"
+                },
+                {
+                    "id_number_series": "177422",
+                    "id_number_series_child": "0",
+                    "type": "2",
+                    "name": "Druhá řada",
+                    "pattern": "ZF{yy}{ccccc}"
+                }
+            ]
