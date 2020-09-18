@@ -82,7 +82,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
         <td>R</td>
     </tr>
     <tr>
-        <td>type</td>
+        <td>type (povinné)</td>
         <td>string100</td>
         <td>Typ produktu
         <blockquote>
@@ -100,19 +100,19 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
         <td>R</td>
     </tr>
     <tr>
-        <td>name</td>
+        <td>name (povinné)</td>
         <td>string100</td>
         <td>Název produktu</td>
         <td>R</td>
     </tr>
     <tr>
-        <td>title</td>
+        <td>title (povinné)</td>
         <td>string100</td>
         <td>Titulek produktu</td>
         <td>R</td>
     </tr>
     <tr>
-        <td>price</td>
+        <td>price (povinné)</td>
         <td>double</td>
         <td>Cena</td>
         <td>R</td>
@@ -145,6 +145,36 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
         <td>form_billing_config</td>
         <td>array</td>
         <td>Konfigurace formuláře - fakturační údaje</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>form_text_header_main</td>
+        <td>string100</td>
+        <td>Hlavní nadpis</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>form_text_header_payment_method</td>
+        <td>string100</td>
+        <td>Nadpis pro výběr platební metody</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>form_text_header_billing</td>
+        <td>string100</td>
+        <td>Nadpis pro zadání fakturačních údajů</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>form_text_button_send</td>
+        <td>string100</td>
+        <td>Tlačítko pro odeslání formuláře</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>form_text_button_add_person</td>
+        <td>string100</td>
+        <td>Tlačítko pro přidání dalšího jména</td>
         <td>R</td>
     </tr>
     <tr>
@@ -181,6 +211,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
         <td>form_html_code</td>
         <td>string2000</td>
         <td>JS, CSS a jiné kódy</td>
+        <td>R</td>
+    </tr>
+    <tr>
+        <td>X_1</td>
+        <td>int</td>
+        <td>Volitelná hodnota 1 (např. ID ve Vašem systému)</td>
         <td>R</td>
     </tr>
     <tr>
@@ -269,12 +305,18 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                     "mj": "ks",
                     "amount_type": "1",
                     "coupon_type": "2",
+                    "form_text_header_main": "",
+                    "form_text_header_payment_method": "",
+                    "form_text_header_billing": "",
+                    "form_text_button_send": "",
+                    "form_text_button_add_person": "",
                     "form_person_enable": "2",
                     "form_person_config": [],
                     "url_product": "",
                     "url_thank_you": "",
                     "sentence": [],
                     "form_html_code": "",
+                    "X_1": "0",
                     "variants": [],
                     "form_billing_config": {
                         "FIWSXXA3": {
@@ -335,6 +377,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                     "coupon_type": 2,
                     "url_product": "",
                     "url_thank_you": "",
+                    "X_1": "0",
                     "variants": [],
                     "form_billing_config": {
                         "0": {
@@ -1433,7 +1476,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
     + Body
 
             {
-                "id": 1520758,
+                "id": 1520855,
                 "id_identity": "0",
                 "id_customer": "-1",
                 "id_number_series": "28437",
@@ -1449,10 +1492,10 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "tags": "0",
                 "eet_status": "1",
                 "eet_data": "",
-                "number": "20200162",
-                "date_created": "2020-09-10",
-                "date_due": "2020-09-21",
-                "date_taxable_supply": "2020-09-10",
+                "number": "20200168",
+                "date_created": "2020-09-18",
+                "date_due": "2020-09-29",
+                "date_taxable_supply": "2020-09-18",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -1504,12 +1547,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "20200162",
+                "VS": "20200168",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "20200162 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "20200168 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": 1,
                 "total": "1206.64",
                 "total_without_vat": "1049.25",
@@ -1582,14 +1625,14 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "storno": false,
                 "moss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520758/a6ea3f/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520758/a6ea3f/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/nostamp/",
-                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520758/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520855/9fa30f/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520855/9fa30f/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520855/",
                 "log": [
                     {
-                        "date": "2020-09-10 14:33:02",
+                        "date": "2020-09-18 13:13:21",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
@@ -1603,7 +1646,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
 
         {
             "type": 32,
-            "id_parent": 1520758
+            "id_parent": 1520855
         }
 
 + Response 200 (application/json)
@@ -1615,7 +1658,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
     + Body
 
             {
-                "id": 1520759,
+                "id": 1520856,
                 "id_identity": "0",
                 "id_customer": "-1",
                 "id_number_series": "28443",
@@ -1624,7 +1667,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "id_predkontace": "0",
                 "id_cleneniDPH": "0",
                 "id_coupon": "0",
-                "id_parent": "1520758",
+                "id_parent": "1520855",
                 "id_eet_pokl": "0",
                 "type": "32",
                 "flags": "1",
@@ -1632,9 +1675,9 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "eet_status": "1",
                 "eet_data": "",
                 "number": "520200004",
-                "date_created": "2020-09-10",
-                "date_due": "2020-09-10",
-                "date_taxable_supply": "2020-09-10",
+                "date_created": "2020-09-18",
+                "date_due": "2020-09-18",
+                "date_taxable_supply": "2020-09-18",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -1686,12 +1729,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "20200162",
+                "VS": "20200168",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "520200004 20200162 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "520200004 20200168 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": "1",
                 "total": "-1206.64",
                 "total_without_vat": "-1049.25",
@@ -1764,24 +1807,24 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "storno": false,
                 "moss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520759/effc53/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520759/effc53/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/nostamp/",
-                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520759/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520856/7f4ce6/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520856/7f4ce6/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520856/",
                 "log": [
                     {
-                        "date": "2020-09-10 14:33:03",
-                        "text": "Vytvořen opravný doklad k {vfiid:1520758:FA 20200162} "
+                        "date": "2020-09-18 13:13:22",
+                        "text": "Vytvořen opravný doklad k {vfiid:1520855:FA 20200168} "
                     },
                     {
-                        "date": "2020-09-10 14:33:03",
+                        "date": "2020-09-18 13:13:22",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
                 "related_documents": {
-                    "1520758": {
-                        "id": "1520758",
+                    "1520855": {
+                        "id": "1520855",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "28437",
@@ -1797,10 +1840,10 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "tags": "0",
                         "eet_status": "1",
                         "eet_data": "",
-                        "number": "20200162",
-                        "date_created": "2020-09-10",
-                        "date_due": "2020-09-21",
-                        "date_taxable_supply": "2020-09-10",
+                        "number": "20200168",
+                        "date_created": "2020-09-18",
+                        "date_due": "2020-09-29",
+                        "date_taxable_supply": "2020-09-18",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -1852,12 +1895,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "20200162",
+                        "VS": "20200168",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "20200162 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "20200168 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": 1,
                         "total": "1206.64",
                         "total_without_vat": "1049.25",
@@ -1930,14 +1973,14 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "storno": false,
                         "moss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520758/a6ea3f/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520758/a6ea3f/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/nostamp/",
-                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520758/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520855/9fa30f/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520855/9fa30f/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520855/",
                         "log": [
                             {
-                                "date": "2020-09-10 14:33:02",
+                                "date": "2020-09-18 13:13:21",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -1961,7 +2004,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
     + Body
 
             {
-                "id": "1520758",
+                "id": "1520855",
                 "id_identity": "0",
                 "id_customer": "-1",
                 "id_number_series": "28437",
@@ -1977,10 +2020,10 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "tags": "0",
                 "eet_status": "1",
                 "eet_data": "",
-                "number": "20200162",
-                "date_created": "2020-09-10",
-                "date_due": "2020-09-21",
-                "date_taxable_supply": "2020-09-10",
+                "number": "20200168",
+                "date_created": "2020-09-18",
+                "date_due": "2020-09-29",
+                "date_taxable_supply": "2020-09-18",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -2032,12 +2075,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "20200162",
+                "VS": "20200168",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "20200162 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "20200168 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": 1,
                 "total": "1206.64",
                 "total_without_vat": "1049.25",
@@ -2110,20 +2153,20 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "storno": false,
                 "moss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520758/a6ea3f/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520758/a6ea3f/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/nostamp/",
-                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520758/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520855/9fa30f/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520855/9fa30f/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520855/",
                 "log": [
                     {
-                        "date": "2020-09-10 14:33:02",
+                        "date": "2020-09-18 13:13:21",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
                 "related_documents": {
-                    "1520759": {
-                        "id": "1520759",
+                    "1520856": {
+                        "id": "1520856",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "28443",
@@ -2132,7 +2175,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "id_predkontace": "0",
                         "id_cleneniDPH": "0",
                         "id_coupon": "0",
-                        "id_parent": "1520758",
+                        "id_parent": "1520855",
                         "id_eet_pokl": "0",
                         "type": "32",
                         "flags": "1",
@@ -2140,9 +2183,9 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "eet_status": "1",
                         "eet_data": "",
                         "number": "520200004",
-                        "date_created": "2020-09-10",
-                        "date_due": "2020-09-10",
-                        "date_taxable_supply": "2020-09-10",
+                        "date_created": "2020-09-18",
+                        "date_due": "2020-09-18",
+                        "date_taxable_supply": "2020-09-18",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -2194,12 +2237,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "20200162",
+                        "VS": "20200168",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "520200004 20200162 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "520200004 20200168 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": "1",
                         "total": "-1206.64",
                         "total_without_vat": "-1049.25",
@@ -2272,18 +2315,18 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "storno": false,
                         "moss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520759/effc53/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520759/effc53/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/nostamp/",
-                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520759/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520856/7f4ce6/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520856/7f4ce6/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520856/",
                         "log": [
                             {
-                                "date": "2020-09-10 14:33:03",
-                                "text": "Vytvořen opravný doklad k {vfiid:1520758:FA 20200162} "
+                                "date": "2020-09-18 13:13:22",
+                                "text": "Vytvořen opravný doklad k {vfiid:1520855:FA 20200168} "
                             },
                             {
-                                "date": "2020-09-10 14:33:03",
+                                "date": "2020-09-18 13:13:22",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -2316,7 +2359,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
     + Body
 
             {
-                "id": "1520758",
+                "id": "1520855",
                 "id_identity": "0",
                 "id_customer": -1,
                 "id_number_series": "28437",
@@ -2332,10 +2375,10 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "tags": "0",
                 "eet_status": "1",
                 "eet_data": "",
-                "number": "20200162",
-                "date_created": "2020-09-10",
-                "date_due": "2020-09-21",
-                "date_taxable_supply": "2020-09-10",
+                "number": "20200168",
+                "date_created": "2020-09-18",
+                "date_due": "2020-09-29",
+                "date_taxable_supply": "2020-09-18",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -2387,12 +2430,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "20200162",
+                "VS": "20200168",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "20200162 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "20200168 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": 1,
                 "total": "1206.64",
                 "total_without_vat": "1049.25",
@@ -2432,20 +2475,20 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "storno": false,
                 "moss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520758/a6ea3f/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520758/a6ea3f/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/nostamp/",
-                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520758/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520855/9fa30f/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520855/9fa30f/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520855/",
                 "log": [
                     {
-                        "date": "2020-09-10 14:33:02",
+                        "date": "2020-09-18 13:13:21",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
                 "related_documents": {
-                    "1520759": {
-                        "id": "1520759",
+                    "1520856": {
+                        "id": "1520856",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "28443",
@@ -2454,7 +2497,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "id_predkontace": "0",
                         "id_cleneniDPH": "0",
                         "id_coupon": "0",
-                        "id_parent": "1520758",
+                        "id_parent": "1520855",
                         "id_eet_pokl": "0",
                         "type": "32",
                         "flags": "1",
@@ -2462,9 +2505,9 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "eet_status": "1",
                         "eet_data": "",
                         "number": "520200004",
-                        "date_created": "2020-09-10",
-                        "date_due": "2020-09-10",
-                        "date_taxable_supply": "2020-09-10",
+                        "date_created": "2020-09-18",
+                        "date_due": "2020-09-18",
+                        "date_taxable_supply": "2020-09-18",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -2516,12 +2559,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "20200162",
+                        "VS": "20200168",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "520200004 20200162 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "520200004 20200168 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": "1",
                         "total": "-1206.64",
                         "total_without_vat": "-1049.25",
@@ -2594,18 +2637,18 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "storno": false,
                         "moss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520759/effc53/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520759/effc53/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/nostamp/",
-                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520759/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520856/7f4ce6/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520856/7f4ce6/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520856/",
                         "log": [
                             {
-                                "date": "2020-09-10 14:33:03",
-                                "text": "Vytvořen opravný doklad k {vfiid:1520758:FA 20200162} "
+                                "date": "2020-09-18 13:13:22",
+                                "text": "Vytvořen opravný doklad k {vfiid:1520855:FA 20200168} "
                             },
                             {
-                                "date": "2020-09-10 14:33:03",
+                                "date": "2020-09-18 13:13:22",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -2722,9 +2765,9 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                     "to": "demo@vyfakturuj.cz, demo.copy@vyfakturuj.cz",
                     "cc": "",
                     "bcc": "",
-                    "subject": "Faktura č. 20200162 - uhrazena",
+                    "subject": "Faktura č. 20200168 - uhrazena",
                     "pdfAttachment": true,
-                    "body": "Dobrý den\r\n\r\nVaše platba byla přijata (Faktura č. 20200162).\r\n\r\nFakturu č. 20200162 naleznete na adrese: https://www.vyfakturuj.cz/print/document/1520758/a6ea3f/\r\n\r\nS pozdravem\r\n\r\nDemo s.r.o. plátce"
+                    "body": "Dobrý den\r\n\r\nVaše platba byla přijata (Faktura č. 20200168).\r\n\r\nFakturu č. 20200168 naleznete na adrese: https://www.vyfakturuj.cz/print/document/1520855/9fa30f/\r\n\r\nS pozdravem\r\n\r\nDemo s.r.o. plátce"
                 }
             }
 
@@ -2748,7 +2791,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
     + Body
 
             {
-                "id": "1520758",
+                "id": "1520855",
                 "id_identity": "0",
                 "id_customer": "-1",
                 "id_number_series": "28437",
@@ -2764,10 +2807,10 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "tags": "0",
                 "eet_status": "1",
                 "eet_data": "",
-                "number": "20200162",
-                "date_created": "2020-09-10",
-                "date_due": "2020-09-21",
-                "date_taxable_supply": "2020-09-10",
+                "number": "20200168",
+                "date_created": "2020-09-18",
+                "date_due": "2020-09-29",
+                "date_taxable_supply": "2020-09-18",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -2819,12 +2862,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "20200162",
+                "VS": "20200168",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "20200162 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                "search": "20200168 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                 "exchange_rate": "1",
                 "total": "1138.79",
                 "total_without_vat": "990.25",
@@ -2861,24 +2904,24 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "storno": false,
                 "moss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520758/a6ea3f/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520758/a6ea3f/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/nostamp/",
-                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520758/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520855/9fa30f/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520855/9fa30f/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520855/",
                 "log": [
                     {
-                        "date": "2020-09-10 14:33:02",
+                        "date": "2020-09-18 13:13:21",
                         "text": "Vytvoření dokumentu."
                     },
                     {
-                        "date": "2020-09-10 14:33:04",
+                        "date": "2020-09-18 13:13:23",
                         "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                     }
                 ],
                 "related_documents": {
-                    "1520759": {
-                        "id": "1520759",
+                    "1520856": {
+                        "id": "1520856",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "28443",
@@ -2887,7 +2930,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "id_predkontace": "0",
                         "id_cleneniDPH": "0",
                         "id_coupon": "0",
-                        "id_parent": "1520758",
+                        "id_parent": "1520855",
                         "id_eet_pokl": "0",
                         "type": "32",
                         "flags": "1",
@@ -2895,9 +2938,9 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "eet_status": "1",
                         "eet_data": "",
                         "number": "520200004",
-                        "date_created": "2020-09-10",
-                        "date_due": "2020-09-10",
-                        "date_taxable_supply": "2020-09-10",
+                        "date_created": "2020-09-18",
+                        "date_due": "2020-09-18",
+                        "date_taxable_supply": "2020-09-18",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -2949,12 +2992,12 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "20200162",
+                        "VS": "20200168",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "520200004 20200162 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "520200004 20200168 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": "1",
                         "total": "-1206.64",
                         "total_without_vat": "-1049.25",
@@ -3027,18 +3070,18 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "storno": false,
                         "moss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520759/effc53/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520759/effc53/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520759/effc53/nostamp/",
-                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520759/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520856/7f4ce6/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520856/7f4ce6/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520856/7f4ce6/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520856/",
                         "log": [
                             {
-                                "date": "2020-09-10 14:33:03",
-                                "text": "Vytvořen opravný doklad k {vfiid:1520758:FA 20200162} "
+                                "date": "2020-09-18 13:13:22",
+                                "text": "Vytvořen opravný doklad k {vfiid:1520855:FA 20200168} "
                             },
                             {
-                                "date": "2020-09-10 14:33:03",
+                                "date": "2020-09-18 13:13:22",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -3088,7 +3131,7 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
 
             [
                 {
-                    "id": "1520744",
+                    "id": "1520845",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "28437",
@@ -3104,10 +3147,10 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "20200155",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
+                    "number": "20200163",
+                    "date_created": "2020-09-18",
+                    "date_due": "2020-09-29",
+                    "date_taxable_supply": "2020-09-18",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3159,12 +3202,12 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "20200155",
+                    "VS": "20200163",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "20200155 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "20200163 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
@@ -3201,29 +3244,29 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "storno": false,
                     "moss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520744/292029/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520744/292029/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520744/292029/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520744/292029/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520744/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520845/34f9e4/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520845/34f9e4/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520845/34f9e4/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520845/34f9e4/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520845/",
                     "log": [
                         {
-                            "date": "2020-09-10 14:11:15",
+                            "date": "2020-09-18 13:12:26",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2020-09-10 14:11:17",
+                            "date": "2020-09-18 13:12:28",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2020-09-10 14:11:17",
+                            "date": "2020-09-18 13:12:28",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016"
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "1520746",
+                    "id": "1520847",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "28437",
@@ -3239,10 +3282,10 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "20200156",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
+                    "number": "20200164",
+                    "date_created": "2020-09-18",
+                    "date_due": "2020-09-29",
+                    "date_taxable_supply": "2020-09-18",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3294,12 +3337,12 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "20200156",
+                    "VS": "20200164",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "20200156 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "20200164 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
@@ -3336,29 +3379,29 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "storno": false,
                     "moss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520746/a076b8/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520746/a076b8/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520746/a076b8/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520746/a076b8/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520746/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520847/12e5bb/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520847/12e5bb/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520847/12e5bb/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520847/12e5bb/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520847/",
                     "log": [
                         {
-                            "date": "2020-09-10 14:12:02",
+                            "date": "2020-09-18 13:12:38",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2020-09-10 14:12:04",
+                            "date": "2020-09-18 13:12:40",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2020-09-10 14:12:04",
+                            "date": "2020-09-18 13:12:40",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016"
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "1520748",
+                    "id": "1520849",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "28437",
@@ -3374,10 +3417,10 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "20200157",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
+                    "number": "20200165",
+                    "date_created": "2020-09-18",
+                    "date_due": "2020-09-29",
+                    "date_taxable_supply": "2020-09-18",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3429,12 +3472,12 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "20200157",
+                    "VS": "20200165",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "20200157 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "20200165 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
@@ -3471,29 +3514,29 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "storno": false,
                     "moss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520748/0220f4/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520748/0220f4/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520748/0220f4/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520748/0220f4/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520748/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520849/ccdfb9/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520849/ccdfb9/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520849/ccdfb9/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520849/ccdfb9/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520849/",
                     "log": [
                         {
-                            "date": "2020-09-10 14:14:00",
+                            "date": "2020-09-18 13:12:49",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2020-09-10 14:14:01",
+                            "date": "2020-09-18 13:12:52",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2020-09-10 14:14:01",
+                            "date": "2020-09-18 13:12:52",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016"
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "1520750",
+                    "id": "1520851",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "28437",
@@ -3509,10 +3552,10 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "20200158",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
+                    "number": "20200166",
+                    "date_created": "2020-09-18",
+                    "date_due": "2020-09-29",
+                    "date_taxable_supply": "2020-09-18",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3564,12 +3607,12 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "20200158",
+                    "VS": "20200166",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "20200158 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "20200166 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
@@ -3606,29 +3649,29 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "storno": false,
                     "moss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520750/40bb01/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520750/40bb01/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520750/40bb01/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520750/40bb01/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520750/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520851/41613c/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520851/41613c/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520851/41613c/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520851/41613c/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520851/",
                     "log": [
                         {
-                            "date": "2020-09-10 14:26:35",
+                            "date": "2020-09-18 13:13:00",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2020-09-10 14:26:37",
+                            "date": "2020-09-18 13:13:02",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2020-09-10 14:26:37",
+                            "date": "2020-09-18 13:13:02",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016"
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "1520752",
+                    "id": "1520853",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "28437",
@@ -3644,10 +3687,10 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "20200159",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
+                    "number": "20200167",
+                    "date_created": "2020-09-18",
+                    "date_due": "2020-09-29",
+                    "date_taxable_supply": "2020-09-18",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3699,12 +3742,12 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "20200159",
+                    "VS": "20200167",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "20200159 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "20200167 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
@@ -3741,29 +3784,29 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "storno": false,
                     "moss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520752/ae96a1/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520752/ae96a1/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520752/ae96a1/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520752/ae96a1/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520752/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520853/fe1e98/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520853/fe1e98/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520853/fe1e98/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520853/fe1e98/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520853/",
                     "log": [
                         {
-                            "date": "2020-09-10 14:27:59",
+                            "date": "2020-09-18 13:13:10",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2020-09-10 14:28:01",
+                            "date": "2020-09-18 13:13:13",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2020-09-10 14:28:01",
+                            "date": "2020-09-18 13:13:13",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016"
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "1520754",
+                    "id": "1520855",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "28437",
@@ -3779,10 +3822,10 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "20200160",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
+                    "number": "20200168",
+                    "date_created": "2020-09-18",
+                    "date_due": "2020-09-29",
+                    "date_taxable_supply": "2020-09-18",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3834,12 +3877,12 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "20200160",
+                    "VS": "20200168",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "20200160 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "20200168 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
@@ -3876,292 +3919,22 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "storno": false,
                     "moss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520754/72fe1d/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520754/72fe1d/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520754/72fe1d/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520754/72fe1d/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520754/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520855/9fa30f/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520855/9fa30f/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520855/9fa30f/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520855/",
                     "log": [
                         {
-                            "date": "2020-09-10 14:29:56",
+                            "date": "2020-09-18 13:13:21",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2020-09-10 14:29:58",
+                            "date": "2020-09-18 13:13:23",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2020-09-10 14:29:58",
-                            "text": "Doklad byl plně uhrazen k datu 31.12.2016"
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "1520756",
-                    "id_identity": "0",
-                    "id_customer": "-1",
-                    "id_number_series": "28437",
-                    "id_payment_method": "33662",
-                    "id_center": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "3",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "20200161",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
-                    "date_paid": "2016-12-31",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "",
-                    "supplier_contact_web": "",
-                    "customer_IC": "123456789",
-                    "customer_DIC": "CZ123456789",
-                    "customer_IDNUM3": "",
-                    "customer_name": "Ukázková Firma po úpravě",
-                    "customer_firstname": "",
-                    "customer_lastname": "",
-                    "customer_street": "Pouliční 79/C",
-                    "customer_city": "Praha",
-                    "customer_zip": "10300",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "",
-                    "bank_IBAN": "",
-                    "bank_BIC": "",
-                    "payment_method": "8",
-                    "calculate_vat": "1",
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
-                    "text_under_customer": "",
-                    "text_before_items": "olalala",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "20200161",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "20200161 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
-                    "exchange_rate": "1",
-                    "total": "1138.79",
-                    "total_without_vat": "990.25",
-                    "webhook_paid": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "text": "Stěrač na ponorku",
-                            "unit_price": "990.25",
-                            "vat_rate": 15,
-                            "vat_rate_type": 8,
-                            "vat": 148.54,
-                            "total": 1138.79,
-                            "total_without_vat": 990.25,
-                            "domestic-unit_price": 990.25,
-                            "domestic-vat": 148.54,
-                            "domestic-total": 1138.79,
-                            "domestic-total_without_vat": 990.25
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 15,
-                            "base": 990.25,
-                            "vat": 148.54,
-                            "total": 1138.79
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520756/24bfa4/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520756/24bfa4/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520756/24bfa4/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520756/24bfa4/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520756/",
-                    "log": [
-                        {
-                            "date": "2020-09-10 14:30:53",
-                            "text": "Vytvoření dokumentu."
-                        },
-                        {
-                            "date": "2020-09-10 14:30:55",
-                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
-                        },
-                        {
-                            "date": "2020-09-10 14:30:55",
-                            "text": "Doklad byl plně uhrazen k datu 31.12.2016"
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "1520758",
-                    "id_identity": "0",
-                    "id_customer": "-1",
-                    "id_number_series": "28437",
-                    "id_payment_method": "33662",
-                    "id_center": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "3",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "20200162",
-                    "date_created": "2020-09-10",
-                    "date_due": "2020-09-21",
-                    "date_taxable_supply": "2020-09-10",
-                    "date_paid": "2016-12-31",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "",
-                    "supplier_contact_web": "",
-                    "customer_IC": "123456789",
-                    "customer_DIC": "CZ123456789",
-                    "customer_IDNUM3": "",
-                    "customer_name": "Ukázková Firma po úpravě",
-                    "customer_firstname": "",
-                    "customer_lastname": "",
-                    "customer_street": "Pouliční 79/C",
-                    "customer_city": "Praha",
-                    "customer_zip": "10300",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "",
-                    "bank_IBAN": "",
-                    "bank_BIC": "",
-                    "payment_method": "8",
-                    "calculate_vat": "1",
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Doplňkový text - zobrazí se pod dodavatelem (vzor)",
-                    "text_under_customer": "",
-                    "text_before_items": "olalala",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "20200162",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "20200162 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
-                    "exchange_rate": "1",
-                    "total": "1138.79",
-                    "total_without_vat": "990.25",
-                    "webhook_paid": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "text": "Stěrač na ponorku",
-                            "unit_price": "990.25",
-                            "vat_rate": 15,
-                            "vat_rate_type": 8,
-                            "vat": 148.54,
-                            "total": 1138.79,
-                            "total_without_vat": 990.25,
-                            "domestic-unit_price": 990.25,
-                            "domestic-vat": 148.54,
-                            "domestic-total": 1138.79,
-                            "domestic-total_without_vat": 990.25
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 15,
-                            "base": 990.25,
-                            "vat": 148.54,
-                            "total": 1138.79
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/1520758/a6ea3f/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/1520758/a6ea3f/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/1520758/a6ea3f/nostamp/",
-                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/1520758/",
-                    "log": [
-                        {
-                            "date": "2020-09-10 14:33:02",
-                            "text": "Vytvoření dokumentu."
-                        },
-                        {
-                            "date": "2020-09-10 14:33:04",
-                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
-                        },
-                        {
-                            "date": "2020-09-10 14:33:04",
+                            "date": "2020-09-18 13:13:23",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016"
                         }
                     ],
@@ -4527,7 +4300,7 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
     + Body
 
             {
-                "id": "13063",
+                "id": "13069",
                 "id_customer": "0",
                 "name": "#API - Test šablony1",
                 "type": "1",
@@ -4603,7 +4376,7 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
     + Body
 
             {
-                "id": "13063",
+                "id": "13069",
                 "id_customer": "0",
                 "name": "#API - Změna názvu",
                 "type": "1",
@@ -4932,7 +4705,7 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
     + Body
 
             {
-                "id": 467275,
+                "id": 467293,
                 "IC": "123456789",
                 "DIC": "",
                 "name": "#API - Ukázkový kontakt",
@@ -4965,7 +4738,7 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
     + Body
 
             {
-                "id": "467275",
+                "id": "467293",
                 "IC": "123456789",
                 "DIC": "",
                 "name": "#API - Ukázkový kontakt",
@@ -5001,7 +4774,7 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
     + Body
 
             {
-                "id": "467275",
+                "id": "467293",
                 "IC": "123456789",
                 "DIC": "",
                 "name": "#API - Ukázkový kontakt - po úpravě",
@@ -5446,6 +5219,34 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "pattern": "FAS{cccc}"
                 },
                 {
+                    "id_number_series": "195223",
+                    "id_number_series_child": "0",
+                    "type": "1024",
+                    "name": "prvni",
+                    "pattern": "1{yy}{cccc}"
+                },
+                {
+                    "id_number_series": "195224",
+                    "id_number_series_child": "0",
+                    "type": "1024",
+                    "name": "druha",
+                    "pattern": "2{yy}{cccc}"
+                },
+                {
+                    "id_number_series": "195222",
+                    "id_number_series_child": "0",
+                    "type": "1",
+                    "name": "druha",
+                    "pattern": "2{yy}{cccc}"
+                },
+                {
+                    "id_number_series": "195221",
+                    "id_number_series_child": "0",
+                    "type": "1",
+                    "name": "prvni",
+                    "pattern": "1{yy}{cccc}"
+                },
+                {
                     "id_number_series": "28446",
                     "id_number_series_child": "0",
                     "type": "1024",
@@ -5488,4 +5289,4 @@ Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamů
                     "pattern": "ZF{yy}{ccccc}"
                 }
             ]
-ve
+S
