@@ -3116,7 +3116,8 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
 
 ### Vyhledávání [GET]
 
-Systém nyní vrací prvních 1000 záznamů. Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</code>, který určuje, kolik dokladů se má přeskočit.<br/>
+Systém nyní vrací prvních 1000 záznamů, od 1.11.2020 se hodnota sníží na prvních 100 záznamů.<br/>
+Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</code>, který určuje, kolik dokladů se má přeskočit.<br/>
 <b>POZOR:</b> Tato funkce bude v budoucnu omezena na 25 záznamů. Doporučujeme s tím počítat v návrhu již dopředu.
 
 + Request (application/json)
