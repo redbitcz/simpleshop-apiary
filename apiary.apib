@@ -5017,3 +5017,41 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "pattern": "ZF{yy}{ccccc}"
                 }
             ]
+            
+# Group Export
+## Kdo koupil
+
+<table>
+    <tr>
+        <th>Klíč</th>
+        <th>Typ</th>
+        <th>Popis</th>
+        <th>Práva</th>
+    </tr>
+    <tr>
+        <td>strict</td>
+        <td>int</td>
+        <td>Režim exportu
+        <blockquote>
+            <code>0</code> Všechny prodeje (i z jiných formulářů)<br>
+            <code>1</code> Pouze z tohoto formuláře
+        </blockquote></td>
+        <td>R</td>
+    </tr>
+</table>
+## Práce s exportem [/export/who-bought/product/{id}/]
+### Získání exportu [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "csv": "Počet;Jednotka;Položka;\"Cena položky\";-none-;\"ID objednávky\";Objednávka;Stav;\"Cena objednávky\";\"Platební metoda\";\"Slevový kupón\";Faktura;\"Jméno a příjmení (název firmy)\";Jméno;Příjmení;IČO;Ulice;Město;PSČ;Země;Vytvořeno;Uhrazeno;\"Objednáváte poprvé? (vlastní pole)\"\n1;ks;\"Pizza (Hawai)\";140,00 Kč;;969859;OBJ00148;Uhrazeno;0,00 Kč;\"Zrychlený převod ComGate\";8EELXX;;\"SimpleShop test\";;;;YxcYXC;YXCXYc;12345;\"Česká republika\";24.11.2019;24.11.2019;\n1;ks;\"Pizza (Vegetariana)\";140,00 Kč;;969859;OBJ00148;Uhrazeno;0,00 Kč;\"Zrychlený převod ComGate\";8EELXX;;\"SimpleShop test\";;;;YxcYXC;YXCXYc;12345;\"Česká republika\";24.11.2019;24.11.2019;\n1;ks;\"Sleva (1500 CZK)\";-280,00 Kč;;969859;OBJ00148;Uhrazeno;0,00 Kč;\"Zrychlený převod ComGate\";8EELXX;;\"SimpleShop test\";;;;YxcYXC;YXCXYc;12345;\"Česká republika\";24.11.2019;24.11.2019;\n1;ks;\"Pizza (Capriciosa)\";120,00 Kč;;601494;420190091;Uhrazeno;120,00 Kč;\"Fio CZK\";;51/2019;;;;;;;;\"Česká republika\";02.04.2019;02.04.2019;\"Ano - ještě jsem nikdy neobjednával\"\n1;ks;\"Pizza (Capriciosa)\";120,00 Kč;;601488;420190090;Uhrazeno;260,00 Kč;\"Fio CZK\";;50/2019;;;;;;;;\"Česká republika\";02.04.2019;02.04.2019;\"Ano - ještě jsem nikdy neobjednával\"\n1;ks;\"Pizza (Hawai)\";140,00 Kč;;601488;420190090;Uhrazeno;260,00 Kč;\"Fio CZK\";;50/2019;;;;;;;;\"Česká republika\";02.04.2019;02.04.2019;\"Ano - ještě jsem nikdy neobjednával\"\n1;ks;\"Pizza (Capriciosa)\";120,00 Kč;;595024;420190086;Uhrazeno;120,00 Kč;\"Fio CZK\";;46/2019;;;;;;;;\"Česká republika\";29.03.2019;29.03.2019;\"Ano - ještě jsem nikdy neobjednával\"\n1;ks;\"Pizza (Capriciosa)\";120,00 Kč;;581373;420190073;Uhrazeno;120,00 Kč;\"Fio CZK\";;40/2019;;;;;;;;\"Česká republika\";20.03.2019;20.03.2019;\"Ne - jsem věrný zákazník\"\n"
+            }
