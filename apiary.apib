@@ -1018,9 +1018,15 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
         <td>R/W</td>
     </tr>
     <tr>
-        <td>moss</td>
+        <td>oss</td>
         <td>bool</td>
         <td>Elektronická služba neplátci DPH</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>moss</td>
+        <td>bool</td>
+        <td>Alias pro <code>oss</code> (Elektronická služba neplátci DPH). Deprecated parametr, bude ostraněn 2022-01-01.</td>
         <td>R/W</td>
     </tr>
     <tr>
@@ -1641,6 +1647,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "disable_automated_mails": false,
                 "storno": false,
                 "moss": false,
+                "oss": false,
                 "need_attention": false,
                 "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032368/9a8f68/",
                 "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032368/9a8f68/",
@@ -1823,6 +1830,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "disable_automated_mails": false,
                 "storno": false,
                 "moss": false,
+                "oss": false,
                 "need_attention": false,
                 "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032369/ea3b81/",
                 "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032369/ea3b81/",
@@ -1989,6 +1997,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "disable_automated_mails": false,
                         "storno": false,
                         "moss": false,
+                        "oss": false,
                         "need_attention": false,
                         "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032368/9a8f68/",
                         "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032368/9a8f68/",
@@ -2169,6 +2178,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "disable_automated_mails": false,
                 "storno": false,
                 "moss": false,
+                "oss": false,
                 "need_attention": false,
                 "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032368/9a8f68/",
                 "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032368/9a8f68/",
@@ -2331,6 +2341,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "disable_automated_mails": false,
                         "storno": false,
                         "moss": false,
+                        "oss": false,
                         "need_attention": false,
                         "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032369/ea3b81/",
                         "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032369/ea3b81/",
@@ -2491,6 +2502,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "disable_automated_mails": false,
                 "storno": false,
                 "moss": false,
+                "oss": false,
                 "need_attention": false,
                 "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032368/9a8f68/",
                 "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032368/9a8f68/",
@@ -2653,6 +2665,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "disable_automated_mails": false,
                         "storno": false,
                         "moss": false,
+                        "oss": false,
                         "need_attention": false,
                         "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032369/ea3b81/",
                         "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032369/ea3b81/",
@@ -2920,6 +2933,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                 "disable_automated_mails": false,
                 "storno": false,
                 "moss": false,
+                "oss": false,
                 "need_attention": false,
                 "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032368/9a8f68/",
                 "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032368/9a8f68/",
@@ -3086,6 +3100,7 @@ Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo uprav
                         "disable_automated_mails": false,
                         "storno": false,
                         "moss": false,
+                        "oss": false,
                         "need_attention": false,
                         "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032369/ea3b81/",
                         "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032369/ea3b81/",
@@ -3261,6 +3276,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "disable_automated_mails": false,
                     "storno": false,
                     "moss": false,
+                    "oss": false,
                     "need_attention": false,
                     "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032368/9a8f68/",
                     "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032368/9a8f68/",
@@ -3396,6 +3412,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "disable_automated_mails": false,
                     "storno": false,
                     "moss": false,
+                    "oss": false,
                     "need_attention": false,
                     "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032366/1578af/",
                     "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032366/1578af/",
@@ -3531,6 +3548,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "disable_automated_mails": false,
                     "storno": false,
                     "moss": false,
+                    "oss": false,
                     "need_attention": false,
                     "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2032364/0c1b38/",
                     "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2032364/0c1b38/",
