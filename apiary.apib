@@ -64,6 +64,26 @@ $result = $simpleshop_api->test();
 
 Pomocí SimpleShop API nelze získat kód voucheru, vytvořit, smazat nebo upravit produkt, vytvořit pravidelnou fakturu (založit opakované platby).
 
+## Deprecated
+
+Zastaralé funkce a parametry, jejichž podpora skončí.
+
+### Obecně
+| Změna                                   | Starý způsob              | Nově                     |
+|-----------------------------------------|:-------------------------:|:------------------------:|
+| Změna URL požadavku API SimpleShop      | `api.vyfakturuj.cz/2.0/`  | `api.simpleshop.cz/2.0/` |
+
+### Faktury
+| Změna                             | Starý způsob                 | Nově                             |
+|-----------------------------------|:----------------------------:|:--------------------------------:|
+| Požadavky akcí                    | `/invoice/{id}/payment/`     | `/invoice/{id}/do/pay/`          |
+|                                   | `/invoice/{id}/send-eet/`    | `/invoice/{id}/do/send-eet/`     |
+|                                   | `/invoice/{id}/send-mail/`   | `/invoice/{id}/do/send-mail/`    |
+| Nahrazení parametru `country`     | `supplier_country`           | `supplier_country_code`          |
+|                                   | `customer_country`           | `customer_country_code`          |
+|                                   | `customer_delivery_country`  | `customer_delivery_country_code` |
+| Změna parametru MOSS na OSS       | `moss`                       | `oss`                            |
+
 # Group Produkty
 
 ## Produkty
