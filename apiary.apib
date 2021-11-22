@@ -84,6 +84,12 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
 |                                   | `customer_delivery_country`  | `customer_delivery_country_code` |
 | Změna parametru MOSS na OSS       | `moss`                       | `oss`                            |
 | Parametr platební metody          | `payment_method`             | `id_payment_method`              |
+| Změna identifikace štítku         | `tags`                       | `id_tag`                         |
+
+### Pravidelné faktury
+| Změna                             | Starý způsob                 | Nově                             |
+|-----------------------------------|:----------------------------:|:--------------------------------:|
+| Změna identifikace štítku         | `doc_tags`                   | `doc_id_tag`                     |
 
 # Group Produkty
 
@@ -1451,7 +1457,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
     + Body
 
             {
-                "id": 3000995,
+                "id": 2859722,
                 "id_identity": "0",
                 "id_customer": "-1",
                 "id_number_series": "251386",
@@ -1468,10 +1474,10 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "tags": "0",
                 "eet_status": "1",
                 "eet_data": "",
-                "number": "FV21068",
-                "date_created": "2021-11-04",
-                "date_due": "2021-11-15",
-                "date_taxable_supply": "2021-11-04",
+                "number": "FV21047",
+                "date_created": "2021-11-22",
+                "date_due": "2021-12-03",
+                "date_taxable_supply": "2021-11-22",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -1524,17 +1530,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "21068",
+                "VS": "21047",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "fv21068 21068 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "fv21047 21047 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": 1,
                 "total": "1206.64",
                 "total_without_vat": "1049.25",
                 "domestic-total_without_vat": "1049.25",
-                "simpleshop_note": "",
+                "webhook_paid": "",
                 "X_1": "",
                 "X_2": "",
                 "X_3": "",
@@ -1607,18 +1613,18 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "moss": false,
                 "oss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000995/b6a7a9/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/nostamp/",
-                "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000995/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859722/e49e77/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859722/e49e77/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859722/",
                 "log": [
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvořeno přes API."
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
@@ -1632,7 +1638,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
 
         {
             "type": 32,
-            "id_parent": 3000995
+            "id_parent": 2859722
         }
 
 + Response 200 (application/json)
@@ -1644,7 +1650,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
     + Body
 
             {
-                "id": 3000996,
+                "id": 2859723,
                 "id_identity": "0",
                 "id_customer": "-1",
                 "id_number_series": "28443",
@@ -1654,7 +1660,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "id_predkontace": "0",
                 "id_cleneniDPH": "0",
                 "id_coupon": "0",
-                "id_parent": "3000995",
+                "id_parent": "2859722",
                 "id_eet_pokl": "0",
                 "type": "32",
                 "flags": "1",
@@ -1662,9 +1668,9 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "eet_status": "1",
                 "eet_data": "",
                 "number": "520210002",
-                "date_created": "2021-11-04",
-                "date_due": "2021-11-04",
-                "date_taxable_supply": "2021-11-04",
+                "date_created": "2021-11-22",
+                "date_due": "2021-11-22",
+                "date_taxable_supply": "2021-11-22",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -1717,17 +1723,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "21068",
+                "VS": "21047",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "520210002 21068 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "520210002 21047 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": "1",
                 "total": "-1206.64",
                 "total_without_vat": "-1049.25",
                 "domestic-total_without_vat": "-1049.25",
-                "simpleshop_note": "",
+                "webhook_paid": "",
                 "X_1": "",
                 "X_2": "",
                 "X_3": "",
@@ -1800,28 +1806,28 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "moss": false,
                 "oss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000996/54854b/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000996/54854b/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/nostamp/",
-                "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000996/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859723/e47a4f/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859723/e47a4f/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859723/",
                 "log": [
                     {
-                        "date": "2021-11-04 08:59:05",
-                        "text": "Vytvořen opravný doklad k {vfiid:3000995:FV21068}. "
+                        "date": "2021-11-22 12:39:19",
+                        "text": "Vytvořen opravný doklad k {vfiid:2859722:FV21047}. "
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvořeno přes API."
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
                 "related_documents": {
-                    "3000995": {
-                        "id": "3000995",
+                    "2859722": {
+                        "id": "2859722",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "251386",
@@ -1838,10 +1844,10 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "tags": "0",
                         "eet_status": "1",
                         "eet_data": "",
-                        "number": "FV21068",
-                        "date_created": "2021-11-04",
-                        "date_due": "2021-11-15",
-                        "date_taxable_supply": "2021-11-04",
+                        "number": "FV21047",
+                        "date_created": "2021-11-22",
+                        "date_due": "2021-12-03",
+                        "date_taxable_supply": "2021-11-22",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -1894,17 +1900,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "21068",
+                        "VS": "21047",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "fv21068 21068 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "fv21047 21047 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": 1,
                         "total": "1206.64",
                         "total_without_vat": "1049.25",
                         "domestic-total_without_vat": "1049.25",
-                        "simpleshop_note": "",
+                        "webhook_paid": "",
                         "X_1": "",
                         "X_2": "",
                         "X_3": "",
@@ -1977,18 +1983,18 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "moss": false,
                         "oss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000995/b6a7a9/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/nostamp/",
-                        "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000995/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859722/e49e77/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859722/e49e77/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859722/",
                         "log": [
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvořeno přes API."
                             },
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -2012,7 +2018,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
     + Body
 
             {
-                "id": "3000995",
+                "id": "2859722",
                 "id_identity": "0",
                 "id_customer": "-1",
                 "id_number_series": "251386",
@@ -2029,10 +2035,10 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "tags": "0",
                 "eet_status": "1",
                 "eet_data": "",
-                "number": "FV21068",
-                "date_created": "2021-11-04",
-                "date_due": "2021-11-15",
-                "date_taxable_supply": "2021-11-04",
+                "number": "FV21047",
+                "date_created": "2021-11-22",
+                "date_due": "2021-12-03",
+                "date_taxable_supply": "2021-11-22",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -2085,17 +2091,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "21068",
+                "VS": "21047",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "fv21068 21068 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "fv21047 21047 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": 1,
                 "total": "1206.64",
                 "total_without_vat": "1049.25",
                 "domestic-total_without_vat": "1049.25",
-                "simpleshop_note": "",
+                "webhook_paid": "",
                 "X_1": "",
                 "X_2": "",
                 "X_3": "",
@@ -2168,24 +2174,24 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "moss": false,
                 "oss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000995/b6a7a9/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/nostamp/",
-                "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000995/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859722/e49e77/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859722/e49e77/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859722/",
                 "log": [
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvořeno přes API."
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
                 "related_documents": {
-                    "3000996": {
-                        "id": "3000996",
+                    "2859723": {
+                        "id": "2859723",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "28443",
@@ -2195,7 +2201,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "id_predkontace": "0",
                         "id_cleneniDPH": "0",
                         "id_coupon": "0",
-                        "id_parent": "3000995",
+                        "id_parent": "2859722",
                         "id_eet_pokl": "0",
                         "type": "32",
                         "flags": "1",
@@ -2203,9 +2209,9 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "eet_status": "1",
                         "eet_data": "",
                         "number": "520210002",
-                        "date_created": "2021-11-04",
-                        "date_due": "2021-11-04",
-                        "date_taxable_supply": "2021-11-04",
+                        "date_created": "2021-11-22",
+                        "date_due": "2021-11-22",
+                        "date_taxable_supply": "2021-11-22",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -2258,17 +2264,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "21068",
+                        "VS": "21047",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "520210002 21068 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "520210002 21047 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": "1",
                         "total": "-1206.64",
                         "total_without_vat": "-1049.25",
                         "domestic-total_without_vat": "-1049.25",
-                        "simpleshop_note": "",
+                        "webhook_paid": "",
                         "X_1": "",
                         "X_2": "",
                         "X_3": "",
@@ -2341,22 +2347,22 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "moss": false,
                         "oss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000996/54854b/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000996/54854b/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/nostamp/",
-                        "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000996/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859723/e47a4f/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859723/e47a4f/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859723/",
                         "log": [
                             {
-                                "date": "2021-11-04 08:59:05",
-                                "text": "Vytvořen opravný doklad k {vfiid:3000995:FV21068}. "
+                                "date": "2021-11-22 12:39:19",
+                                "text": "Vytvořen opravný doklad k {vfiid:2859722:FV21047}. "
                             },
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvořeno přes API."
                             },
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -2389,7 +2395,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
     + Body
 
             {
-                "id": 3000995,
+                "id": 2859722,
                 "id_identity": "0",
                 "id_customer": -1,
                 "id_number_series": "251386",
@@ -2406,10 +2412,10 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "tags": "0",
                 "eet_status": "1",
                 "eet_data": "",
-                "number": "FV21068",
-                "date_created": "2021-11-04",
-                "date_due": "2021-11-15",
-                "date_taxable_supply": "2021-11-04",
+                "number": "FV21047",
+                "date_created": "2021-11-22",
+                "date_due": "2021-12-03",
+                "date_taxable_supply": "2021-11-22",
                 "date_paid": "0000-00-00",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -2462,17 +2468,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "21068",
+                "VS": "21047",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "fv21068 21068 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                "search": "fv21047 21047 123456789 ukazkova firma 1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                 "exchange_rate": 1,
                 "total": "1206.64",
                 "total_without_vat": "1049.25",
                 "domestic-total_without_vat": "1049.25",
-                "simpleshop_note": "",
+                "webhook_paid": "",
                 "X_1": "",
                 "X_2": "",
                 "X_3": "",
@@ -2514,24 +2520,24 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "moss": false,
                 "oss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000995/b6a7a9/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/nostamp/",
-                "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000995/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859722/e49e77/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859722/e49e77/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859722/",
                 "log": [
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvořeno přes API."
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvoření dokumentu."
                     }
                 ],
                 "related_documents": {
-                    "3000996": {
-                        "id": "3000996",
+                    "2859723": {
+                        "id": "2859723",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "28443",
@@ -2541,7 +2547,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "id_predkontace": "0",
                         "id_cleneniDPH": "0",
                         "id_coupon": "0",
-                        "id_parent": "3000995",
+                        "id_parent": "2859722",
                         "id_eet_pokl": "0",
                         "type": "32",
                         "flags": "1",
@@ -2549,9 +2555,9 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "eet_status": "1",
                         "eet_data": "",
                         "number": "520210002",
-                        "date_created": "2021-11-04",
-                        "date_due": "2021-11-04",
-                        "date_taxable_supply": "2021-11-04",
+                        "date_created": "2021-11-22",
+                        "date_due": "2021-11-22",
+                        "date_taxable_supply": "2021-11-22",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -2604,17 +2610,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "21068",
+                        "VS": "21047",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "520210002 21068 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "520210002 21047 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": "1",
                         "total": "-1206.64",
                         "total_without_vat": "-1049.25",
                         "domestic-total_without_vat": "-1049.25",
-                        "simpleshop_note": "",
+                        "webhook_paid": "",
                         "X_1": "",
                         "X_2": "",
                         "X_3": "",
@@ -2687,22 +2693,22 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "moss": false,
                         "oss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000996/54854b/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000996/54854b/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/nostamp/",
-                        "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000996/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859723/e47a4f/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859723/e47a4f/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859723/",
                         "log": [
                             {
-                                "date": "2021-11-04 08:59:05",
-                                "text": "Vytvořen opravný doklad k {vfiid:3000995:FV21068}. "
+                                "date": "2021-11-22 12:39:19",
+                                "text": "Vytvořen opravný doklad k {vfiid:2859722:FV21047}. "
                             },
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvořeno přes API."
                             },
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -2825,9 +2831,9 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                     "to": "demo@vyfakturuj.cz, demo.copy@vyfakturuj.cz",
                     "cc": "",
                     "bcc": "",
-                    "subject": "Faktura č. FV21068 - uhrazena",
+                    "subject": "Faktura č. FV21047 - uhrazena",
                     "pdfAttachment": true,
-                    "body": "Dobrý den\r\n\r\nVaše platba byla přijata (Faktura č. FV21068).\r\n\r\nFakturu č. FV21068 naleznete na adrese: https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/\r\n\r\nS pozdravem\r\n\r\nDemo s.r.o. plátce"
+                    "body": "Dobrý den\r\n\r\nVaše platba byla přijata (Faktura č. FV21047).\r\n\r\nFakturu č. FV21047 naleznete na adrese: https://www.vyfakturuj.cz/print/document/2859722/e49e77/\r\n\r\nS pozdravem\r\n\r\nDemo s.r.o. plátce"
                 }
             }
 
@@ -2851,7 +2857,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
     + Body
 
             {
-                "id": "3000995",
+                "id": "2859722",
                 "id_identity": "0",
                 "id_customer": -1,
                 "id_number_series": "251386",
@@ -2868,10 +2874,10 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "tags": "0",
                 "eet_status": 1,
                 "eet_data": "",
-                "number": "FV21068",
-                "date_created": "2021-11-04",
-                "date_due": "2021-11-15",
-                "date_taxable_supply": "2021-11-04",
+                "number": "FV21047",
+                "date_created": "2021-11-22",
+                "date_due": "2021-12-03",
+                "date_taxable_supply": "2021-11-22",
                 "date_paid": "2016-12-31",
                 "date_reminder": "0000-00-00",
                 "date_reminder_2": "0000-00-00",
@@ -2924,17 +2930,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "text_invoice_footer": "",
                 "mail_to": [],
                 "language": "cs",
-                "VS": "21068",
+                "VS": "21047",
                 "KS": "0308",
                 "SS": "",
                 "currency": "CZK",
                 "currency_domestic": "CZK",
-                "search": "fv21068 21068 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                "search": "fv21047 21047 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                 "exchange_rate": "1",
                 "total": 1138.79,
                 "total_without_vat": 990.25,
                 "domestic-total_without_vat": 990.25,
-                "simpleshop_note": "",
+                "webhook_paid": "",
                 "X_1": "",
                 "X_2": "",
                 "X_3": "",
@@ -2969,32 +2975,32 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                 "moss": false,
                 "oss": false,
                 "need_attention": false,
-                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/",
-                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000995/b6a7a9/",
-                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/download/",
-                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/nostamp/",
-                "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000995/",
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859722/e49e77/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859722/e49e77/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/nostamp/",
+                "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859722/",
                 "log": [
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvořeno přes API."
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:19",
                         "text": "Vytvoření dokumentu."
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:20",
                         "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                     },
                     {
-                        "date": "2021-11-04 08:59:05",
+                        "date": "2021-11-22 12:39:20",
                         "text": "Doklad byl plně uhrazen k datu 31.12.2016."
                     }
                 ],
                 "related_documents": {
-                    "3000996": {
-                        "id": "3000996",
+                    "2859723": {
+                        "id": "2859723",
                         "id_identity": "0",
                         "id_customer": "-1",
                         "id_number_series": "28443",
@@ -3004,7 +3010,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "id_predkontace": "0",
                         "id_cleneniDPH": "0",
                         "id_coupon": "0",
-                        "id_parent": "3000995",
+                        "id_parent": "2859722",
                         "id_eet_pokl": "0",
                         "type": "32",
                         "flags": "1",
@@ -3012,9 +3018,9 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "eet_status": "1",
                         "eet_data": "",
                         "number": "520210002",
-                        "date_created": "2021-11-04",
-                        "date_due": "2021-11-04",
-                        "date_taxable_supply": "2021-11-04",
+                        "date_created": "2021-11-22",
+                        "date_due": "2021-11-22",
+                        "date_taxable_supply": "2021-11-22",
                         "date_paid": "0000-00-00",
                         "date_reminder": "0000-00-00",
                         "date_reminder_2": "0000-00-00",
@@ -3067,17 +3073,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "text_invoice_footer": "",
                         "mail_to": [],
                         "language": "cs",
-                        "VS": "21068",
+                        "VS": "21047",
                         "KS": "0308",
                         "SS": "",
                         "currency": "CZK",
                         "currency_domestic": "CZK",
-                        "search": "520210002 21068 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
+                        "search": "520210002 21047 123456789 ukazkova firma -1206.64 sterac na ponorku kapalina do ostrikovacu 250 ml doprava",
                         "exchange_rate": "1",
                         "total": "-1206.64",
                         "total_without_vat": "-1049.25",
                         "domestic-total_without_vat": "-1049.25",
-                        "simpleshop_note": "",
+                        "webhook_paid": "",
                         "X_1": "",
                         "X_2": "",
                         "X_3": "",
@@ -3150,22 +3156,22 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                         "moss": false,
                         "oss": false,
                         "need_attention": false,
-                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000996/54854b/",
-                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000996/54854b/",
-                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/download/",
-                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000996/54854b/nostamp/",
-                        "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000996/",
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859723/e47a4f/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859723/e47a4f/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859723/e47a4f/nostamp/",
+                        "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859723/",
                         "log": [
                             {
-                                "date": "2021-11-04 08:59:05",
-                                "text": "Vytvořen opravný doklad k {vfiid:3000995:FV21068}. "
+                                "date": "2021-11-22 12:39:19",
+                                "text": "Vytvořen opravný doklad k {vfiid:2859722:FV21047}. "
                             },
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvořeno přes API."
                             },
                             {
-                                "date": "2021-11-04 08:59:05",
+                                "date": "2021-11-22 12:39:19",
                                 "text": "Vytvoření dokumentu."
                             }
                         ]
@@ -3197,7 +3203,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
 
 
 
-## Vyhledávání [/invoice/{?id_customer,id_number_series,id_center,id_parent,type,flags,tags,eet_status,number,date_created,date_due,date_taxable_supply,date_paid,date_reminder,date_reminder_2,date_reminder_3,days_due,days_reminder,VS,currency,total,total_without_vat,date_created_from,date_created_to,rows_limit,rows_offset,sort,filter,q}]
+## Vyhledávání [/invoice/{?id_customer,id_number_series,id_center,id_tag,id_parent,type,flags,eet_status,number,date_created,date_due,date_taxable_supply,date_paid,date_reminder,date_reminder_2,date_reminder_3,days_due,days_reminder,VS,currency,total,total_without_vat,date_created_from,date_created_to,rows_limit,rows_offset,sort,filter,q}]
 
 <table>
     <tr>
@@ -3222,6 +3228,12 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
         <td>id_center</td>
         <td>int</td>
         <td>ID střediska</td>
+        <td>R/W</td>
+    </tr>
+    <tr>
+        <td>id_tag</td>
+        <td>int</td>
+        <td>ID štítku.</td>
         <td>R/W</td>
     </tr>
     <tr>
@@ -3269,7 +3281,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
     <tr>
         <td>tags</td>
         <td>int</td>
-        <td>Použité štítky</td>
+        <td>Použité štítky. Deprecated parametr, bude ostraněn 2021-12-01.</td>
         <td>R/W</td>
     </tr>
     <tr>
@@ -3418,8 +3430,8 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
 ### Vyhledávání [GET]
 
 + Parameters
-    + date_created_from (date, `2021-11-04`, optional) ... Datum vytvoření od
-    + date_created_to (date, `2021-11-04`, optional) ... Datum vytvoření do
+    + date_created_from (date, `2021-11-22`, optional) ... Datum vytvoření od
+    + date_created_to (date, `2021-11-22`, optional) ... Datum vytvoření do
 
 + Request (application/json)
 
@@ -3433,7 +3445,7 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
 
             [
                 {
-                    "id": "3000992",
+                    "id": "2859720",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "251386",
@@ -3450,10 +3462,10 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "FV21067",
-                    "date_created": "2021-11-04",
-                    "date_due": "2021-11-15",
-                    "date_taxable_supply": "2021-11-04",
+                    "number": "FV21046",
+                    "date_created": "2021-11-22",
+                    "date_due": "2021-12-03",
+                    "date_taxable_supply": "2021-11-22",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3506,17 +3518,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "21067",
+                    "VS": "21046",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "fv21067 21067 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "fv21046 21046 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
                     "domestic-total_without_vat": "990.25",
-                    "simpleshop_note": "",
+                    "webhook_paid": "",
                     "X_1": "",
                     "X_2": "",
                     "X_3": "",
@@ -3551,33 +3563,33 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                     "moss": false,
                     "oss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000992/65996b/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000992/65996b/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000992/65996b/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000992/65996b/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000992/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859720/597555/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859720/597555/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859720/597555/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859720/597555/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859720/",
                     "log": [
                         {
-                            "date": "2021-11-04 08:58:50",
+                            "date": "2021-11-22 12:37:45",
                             "text": "Vytvořeno přes API."
                         },
                         {
-                            "date": "2021-11-04 08:58:50",
+                            "date": "2021-11-22 12:37:45",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2021-11-04 08:58:51",
+                            "date": "2021-11-22 12:37:48",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2021-11-04 08:58:51",
+                            "date": "2021-11-22 12:37:48",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016."
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "3000995",
+                    "id": "2859722",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "251386",
@@ -3594,10 +3606,10 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "FV21068",
-                    "date_created": "2021-11-04",
-                    "date_due": "2021-11-15",
-                    "date_taxable_supply": "2021-11-04",
+                    "number": "FV21047",
+                    "date_created": "2021-11-22",
+                    "date_due": "2021-12-03",
+                    "date_taxable_supply": "2021-11-22",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3650,17 +3662,17 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "21068",
+                    "VS": "21047",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "fv21068 21068 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "fv21047 21047 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
                     "domestic-total_without_vat": "990.25",
-                    "simpleshop_note": "",
+                    "webhook_paid": "",
                     "X_1": "",
                     "X_2": "",
                     "X_3": "",
@@ -3695,26 +3707,26 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
                     "moss": false,
                     "oss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000995/b6a7a9/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000995/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859722/e49e77/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859722/e49e77/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859722/",
                     "log": [
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:19",
                             "text": "Vytvořeno přes API."
                         },
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:19",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:20",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:20",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016."
                         }
                     ],
@@ -3746,7 +3758,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
 
             [
                 {
-                    "id": "3000995",
+                    "id": "2859722",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "251386",
@@ -3763,10 +3775,10 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "FV21068",
-                    "date_created": "2021-11-04",
-                    "date_due": "2021-11-15",
-                    "date_taxable_supply": "2021-11-04",
+                    "number": "FV21047",
+                    "date_created": "2021-11-22",
+                    "date_due": "2021-12-03",
+                    "date_taxable_supply": "2021-11-22",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3819,17 +3831,17 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "21068",
+                    "VS": "21047",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "fv21068 21068 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "fv21047 21047 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
                     "domestic-total_without_vat": "990.25",
-                    "simpleshop_note": "",
+                    "webhook_paid": "",
                     "X_1": "",
                     "X_2": "",
                     "X_3": "",
@@ -3864,33 +3876,33 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "moss": false,
                     "oss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000995/b6a7a9/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000995/b6a7a9/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000995/b6a7a9/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000995/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859722/e49e77/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859722/e49e77/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859722/e49e77/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859722/",
                     "log": [
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:19",
                             "text": "Vytvořeno přes API."
                         },
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:19",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:20",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2021-11-04 08:59:05",
+                            "date": "2021-11-22 12:39:20",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016."
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "3000992",
+                    "id": "2859720",
                     "id_identity": "0",
                     "id_customer": "-1",
                     "id_number_series": "251386",
@@ -3907,10 +3919,10 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "FV21067",
-                    "date_created": "2021-11-04",
-                    "date_due": "2021-11-15",
-                    "date_taxable_supply": "2021-11-04",
+                    "number": "FV21046",
+                    "date_created": "2021-11-22",
+                    "date_due": "2021-12-03",
+                    "date_taxable_supply": "2021-11-22",
                     "date_paid": "2016-12-31",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -3963,17 +3975,17 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "text_invoice_footer": "",
                     "mail_to": [],
                     "language": "cs",
-                    "VS": "21067",
+                    "VS": "21046",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "fv21067 21067 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "search": "fv21046 21046 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
                     "exchange_rate": "1",
                     "total": "1138.79",
                     "total_without_vat": "990.25",
                     "domestic-total_without_vat": "990.25",
-                    "simpleshop_note": "",
+                    "webhook_paid": "",
                     "X_1": "",
                     "X_2": "",
                     "X_3": "",
@@ -4008,37 +4020,37 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "moss": false,
                     "oss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3000992/65996b/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3000992/65996b/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3000992/65996b/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3000992/65996b/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3000992/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2859720/597555/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2859720/597555/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2859720/597555/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2859720/597555/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2859720/",
                     "log": [
                         {
-                            "date": "2021-11-04 08:58:50",
+                            "date": "2021-11-22 12:37:45",
                             "text": "Vytvořeno přes API."
                         },
                         {
-                            "date": "2021-11-04 08:58:50",
+                            "date": "2021-11-22 12:37:45",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2021-11-04 08:58:51",
+                            "date": "2021-11-22 12:37:48",
                             "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
                         },
                         {
-                            "date": "2021-11-04 08:58:51",
+                            "date": "2021-11-22 12:37:48",
                             "text": "Doklad byl plně uhrazen k datu 31.12.2016."
                         }
                     ],
                     "related_documents": []
                 },
                 {
-                    "id": "2986622",
+                    "id": "2811498",
                     "id_identity": "0",
-                    "id_customer": "475833",
-                    "id_number_series": "28437",
-                    "id_payment_method": "59188",
+                    "id_customer": "-1",
+                    "id_number_series": "267244",
+                    "id_payment_method": "72010",
                     "id_center": "0",
                     "id_tag": "0",
                     "id_predkontace": "0",
@@ -4051,10 +4063,10 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "tags": "0",
                     "eet_status": "1",
                     "eet_data": "",
-                    "number": "20210075",
-                    "date_created": "2021-11-01",
-                    "date_due": "2021-11-12",
-                    "date_taxable_supply": "2021-11-01",
+                    "number": "FA210002",
+                    "date_created": "2021-09-09",
+                    "date_due": "2021-09-20",
+                    "date_taxable_supply": "2021-09-09",
                     "date_paid": "0000-00-00",
                     "date_reminder": "0000-00-00",
                     "date_reminder_2": "0000-00-00",
@@ -4076,8 +4088,8 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "customer_IC": "",
                     "customer_DIC": "",
                     "customer_IDNUM3": "",
-                    "customer_name": "Maloobchodní zákazník",
-                    "customer_firstname": "Držitel voucheru",
+                    "customer_name": "",
+                    "customer_firstname": "",
                     "customer_lastname": "",
                     "customer_street": "",
                     "customer_city": "",
@@ -4094,291 +4106,999 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "customer_delivery_country": "",
                     "customer_delivery_country_code": "",
                     "customer_delivery_tel": "",
-                    "bank_account_number": "99999999/0000",
-                    "bank_IBAN": "",
-                    "bank_BIC": "",
-                    "payment_method": "1",
-                    "calculate_vat": 1,
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
-                    "text_under_customer": "",
-                    "text_before_items": "",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "20210075",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "20210075 maloobchodni zakaznik drzitel voucheru 1210 test",
-                    "exchange_rate": "1",
-                    "total": "1210.00",
-                    "total_without_vat": "1000.00",
-                    "domestic-total_without_vat": "1000.00",
-                    "simpleshop_note": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": "1",
-                            "unit": "ks",
-                            "text": "test",
-                            "unit_price": "1000",
-                            "vat_rate": 21,
-                            "vat_rate_type": "2",
-                            "vat": 210,
-                            "total": 1210,
-                            "total_without_vat": 1000,
-                            "domestic-unit_price": 1000,
-                            "domestic-vat": 210,
-                            "domestic-total": 1210,
-                            "domestic-total_without_vat": 1000,
-                            "data": []
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 21,
-                            "base": 1000,
-                            "vat": 210,
-                            "total": 1210
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "oss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2986622/fef63a/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2986622/fef63a/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2986622/fef63a/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2986622/fef63a/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2986622/",
-                    "log": [
-                        {
-                            "date": "2021-11-01 08:16:21",
-                            "text": "Vytvořeno ze šablony {vfpid:13450:test}."
-                        },
-                        {
-                            "date": "2021-11-01 08:16:21",
-                            "text": "Vytvoření dokumentu."
-                        },
-                        {
-                            "date": "2021-11-01 08:16:21",
-                            "text": "Nepodařilo se odeslat automatický e-mail (vystaven doklad) {mailid:2569319}"
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "2986621",
-                    "id_identity": "0",
-                    "id_customer": "475833",
-                    "id_number_series": "28437",
-                    "id_payment_method": "59188",
-                    "id_center": "0",
-                    "id_tag": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "1",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "20210074",
-                    "date_created": "2021-11-01",
-                    "date_due": "2021-11-12",
-                    "date_taxable_supply": "2021-11-01",
-                    "date_paid": "0000-00-00",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "info@redbit.cz",
-                    "supplier_contact_web": "www.redbit.cz",
-                    "customer_IC": "",
-                    "customer_DIC": "",
-                    "customer_IDNUM3": "",
-                    "customer_name": "Maloobchodní zákazník",
-                    "customer_firstname": "Držitel voucheru",
-                    "customer_lastname": "",
-                    "customer_street": "",
-                    "customer_city": "",
-                    "customer_zip": "",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "CZ",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "99999999/0000",
-                    "bank_IBAN": "",
-                    "bank_BIC": "",
-                    "payment_method": "1",
-                    "calculate_vat": 1,
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
-                    "text_under_customer": "",
-                    "text_before_items": "",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "20210074",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "20210074 maloobchodni zakaznik drzitel voucheru 121 test",
-                    "exchange_rate": "1",
-                    "total": "121.00",
-                    "total_without_vat": "100.00",
-                    "domestic-total_without_vat": "100.00",
-                    "simpleshop_note": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": "1",
-                            "unit": "ks",
-                            "text": "test",
-                            "unit_price": "100",
-                            "vat_rate": 21,
-                            "vat_rate_type": "2",
-                            "vat": 21,
-                            "total": 121,
-                            "total_without_vat": 100,
-                            "domestic-unit_price": 100,
-                            "domestic-vat": 21,
-                            "domestic-total": 121,
-                            "domestic-total_without_vat": 100,
-                            "data": []
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 21,
-                            "base": 100,
-                            "vat": 21,
-                            "total": 121
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "oss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2986621/e47b90/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2986621/e47b90/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2986621/e47b90/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2986621/e47b90/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2986621/",
-                    "log": [
-                        {
-                            "date": "2021-11-01 08:16:21",
-                            "text": "Vytvořeno ze šablony {vfpid:13447:PF od 9/2020}."
-                        },
-                        {
-                            "date": "2021-11-01 08:16:21",
-                            "text": "Vytvoření dokumentu."
-                        },
-                        {
-                            "date": "2021-11-01 08:16:21",
-                            "text": "Nepodařilo se odeslat automatický e-mail (vystaven doklad) {mailid:2569318}"
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "2983494",
-                    "id_identity": "0",
-                    "id_customer": "239095",
-                    "id_number_series": "105505",
-                    "id_payment_method": "10380",
-                    "id_center": "1053",
-                    "id_tag": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "5",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "21009",
-                    "date_created": "2021-10-31",
-                    "date_due": "2021-11-05",
-                    "date_taxable_supply": "2021-10-31",
-                    "date_paid": "0000-00-00",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "5",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "info@redbit.cz",
-                    "supplier_contact_web": "www.redbit.cz",
-                    "customer_IC": "123456789",
-                    "customer_DIC": "",
-                    "customer_IDNUM3": "",
-                    "customer_name": "Firma s.r.o.",
-                    "customer_firstname": "Petr",
-                    "customer_lastname": "Novák",
-                    "customer_street": "Karlova 111",
-                    "customer_city": "Kolín",
-                    "customer_zip": "28002",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "CZ",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country": "",
-                    "customer_delivery_country_code": "-",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "123456-123456789/1234",
-                    "bank_IBAN": "CZ8762106701002208726192",
+                    "bank_account_number": "123435/0100",
+                    "bank_IBAN": "CZ1234000000001234567890",
                     "bank_BIC": "ABCDCZABXXX",
                     "payment_method": "1",
-                    "calculate_vat": 1,
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                    "text_under_customer": "",
+                    "text_before_items": "",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "210002",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "fa210002 210002 7808.13 test",
+                    "exchange_rate": "1",
+                    "total": "7808.13",
+                    "total_without_vat": "6453.00",
+                    "domestic-total_without_vat": "6453.00",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": "1",
+                            "unit": "ks",
+                            "text": "test",
+                            "unit_price": "6453",
+                            "vat_rate": 21,
+                            "vat_rate_type": "2",
+                            "vat": 1355.13,
+                            "total": 7808.13,
+                            "total_without_vat": 6453,
+                            "domestic-unit_price": 6453,
+                            "domestic-vat": 1355.13,
+                            "domestic-total": 7808.13,
+                            "domestic-total_without_vat": 6453,
+                            "data": {
+                                "": null
+                            }
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 21,
+                            "base": 6453,
+                            "vat": 1355.13,
+                            "total": 7808.13
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "oss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2811498/82a137/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2811498/82a137/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2811498/82a137/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2811498/82a137/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2811498/",
+                    "log": [
+                        {
+                            "date": "2021-09-09 15:41:16",
+                            "text": "Vytvoření dokumentu."
+                        }
+                    ],
+                    "related_documents": []
+                },
+                {
+                    "id": "2811497",
+                    "id_identity": "0",
+                    "id_customer": "-1",
+                    "id_number_series": "267244",
+                    "id_payment_method": "72010",
+                    "id_center": "0",
+                    "id_tag": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "1",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "FA210001",
+                    "date_created": "2021-09-09",
+                    "date_due": "2021-09-20",
+                    "date_taxable_supply": "2021-09-09",
+                    "date_paid": "0000-00-00",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "info@redbit.cz",
+                    "supplier_contact_web": "www.redbit.cz",
+                    "customer_IC": "",
+                    "customer_DIC": "",
+                    "customer_IDNUM3": "",
+                    "customer_name": "",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "",
+                    "customer_city": "",
+                    "customer_zip": "",
+                    "customer_country": "Česká republika",
+                    "customer_country_code": "CZ",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "123435/0100",
+                    "bank_IBAN": "CZ1234000000001234567890",
+                    "bank_BIC": "ABCDCZABXXX",
+                    "payment_method": "1",
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                    "text_under_customer": "",
+                    "text_before_items": "",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "210001",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "fa210001 210001 6548.52 zfgvthj",
+                    "exchange_rate": "1",
+                    "total": "6548.52",
+                    "total_without_vat": "5412.00",
+                    "domestic-total_without_vat": "5412.00",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": "1",
+                            "unit": "ks",
+                            "text": "zfgvthj",
+                            "unit_price": "5412",
+                            "vat_rate": 21,
+                            "vat_rate_type": "2",
+                            "vat": 1136.52,
+                            "total": 6548.52,
+                            "total_without_vat": 5412,
+                            "domestic-unit_price": 5412,
+                            "domestic-vat": 1136.52,
+                            "domestic-total": 6548.52,
+                            "domestic-total_without_vat": 5412,
+                            "data": {
+                                "": null
+                            }
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 21,
+                            "base": 5412,
+                            "vat": 1136.52,
+                            "total": 6548.52
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "oss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2811497/053709/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2811497/053709/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2811497/053709/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2811497/053709/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2811497/",
+                    "log": [
+                        {
+                            "date": "2021-09-09 15:40:48",
+                            "text": "Vytvoření dokumentu."
+                        }
+                    ],
+                    "related_documents": []
+                },
+                {
+                    "id": "2809424",
+                    "id_identity": "0",
+                    "id_customer": "-1",
+                    "id_number_series": "251386",
+                    "id_payment_method": "33662",
+                    "id_center": "0",
+                    "id_tag": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "3",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "FV21045",
+                    "date_created": "2021-09-09",
+                    "date_due": "2021-09-20",
+                    "date_taxable_supply": "2021-09-09",
+                    "date_paid": "2016-12-31",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "info@redbit.cz",
+                    "supplier_contact_web": "www.redbit.cz",
+                    "customer_IC": "123456789",
+                    "customer_DIC": "CZ123456789",
+                    "customer_IDNUM3": "",
+                    "customer_name": "Ukázková Firma po úpravě",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "Pouliční 79/C",
+                    "customer_city": "Praha",
+                    "customer_zip": "10300",
+                    "customer_country": "Česká republika",
+                    "customer_country_code": "CZ",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "",
+                    "bank_IBAN": "",
+                    "bank_BIC": "",
+                    "payment_method": "8",
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                    "text_under_customer": "",
+                    "text_before_items": "",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "21045",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "fv21045 21045 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "exchange_rate": "1",
+                    "total": "1138.79",
+                    "total_without_vat": "990.25",
+                    "domestic-total_without_vat": "990.25",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": 1,
+                            "unit": "",
+                            "text": "Stěrač na ponorku",
+                            "unit_price": "990.25",
+                            "vat_rate": 15,
+                            "vat_rate_type": 8,
+                            "vat": 148.54,
+                            "total": 1138.79,
+                            "total_without_vat": 990.25,
+                            "domestic-unit_price": 990.25,
+                            "domestic-vat": 148.54,
+                            "domestic-total": 1138.79,
+                            "domestic-total_without_vat": 990.25,
+                            "data": []
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 15,
+                            "base": 990.25,
+                            "vat": 148.54,
+                            "total": 1138.79
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "oss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2809424/317d10/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2809424/317d10/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2809424/317d10/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2809424/317d10/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2809424/",
+                    "log": [
+                        {
+                            "date": "2021-09-09 10:27:09",
+                            "text": "Vytvořeno přes API."
+                        },
+                        {
+                            "date": "2021-09-09 10:27:09",
+                            "text": "Vytvoření dokumentu."
+                        },
+                        {
+                            "date": "2021-09-09 10:27:10",
+                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
+                        },
+                        {
+                            "date": "2021-09-09 10:27:10",
+                            "text": "Doklad byl plně uhrazen k datu 31.12.2016."
+                        }
+                    ],
+                    "related_documents": []
+                },
+                {
+                    "id": "2809417",
+                    "id_identity": "0",
+                    "id_customer": "-1",
+                    "id_number_series": "251386",
+                    "id_payment_method": "33662",
+                    "id_center": "0",
+                    "id_tag": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "3",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "FV21044",
+                    "date_created": "2021-09-09",
+                    "date_due": "2021-09-20",
+                    "date_taxable_supply": "2021-09-09",
+                    "date_paid": "2016-12-31",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "info@redbit.cz",
+                    "supplier_contact_web": "www.redbit.cz",
+                    "customer_IC": "123456789",
+                    "customer_DIC": "CZ123456789",
+                    "customer_IDNUM3": "",
+                    "customer_name": "Ukázková Firma po úpravě",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "Pouliční 79/C",
+                    "customer_city": "Praha",
+                    "customer_zip": "10300",
+                    "customer_country": "Česká republika",
+                    "customer_country_code": "CZ",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "",
+                    "bank_IBAN": "",
+                    "bank_BIC": "",
+                    "payment_method": "8",
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                    "text_under_customer": "",
+                    "text_before_items": "",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "21044",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "fv21044 21044 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "exchange_rate": "1",
+                    "total": "1138.79",
+                    "total_without_vat": "990.25",
+                    "domestic-total_without_vat": "990.25",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": 1,
+                            "unit": "",
+                            "text": "Stěrač na ponorku",
+                            "unit_price": "990.25",
+                            "vat_rate": 15,
+                            "vat_rate_type": 8,
+                            "vat": 148.54,
+                            "total": 1138.79,
+                            "total_without_vat": 990.25,
+                            "domestic-unit_price": 990.25,
+                            "domestic-vat": 148.54,
+                            "domestic-total": 1138.79,
+                            "domestic-total_without_vat": 990.25,
+                            "data": []
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 15,
+                            "base": 990.25,
+                            "vat": 148.54,
+                            "total": 1138.79
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "oss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2809417/80b4bb/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2809417/80b4bb/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2809417/80b4bb/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2809417/80b4bb/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2809417/",
+                    "log": [
+                        {
+                            "date": "2021-09-09 10:26:12",
+                            "text": "Vytvořeno přes API."
+                        },
+                        {
+                            "date": "2021-09-09 10:26:12",
+                            "text": "Vytvoření dokumentu."
+                        },
+                        {
+                            "date": "2021-09-09 10:26:12",
+                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
+                        },
+                        {
+                            "date": "2021-09-09 10:26:12",
+                            "text": "Doklad byl plně uhrazen k datu 31.12.2016."
+                        }
+                    ],
+                    "related_documents": []
+                },
+                {
+                    "id": "2809385",
+                    "id_identity": "0",
+                    "id_customer": "-1",
+                    "id_number_series": "251386",
+                    "id_payment_method": "33662",
+                    "id_center": "0",
+                    "id_tag": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "3",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "FV21043",
+                    "date_created": "2021-09-09",
+                    "date_due": "2021-09-20",
+                    "date_taxable_supply": "2021-09-09",
+                    "date_paid": "2016-12-31",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "info@redbit.cz",
+                    "supplier_contact_web": "www.redbit.cz",
+                    "customer_IC": "123456789",
+                    "customer_DIC": "CZ123456789",
+                    "customer_IDNUM3": "",
+                    "customer_name": "Ukázková Firma po úpravě",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "Pouliční 79/C",
+                    "customer_city": "Praha",
+                    "customer_zip": "10300",
+                    "customer_country": "Česká republika",
+                    "customer_country_code": "CZ",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "",
+                    "bank_IBAN": "",
+                    "bank_BIC": "",
+                    "payment_method": "8",
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                    "text_under_customer": "",
+                    "text_before_items": "",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "21043",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "fv21043 21043 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "exchange_rate": "1",
+                    "total": "1138.79",
+                    "total_without_vat": "990.25",
+                    "domestic-total_without_vat": "990.25",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": 1,
+                            "unit": "",
+                            "text": "Stěrač na ponorku",
+                            "unit_price": "990.25",
+                            "vat_rate": 15,
+                            "vat_rate_type": 8,
+                            "vat": 148.54,
+                            "total": 1138.79,
+                            "total_without_vat": 990.25,
+                            "domestic-unit_price": 990.25,
+                            "domestic-vat": 148.54,
+                            "domestic-total": 1138.79,
+                            "domestic-total_without_vat": 990.25,
+                            "data": []
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 15,
+                            "base": 990.25,
+                            "vat": 148.54,
+                            "total": 1138.79
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "oss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2809385/c0c178/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2809385/c0c178/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2809385/c0c178/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2809385/c0c178/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2809385/",
+                    "log": [
+                        {
+                            "date": "2021-09-09 10:25:00",
+                            "text": "Vytvořeno přes API."
+                        },
+                        {
+                            "date": "2021-09-09 10:25:00",
+                            "text": "Vytvoření dokumentu."
+                        },
+                        {
+                            "date": "2021-09-09 10:25:01",
+                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
+                        },
+                        {
+                            "date": "2021-09-09 10:25:01",
+                            "text": "Doklad byl plně uhrazen k datu 31.12.2016."
+                        }
+                    ],
+                    "related_documents": []
+                },
+                {
+                    "id": "2809372",
+                    "id_identity": "0",
+                    "id_customer": "-1",
+                    "id_number_series": "251386",
+                    "id_payment_method": "33662",
+                    "id_center": "0",
+                    "id_tag": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "3",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "FV21042",
+                    "date_created": "2021-09-09",
+                    "date_due": "2021-09-20",
+                    "date_taxable_supply": "2021-09-09",
+                    "date_paid": "2016-12-31",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "info@redbit.cz",
+                    "supplier_contact_web": "www.redbit.cz",
+                    "customer_IC": "123456789",
+                    "customer_DIC": "CZ123456789",
+                    "customer_IDNUM3": "",
+                    "customer_name": "Ukázková Firma po úpravě",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "Pouliční 79/C",
+                    "customer_city": "Praha",
+                    "customer_zip": "10300",
+                    "customer_country": "Česká republika",
+                    "customer_country_code": "CZ",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "",
+                    "bank_IBAN": "",
+                    "bank_BIC": "",
+                    "payment_method": "8",
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                    "text_under_customer": "",
+                    "text_before_items": "",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "21042",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "fv21042 21042 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "exchange_rate": "1",
+                    "total": "1138.79",
+                    "total_without_vat": "990.25",
+                    "domestic-total_without_vat": "990.25",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": 1,
+                            "unit": "",
+                            "text": "Stěrač na ponorku",
+                            "unit_price": "990.25",
+                            "vat_rate": 15,
+                            "vat_rate_type": 8,
+                            "vat": 148.54,
+                            "total": 1138.79,
+                            "total_without_vat": 990.25,
+                            "domestic-unit_price": 990.25,
+                            "domestic-vat": 148.54,
+                            "domestic-total": 1138.79,
+                            "domestic-total_without_vat": 990.25,
+                            "data": []
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 15,
+                            "base": 990.25,
+                            "vat": 148.54,
+                            "total": 1138.79
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "oss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2809372/77e938/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2809372/77e938/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2809372/77e938/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2809372/77e938/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2809372/",
+                    "log": [
+                        {
+                            "date": "2021-09-09 10:23:30",
+                            "text": "Vytvořeno přes API."
+                        },
+                        {
+                            "date": "2021-09-09 10:23:30",
+                            "text": "Vytvoření dokumentu."
+                        },
+                        {
+                            "date": "2021-09-09 10:23:30",
+                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
+                        },
+                        {
+                            "date": "2021-09-09 10:23:30",
+                            "text": "Doklad byl plně uhrazen k datu 31.12.2016."
+                        }
+                    ],
+                    "related_documents": []
+                },
+                {
+                    "id": "2809369",
+                    "id_identity": "0",
+                    "id_customer": "-1",
+                    "id_number_series": "251386",
+                    "id_payment_method": "33662",
+                    "id_center": "0",
+                    "id_tag": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "3",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "FV21041",
+                    "date_created": "2021-09-09",
+                    "date_due": "2021-09-20",
+                    "date_taxable_supply": "2021-09-09",
+                    "date_paid": "2016-12-31",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "info@redbit.cz",
+                    "supplier_contact_web": "www.redbit.cz",
+                    "customer_IC": "123456789",
+                    "customer_DIC": "CZ123456789",
+                    "customer_IDNUM3": "",
+                    "customer_name": "Ukázková Firma po úpravě",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "Pouliční 79/C",
+                    "customer_city": "Praha",
+                    "customer_zip": "10300",
+                    "customer_country": "Česká republika",
+                    "customer_country_code": "CZ",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "",
+                    "bank_IBAN": "",
+                    "bank_BIC": "",
+                    "payment_method": "8",
+                    "calculate_vat": "1",
+                    "round_invoice": "1",
+                    "order_number": "",
+                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                    "text_under_customer": "",
+                    "text_before_items": "",
+                    "text_invoice_footer": "",
+                    "mail_to": [],
+                    "language": "cs",
+                    "VS": "21041",
+                    "KS": "0308",
+                    "SS": "",
+                    "currency": "CZK",
+                    "currency_domestic": "CZK",
+                    "search": "fv21041 21041 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
+                    "exchange_rate": "1",
+                    "total": "1138.79",
+                    "total_without_vat": "990.25",
+                    "domestic-total_without_vat": "990.25",
+                    "webhook_paid": "",
+                    "X_1": "",
+                    "X_2": "",
+                    "X_3": "",
+                    "items": [
+                        {
+                            "quantity": 1,
+                            "unit": "",
+                            "text": "Stěrač na ponorku",
+                            "unit_price": "990.25",
+                            "vat_rate": 15,
+                            "vat_rate_type": 8,
+                            "vat": 148.54,
+                            "total": 1138.79,
+                            "total_without_vat": 990.25,
+                            "domestic-unit_price": 990.25,
+                            "domestic-vat": 148.54,
+                            "domestic-total": 1138.79,
+                            "domestic-total_without_vat": 990.25,
+                            "data": []
+                        }
+                    ],
+                    "vats": [
+                        {
+                            "vat_rate": 15,
+                            "base": 990.25,
+                            "vat": 148.54,
+                            "total": 1138.79
+                        }
+                    ],
+                    "disable_automated_mails": false,
+                    "storno": false,
+                    "moss": false,
+                    "oss": false,
+                    "need_attention": false,
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2809369/b903e8/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2809369/b903e8/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2809369/b903e8/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2809369/b903e8/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2809369/",
+                    "log": [
+                        {
+                            "date": "2021-09-09 10:23:24",
+                            "text": "Vytvořeno přes API."
+                        },
+                        {
+                            "date": "2021-09-09 10:23:24",
+                            "text": "Vytvoření dokumentu."
+                        },
+                        {
+                            "date": "2021-09-09 10:23:25",
+                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
+                        },
+                        {
+                            "date": "2021-09-09 10:23:25",
+                            "text": "Doklad byl plně uhrazen k datu 31.12.2016."
+                        }
+                    ],
+                    "related_documents": []
+                },
+                {
+                    "id": "2803513",
+                    "id_identity": "0",
+                    "id_customer": "829252",
+                    "id_number_series": "251386",
+                    "id_payment_method": "72010",
+                    "id_center": "0",
+                    "id_tag": "0",
+                    "id_predkontace": "0",
+                    "id_cleneniDPH": "0",
+                    "id_coupon": "0",
+                    "id_parent": "0",
+                    "id_eet_pokl": "0",
+                    "type": "1",
+                    "flags": "39",
+                    "tags": "0",
+                    "eet_status": "1",
+                    "eet_data": "",
+                    "number": "FV21040",
+                    "date_created": "2021-09-08",
+                    "date_due": "2021-09-19",
+                    "date_taxable_supply": "2021-09-08",
+                    "date_paid": "2021-09-08",
+                    "date_reminder": "0000-00-00",
+                    "date_reminder_2": "0000-00-00",
+                    "date_reminder_3": "0000-00-00",
+                    "days_due": "11",
+                    "supplier_IC": "00000019",
+                    "supplier_DIC": "CZ00000019",
+                    "supplier_IDNUM3": "",
+                    "supplier_name": "Demo s.r.o. plátce",
+                    "supplier_street": "Ukázková 123",
+                    "supplier_city": "Ukázkov",
+                    "supplier_zip": "12334",
+                    "supplier_country": "Česká republika",
+                    "supplier_country_code": "CZ",
+                    "supplier_contact_name": "",
+                    "supplier_contact_tel": "",
+                    "supplier_contact_mail": "info@redbit.cz",
+                    "supplier_contact_web": "www.redbit.cz",
+                    "customer_IC": "65478912",
+                    "customer_DIC": "SK2021112223",
+                    "customer_IDNUM3": "2021112223",
+                    "customer_name": "Nevieme si rady",
+                    "customer_firstname": "",
+                    "customer_lastname": "",
+                    "customer_street": "Ulična 44",
+                    "customer_city": "Mesto",
+                    "customer_zip": "98754",
+                    "customer_country": "Slovenská republika",
+                    "customer_country_code": "SK",
+                    "customer_tel": "",
+                    "customer_delivery_company": "",
+                    "customer_delivery_firstname": "",
+                    "customer_delivery_lastname": "",
+                    "customer_delivery_street": "",
+                    "customer_delivery_city": "",
+                    "customer_delivery_zip": "",
+                    "customer_delivery_country": "",
+                    "customer_delivery_country_code": "",
+                    "customer_delivery_tel": "",
+                    "bank_account_number": "123435/0100",
+                    "bank_IBAN": "CZ1234000000001234567890",
+                    "bank_BIC": "ABCDCZABXXX",
+                    "payment_method": "1",
+                    "calculate_vat": "1",
                     "round_invoice": "1",
                     "order_number": "",
                     "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
@@ -4386,160 +5106,20 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "text_before_items": "",
                     "text_invoice_footer": "",
                     "mail_to": [
-                        "info@testujeme.cz"
+                        "nevieme@email.sk"
                     ],
                     "language": "cs",
-                    "VS": "21009",
+                    "VS": "21040",
                     "KS": "0308",
                     "SS": "",
                     "currency": "CZK",
                     "currency_domestic": "CZK",
-                    "search": "21009 123456789 firma s.r.o. petr novak 121 info@testujeme.cz testujeme opakovane faktury 2021/11",
+                    "search": "fv21040 21040 65478912 nevieme si rady 95160.45 nevieme@email.sk test",
                     "exchange_rate": "1",
-                    "total": "121.00",
-                    "total_without_vat": "100.00",
-                    "domestic-total_without_vat": "100.00",
-                    "simpleshop_note": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": "1",
-                            "unit": "ks",
-                            "text": "Testujeme opakované faktury 2021/11",
-                            "unit_price": "100",
-                            "vat_rate": 21,
-                            "vat_rate_type": "2",
-                            "vat": 21,
-                            "total": 121,
-                            "total_without_vat": 100,
-                            "domestic-unit_price": 100,
-                            "domestic-vat": 21,
-                            "domestic-total": 121,
-                            "domestic-total_without_vat": 100,
-                            "data": []
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 21,
-                            "base": 100,
-                            "vat": 21,
-                            "total": 121
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "oss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2983494/4b7fb3/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2983494/4b7fb3/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2983494/4b7fb3/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2983494/4b7fb3/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2983494/",
-                    "log": [
-                        {
-                            "date": "2021-10-31 08:01:27",
-                            "text": "Vytvořeno ze šablony {vfpid:4287:Test - bez odesílání mailu}."
-                        },
-                        {
-                            "date": "2021-10-31 08:01:27",
-                            "text": "Vytvoření dokumentu."
-                        },
-                        {
-                            "date": "2021-10-31 08:01:27",
-                            "text": "Odeslán automatický e-mail \"Faktura č. 21009 faktura\" (komu: info@testujeme.cz).{mailid:2566860}"
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "2958267",
-                    "id_identity": "0",
-                    "id_customer": "-1",
-                    "id_number_series": "251386",
-                    "id_payment_method": "72010",
-                    "id_center": "0",
-                    "id_tag": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "35",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "FV21066",
-                    "date_created": "2021-10-22",
-                    "date_due": "2021-11-02",
-                    "date_taxable_supply": "2021-10-22",
-                    "date_paid": "2021-10-22",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "info@redbit.cz",
-                    "supplier_contact_web": "www.redbit.cz",
-                    "customer_IC": "",
-                    "customer_DIC": "",
-                    "customer_IDNUM3": "",
-                    "customer_name": "",
-                    "customer_firstname": "",
-                    "customer_lastname": "",
-                    "customer_street": "",
-                    "customer_city": "",
-                    "customer_zip": "",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "CZ",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "123435/0100",
-                    "bank_IBAN": "CZ1234000000001234567890",
-                    "bank_BIC": "ABCDCZABXXX",
-                    "payment_method": "1",
-                    "calculate_vat": "2",
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
-                    "text_under_customer": "",
-                    "text_before_items": "",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "21066",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "USD",
-                    "currency_domestic": "CZK",
-                    "search": "fv21066 21066 100 test",
-                    "exchange_rate": "1",
-                    "total": "100.00",
-                    "total_without_vat": "82.64",
-                    "domestic-total_without_vat": "82.64",
-                    "simpleshop_note": "",
+                    "total": "95160.45",
+                    "total_without_vat": "78645.00",
+                    "domestic-total_without_vat": "78645.00",
+                    "webhook_paid": "",
                     "X_1": "",
                     "X_2": "",
                     "X_3": "",
@@ -4548,16 +5128,16 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                             "quantity": "1",
                             "unit": "ks",
                             "text": "test",
-                            "unit_price": "100",
+                            "unit_price": "78645",
                             "vat_rate": 21,
                             "vat_rate_type": "2",
-                            "vat": 17.36,
-                            "total": 100,
-                            "total_without_vat": 82.64,
-                            "domestic-unit_price": 100,
-                            "domestic-vat": 17.36,
-                            "domestic-total": 100,
-                            "domestic-total_without_vat": 82.64,
+                            "vat": 16515.45,
+                            "total": 95160.45,
+                            "total_without_vat": 78645,
+                            "domestic-unit_price": 78645,
+                            "domestic-vat": 16515.45,
+                            "domestic-total": 95160.45,
+                            "domestic-total_without_vat": 78645,
                             "data": {
                                 "": null
                             }
@@ -4566,9 +5146,9 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "vats": [
                         {
                             "vat_rate": 21,
-                            "base": 82.64,
-                            "vat": 17.36,
-                            "total": 100
+                            "base": 78645,
+                            "vat": 16515.45,
+                            "total": 95160.45
                         }
                     ],
                     "disable_automated_mails": false,
@@ -4576,579 +5156,27 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "moss": false,
                     "oss": false,
                     "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2958267/20e94a/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2958267/20e94a/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2958267/20e94a/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2958267/20e94a/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2958267/",
+                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2803513/02e9a5/",
+                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2803513/02e9a5/",
+                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2803513/02e9a5/download/",
+                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2803513/02e9a5/nostamp/",
+                    "url_app_detail": "https://app.vyfakturuj.cz/faktury/detail/2803513/",
                     "log": [
                         {
-                            "date": "2021-10-22 12:20:44",
+                            "date": "2021-09-08 10:20:36",
                             "text": "Vytvoření dokumentu."
                         },
                         {
-                            "date": "2021-10-22 12:20:54",
-                            "text": "Uhrazeno 121,00 Kč k datu 22.10.2021."
+                            "date": "2021-09-08 10:20:44",
+                            "text": "Uhrazeno 900 000,00 Kč k datu 08.09.2021."
                         },
                         {
-                            "date": "2021-10-22 12:20:54",
-                            "text": "Doklad byl plně uhrazen k datu 22.10.2021."
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "2951587",
-                    "id_identity": "0",
-                    "id_customer": "-1",
-                    "id_number_series": "251386",
-                    "id_payment_method": "33662",
-                    "id_center": "0",
-                    "id_tag": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "3",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "FV21065",
-                    "date_created": "2021-10-20",
-                    "date_due": "2021-10-31",
-                    "date_taxable_supply": "2021-10-20",
-                    "date_paid": "2016-12-31",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "info@redbit.cz",
-                    "supplier_contact_web": "www.redbit.cz",
-                    "customer_IC": "123456789",
-                    "customer_DIC": "CZ123456789",
-                    "customer_IDNUM3": "",
-                    "customer_name": "Ukázková Firma po úpravě",
-                    "customer_firstname": "",
-                    "customer_lastname": "",
-                    "customer_street": "Pouliční 79/C",
-                    "customer_city": "Praha",
-                    "customer_zip": "10300",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "CZ",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "",
-                    "bank_IBAN": "",
-                    "bank_BIC": "",
-                    "payment_method": "8",
-                    "calculate_vat": "1",
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
-                    "text_under_customer": "",
-                    "text_before_items": "",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "21065",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "fv21065 21065 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
-                    "exchange_rate": "1",
-                    "total": "1138.79",
-                    "total_without_vat": "990.25",
-                    "domestic-total_without_vat": "990.25",
-                    "simpleshop_note": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "text": "Stěrač na ponorku",
-                            "unit_price": "990.25",
-                            "vat_rate": 15,
-                            "vat_rate_type": 8,
-                            "vat": 148.54,
-                            "total": 1138.79,
-                            "total_without_vat": 990.25,
-                            "domestic-unit_price": 990.25,
-                            "domestic-vat": 148.54,
-                            "domestic-total": 1138.79,
-                            "domestic-total_without_vat": 990.25,
-                            "data": []
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 15,
-                            "base": 990.25,
-                            "vat": 148.54,
-                            "total": 1138.79
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "oss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2951587/cf4f21/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2951587/cf4f21/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2951587/cf4f21/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2951587/cf4f21/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2951587/",
-                    "log": [
-                        {
-                            "date": "2021-10-20 16:16:16",
-                            "text": "Vytvořeno přes API."
+                            "date": "2021-09-08 10:20:44",
+                            "text": "Doklad byl plně uhrazen k datu 08.09.2021."
                         },
                         {
-                            "date": "2021-10-20 16:16:16",
-                            "text": "Vytvoření dokumentu."
-                        },
-                        {
-                            "date": "2021-10-20 16:16:17",
-                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
-                        },
-                        {
-                            "date": "2021-10-20 16:16:17",
-                            "text": "Doklad byl plně uhrazen k datu 31.12.2016."
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "2942334",
-                    "id_identity": "0",
-                    "id_customer": "-1",
-                    "id_number_series": "251386",
-                    "id_payment_method": "72010",
-                    "id_center": "0",
-                    "id_tag": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "1",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "FV21064",
-                    "date_created": "2021-10-18",
-                    "date_due": "2021-10-29",
-                    "date_taxable_supply": "2021-10-18",
-                    "date_paid": "0000-00-00",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "info@redbit.cz",
-                    "supplier_contact_web": "www.redbit.cz",
-                    "customer_IC": "",
-                    "customer_DIC": "",
-                    "customer_IDNUM3": "",
-                    "customer_name": "",
-                    "customer_firstname": "",
-                    "customer_lastname": "",
-                    "customer_street": "",
-                    "customer_city": "",
-                    "customer_zip": "",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "CZ",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "123435/0100",
-                    "bank_IBAN": "CZ1234000000001234567890",
-                    "bank_BIC": "ABCDCZABXXX",
-                    "payment_method": "1",
-                    "calculate_vat": "1",
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
-                    "text_under_customer": "",
-                    "text_before_items": "",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "21064",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "fv21064 21064 1210 test",
-                    "exchange_rate": "1",
-                    "total": "1210.00",
-                    "total_without_vat": "1000.00",
-                    "domestic-total_without_vat": "1000.00",
-                    "simpleshop_note": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": "1",
-                            "unit": "ks",
-                            "text": "Test",
-                            "unit_price": "1000",
-                            "vat_rate": 21,
-                            "vat_rate_type": "2",
-                            "vat": 210,
-                            "total": 1210,
-                            "total_without_vat": 1000,
-                            "domestic-unit_price": 1000,
-                            "domestic-vat": 210,
-                            "domestic-total": 1210,
-                            "domestic-total_without_vat": 1000,
-                            "data": {
-                                "": null
-                            }
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 21,
-                            "base": 1000,
-                            "vat": 210,
-                            "total": 1210
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "oss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2942334/454676/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2942334/454676/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2942334/454676/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2942334/454676/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2942334/",
-                    "log": [
-                        {
-                            "date": "2021-10-18 11:44:07",
-                            "text": "Vytvoření dokumentu."
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "2942035",
-                    "id_identity": "0",
-                    "id_customer": "-1",
-                    "id_number_series": "251386",
-                    "id_payment_method": "72010",
-                    "id_center": "0",
-                    "id_tag": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "1",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "FV21063",
-                    "date_created": "2021-10-18",
-                    "date_due": "2021-10-29",
-                    "date_taxable_supply": "2021-10-18",
-                    "date_paid": "0000-00-00",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "info@redbit.cz",
-                    "supplier_contact_web": "www.redbit.cz",
-                    "customer_IC": "",
-                    "customer_DIC": "",
-                    "customer_IDNUM3": "",
-                    "customer_name": "",
-                    "customer_firstname": "",
-                    "customer_lastname": "",
-                    "customer_street": "",
-                    "customer_city": "",
-                    "customer_zip": "",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "CZ",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "123435/0100",
-                    "bank_IBAN": "CZ1234000000001234567890",
-                    "bank_BIC": "ABCDCZABXXX",
-                    "payment_method": "1",
-                    "calculate_vat": "4",
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
-                    "text_under_customer": "",
-                    "text_before_items": "",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "21063",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "fv21063 21063 1000 test",
-                    "exchange_rate": "1",
-                    "total": "1000.00",
-                    "total_without_vat": "1000.00",
-                    "domestic-total_without_vat": "1000.00",
-                    "simpleshop_note": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": "1",
-                            "unit": "ks",
-                            "text": "Test",
-                            "unit_price": "1000",
-                            "vat_rate": 0,
-                            "vat_rate_type": "32",
-                            "vat": 0,
-                            "total": 1000,
-                            "total_without_vat": 1000,
-                            "domestic-unit_price": 1000,
-                            "domestic-vat": 0,
-                            "domestic-total": 1000,
-                            "domestic-total_without_vat": 1000,
-                            "data": {
-                                "": null
-                            }
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 0,
-                            "base": 1000,
-                            "vat": 0,
-                            "total": 1000
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "oss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2942035/534734/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2942035/534734/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2942035/534734/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2942035/534734/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2942035/",
-                    "log": [
-                        {
-                            "date": "2021-10-18 11:06:31",
-                            "text": "Vytvoření dokumentu."
-                        }
-                    ],
-                    "related_documents": []
-                },
-                {
-                    "id": "2909593",
-                    "id_identity": "0",
-                    "id_customer": "-1",
-                    "id_number_series": "251386",
-                    "id_payment_method": "33662",
-                    "id_center": "0",
-                    "id_tag": "0",
-                    "id_predkontace": "0",
-                    "id_cleneniDPH": "0",
-                    "id_coupon": "0",
-                    "id_parent": "0",
-                    "id_eet_pokl": "0",
-                    "type": "1",
-                    "flags": "3",
-                    "tags": "0",
-                    "eet_status": "1",
-                    "eet_data": "",
-                    "number": "FV21062",
-                    "date_created": "2021-10-07",
-                    "date_due": "2021-10-18",
-                    "date_taxable_supply": "2021-10-07",
-                    "date_paid": "2016-12-31",
-                    "date_reminder": "0000-00-00",
-                    "date_reminder_2": "0000-00-00",
-                    "date_reminder_3": "0000-00-00",
-                    "days_due": "11",
-                    "supplier_IC": "00000019",
-                    "supplier_DIC": "CZ00000019",
-                    "supplier_IDNUM3": "",
-                    "supplier_name": "Demo s.r.o. plátce",
-                    "supplier_street": "Ukázková 123",
-                    "supplier_city": "Ukázkov",
-                    "supplier_zip": "12334",
-                    "supplier_country": "Česká republika",
-                    "supplier_country_code": "CZ",
-                    "supplier_contact_name": "",
-                    "supplier_contact_tel": "",
-                    "supplier_contact_mail": "info@redbit.cz",
-                    "supplier_contact_web": "www.redbit.cz",
-                    "customer_IC": "123456789",
-                    "customer_DIC": "CZ123456789",
-                    "customer_IDNUM3": "",
-                    "customer_name": "Ukázková Firma po úpravě",
-                    "customer_firstname": "",
-                    "customer_lastname": "",
-                    "customer_street": "Pouliční 79/C",
-                    "customer_city": "Praha",
-                    "customer_zip": "10300",
-                    "customer_country": "Česká republika",
-                    "customer_country_code": "CZ",
-                    "customer_tel": "",
-                    "customer_delivery_company": "",
-                    "customer_delivery_firstname": "",
-                    "customer_delivery_lastname": "",
-                    "customer_delivery_street": "",
-                    "customer_delivery_city": "",
-                    "customer_delivery_zip": "",
-                    "customer_delivery_country": "",
-                    "customer_delivery_country_code": "",
-                    "customer_delivery_tel": "",
-                    "bank_account_number": "",
-                    "bank_IBAN": "",
-                    "bank_BIC": "",
-                    "payment_method": "8",
-                    "calculate_vat": "1",
-                    "round_invoice": "1",
-                    "order_number": "",
-                    "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
-                    "text_under_customer": "",
-                    "text_before_items": "",
-                    "text_invoice_footer": "",
-                    "mail_to": [],
-                    "language": "cs",
-                    "VS": "21062",
-                    "KS": "0308",
-                    "SS": "",
-                    "currency": "CZK",
-                    "currency_domestic": "CZK",
-                    "search": "fv21062 21062 123456789 ukazkova firma po uprave 1138.79 sterac na ponorku",
-                    "exchange_rate": "1",
-                    "total": "1138.79",
-                    "total_without_vat": "990.25",
-                    "domestic-total_without_vat": "990.25",
-                    "simpleshop_note": "",
-                    "X_1": "",
-                    "X_2": "",
-                    "X_3": "",
-                    "items": [
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "text": "Stěrač na ponorku",
-                            "unit_price": "990.25",
-                            "vat_rate": 15,
-                            "vat_rate_type": 8,
-                            "vat": 148.54,
-                            "total": 1138.79,
-                            "total_without_vat": 990.25,
-                            "domestic-unit_price": 990.25,
-                            "domestic-vat": 148.54,
-                            "domestic-total": 1138.79,
-                            "domestic-total_without_vat": 990.25,
-                            "data": []
-                        }
-                    ],
-                    "vats": [
-                        {
-                            "vat_rate": 15,
-                            "base": 990.25,
-                            "vat": 148.54,
-                            "total": 1138.79
-                        }
-                    ],
-                    "disable_automated_mails": false,
-                    "storno": false,
-                    "moss": false,
-                    "oss": false,
-                    "need_attention": false,
-                    "url_public_webpage": "https://www.vyfakturuj.cz/print/document/2909593/46675a/",
-                    "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/2909593/46675a/",
-                    "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/2909593/46675a/download/",
-                    "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/2909593/46675a/nostamp/",
-                    "url_app_detail": "https://app.simpleshop.cz/faktury/detail/2909593/",
-                    "log": [
-                        {
-                            "date": "2021-10-07 09:39:00",
-                            "text": "Vytvořeno přes API."
-                        },
-                        {
-                            "date": "2021-10-07 09:39:00",
-                            "text": "Vytvoření dokumentu."
-                        },
-                        {
-                            "date": "2021-10-07 09:39:00",
-                            "text": "Uhrazeno 1 138,79 Kč k datu 31.12.2016."
-                        },
-                        {
-                            "date": "2021-10-07 09:39:00",
-                            "text": "Doklad byl plně uhrazen k datu 31.12.2016."
+                            "date": "2021-09-08 10:20:45",
+                            "text": "Odeslán automatický e-mail \"Faktura č. FV21040 - uhrazena\" (komu: nevieme@email.sk).{mailid:2412771}"
                         }
                     ],
                     "related_documents": []
@@ -5492,7 +5520,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
     <tr>
         <td>doc_payment_method</td>
         <td>int</td>
-        <td>Způsob platby. Deprecated parametr, bude ostraněn 2022-01-01.
+        <td>Způsob platby
         <blockquote>
             <code>1</code> Bankovní převod<br>
             <code>2</code> Hotovost<br>
@@ -5648,7 +5676,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
     + Body
 
             {
-                "id": "33117",
+                "id": "30672",
                 "id_customer": "0",
                 "name": "#API - Test šablony1",
                 "type": "1",
@@ -5720,7 +5748,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
     + Body
 
             {
-                "id": "33117",
+                "id": "30672",
                 "id_customer": "0",
                 "name": "#API - Změna názvu",
                 "type": "1",
@@ -6105,7 +6133,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
     + Body
 
             {
-                "id": 984072,
+                "id": 942350,
                 "IC": "123456789",
                 "DIC": "",
                 "name": "#API - Ukázkový kontakt",
@@ -6156,7 +6184,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
     + Body
 
             {
-                "id": "984072",
+                "id": "942350",
                 "IC": "123456789",
                 "DIC": "",
                 "name": "#API - Ukázkový kontakt",
@@ -6210,7 +6238,7 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
     + Body
 
             {
-                "id": "984072",
+                "id": "942350",
                 "IC": "123456789",
                 "DIC": "",
                 "name": "#API - Ukázkový kontakt - po úpravě",
@@ -6452,6 +6480,94 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "type": "256",
                     "provider": "0",
                     "name": "Po dodání"
+                },
+                {
+                    "id_payment_method": "78213",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "8",
+                    "provider": "64",
+                    "name": "Kartou Stripe"
+                },
+                {
+                    "id_payment_method": "60573",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "FIO BANKA"
+                },
+                {
+                    "id_payment_method": "59188",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Smazat"
+                },
+                {
+                    "id_payment_method": "43739",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Test - 1"
+                },
+                {
+                    "id_payment_method": "52387",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52386",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "10456",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "8",
+                    "provider": "2",
+                    "name": "ThePay - testovací"
+                },
+                {
+                    "id_payment_method": "52385",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52384",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52383",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
+                },
+                {
+                    "id_payment_method": "52382",
+                    "id_eet_pokl": "0",
+                    "flags": "2",
+                    "type": "1",
+                    "provider": "0",
+                    "name": "Bankovní převod (import 2020-02-12 14:47:19)"
                 }
             ]
 
@@ -6687,6 +6803,104 @@ Pro přístup k dalším záznamům lze použít parametr <code>rows_offset</cod
                     "pattern": "FA yyyy}{ccc}"
                 }
             ]
+
+
+## Seznam štítků [/settings/tags/]
+
+### Získání seznamu štítků [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            []
+
+
+## Manipulace se štítky [/settings/tag/{id}]
+
+### Vytvoření štítku [POST]
+
++ Request (application/json)
+
+        {
+            "name": "Modrý štítek",
+            "color": "0080ff"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id_tag": 2026,
+                "name": "Modrý štítek",
+                "color": "0080ff"
+            }
+
+### Editace štítku [PUT]
++ Request (application/json)
+
+        {
+            "name": "Tmavě modrý štítek",
+            "color": "0000ff"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id_tag": 2026,
+                "name": "Tmavě modrý štítek",
+                "color": "0000ff"
+            }
+
+### Získání štítku [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id_tag": 2026,
+                "name": "Tmavě modrý štítek",
+                "color": "0000ff"
+            }
+
+### Smazání štítku [DELETE]
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "status": "ok",
+                "message": "Deleted"
+            }
 
 # Group Export
 ## Kdo koupil
