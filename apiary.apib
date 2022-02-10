@@ -2007,6 +2007,527 @@ Zastaralé funkce a parametry, jejichž podpora skončí.
             }
 
 
+### Vytvoření zálohové faktury [POST]
+
++ Request (application/json)
+
+        {
+            "type": 2,
+            "id_payment_method": 33662,
+            "id_number_series": 177422,
+            "customer_IC": "123456789",
+            "customer_DIC": "CZ123456789",
+            "customer_name": "Ukázková Firma",
+            "customer_street": "Pouliční 79/C",
+            "customer_city": "Praha",
+            "customer_zip": "10300",
+            "customer_country_code": "CZ",
+            "items": [
+                {
+                    "quantity": 1,
+                    "text": "Stěrač na ponorku",
+                    "unit_price": 1000
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": 3368987,
+                "id_identity": "0",
+                "id_customer": "-1",
+                "id_number_series": "177422",
+                "id_payment_method": "33662",
+                "id_center": "0",
+                "id_tag": "0",
+                "id_predkontace": "0",
+                "id_cleneniDPH": "0",
+                "id_coupon": "",
+                "id_parent": "0",
+                "id_eet_pokl": "0",
+                "type": "2",
+                "flags": "1",
+                "tags": "0",
+                "eet_status": "1",
+                "eet_data": "",
+                "number": "ZF2200005",
+                "date_created": "2022-02-10",
+                "date_due": "2022-02-21",
+                "date_taxable_supply": "2022-02-10",
+                "date_paid": "0000-00-00",
+                "date_reminder": "0000-00-00",
+                "date_reminder_2": "0000-00-00",
+                "date_reminder_3": "0000-00-00",
+                "days_due": "11",
+                "supplier_IC": "00000019",
+                "supplier_DIC": "CZ00000019",
+                "supplier_IDNUM3": "",
+                "supplier_name": "Demo s.r.o. plátce",
+                "supplier_street": "Ukázková 123",
+                "supplier_city": "Ukázkov",
+                "supplier_zip": "12334",
+                "supplier_country": "Česká republika",
+                "supplier_country_code": "CZ",
+                "supplier_contact_name": "",
+                "supplier_contact_tel": "",
+                "supplier_contact_mail": "info@redbit.cz",
+                "supplier_contact_web": "www.redbit.cz",
+                "customer_IC": "123456789",
+                "customer_DIC": "CZ123456789",
+                "customer_IDNUM3": "",
+                "customer_name": "Ukázková Firma",
+                "customer_firstname": "",
+                "customer_lastname": "",
+                "customer_street": "Pouliční 79/C",
+                "customer_city": "Praha",
+                "customer_zip": "10300",
+                "customer_country": "Česká republika",
+                "customer_country_code": "CZ",
+                "customer_tel": "",
+                "customer_delivery_company": "",
+                "customer_delivery_firstname": "",
+                "customer_delivery_lastname": "",
+                "customer_delivery_street": "",
+                "customer_delivery_city": "",
+                "customer_delivery_zip": "",
+                "customer_delivery_country": "",
+                "customer_delivery_country_code": "",
+                "customer_delivery_tel": "",
+                "bank_account_number": "",
+                "bank_IBAN": "",
+                "bank_BIC": "",
+                "payment_method": "8",
+                "calculate_vat": "1",
+                "round_invoice": "1",
+                "order_number": "",
+                "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                "text_under_customer": "",
+                "text_before_items": "",
+                "text_invoice_footer": "",
+                "mail_to": [],
+                "language": "cs",
+                "VS": "72200005",
+                "KS": "0308",
+                "SS": "",
+                "currency": "CZK",
+                "currency_domestic": "CZK",
+                "search": "zf2200005 72200005 123456789 ukazkova firma 1000 sterac na ponorku",
+                "exchange_rate": 1,
+                "total": "1000.00",
+                "total_without_vat": "1000.00",
+                "domestic-total_without_vat": "1000.00",
+                "simpleshop_note": "",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": "1",
+                        "unit": "",
+                        "text": "Stěrač na ponorku",
+                        "unit_price": "1000",
+                        "vat_rate": 0,
+                        "vat_rate_type": 32,
+                        "vat": 0,
+                        "total": 1000,
+                        "total_without_vat": 1000,
+                        "domestic-unit_price": 1000,
+                        "domestic-vat": 0,
+                        "domestic-total": 1000,
+                        "domestic-total_without_vat": 1000,
+                        "data": []
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 0,
+                        "base": 1000,
+                        "vat": 0,
+                        "total": 1000
+                    }
+                ],
+                "disable_automated_mails": false,
+                "storno": false,
+                "moss": false,
+                "oss": false,
+                "need_attention": false,
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3368987/ceb0ae/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3368987/ceb0ae/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3368987/ceb0ae/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3368987/ceb0ae/nostamp/",
+                "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3368987/",
+                "log": [
+                    {
+                        "date": "2022-02-10 08:50:10",
+                        "text": "Vytvořeno přes API."
+                    },
+                    {
+                        "date": "2022-02-10 08:50:10",
+                        "text": "Vytvoření dokumentu."
+                    }
+                ],
+                "related_documents": []
+            }
+
+
+### Vytvoření koncové faktury k zálohové [POST]
+Koncovou fakturu k zálohové faktuře vystavte jako doklad typu faktura ("type": 1) s parametrem id_parent, který se bude
+rovnat ID zálohové faktury.  V těle requestu je nutné zadat všechny položky dokladu.
+Takto vytvořená faktura bude cca do hodiny označena jako koncová.
+
++ Request (application/json)
+
+        {
+            "type": 1,
+            "id_parent": 3368987,
+            "id_payment_method": 33662,
+            "customer_IC": "123456789",
+            "customer_DIC": "CZ123456789",
+            "customer_name": "Ukázková Firma",
+            "customer_street": "Pouliční 79/C",
+            "customer_city": "Praha",
+            "customer_zip": "10300",
+            "customer_country_code": "CZ",
+            "items": [
+                {
+                    "quantity": 1,
+                    "text": "Fakturujeme vám ...",
+                    "unit_price": 13000
+                },
+                {
+                    "quantity": 1,
+                    "text": "Stěrač na ponorku (ZF2200005)",
+                    "unit_price": -1000
+                },
+                {
+                    "quantity": 1,
+                    "text": "Stěrač na ponorku #2 (ZF2200006)",
+                    "unit_price": -12000
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Access-Control-Allow-Origin: *
+
+    + Body
+
+            {
+                "id": 3368989,
+                "id_identity": "0",
+                "id_customer": "-1",
+                "id_number_series": "251386",
+                "id_payment_method": "33662",
+                "id_center": "0",
+                "id_tag": "0",
+                "id_predkontace": "0",
+                "id_cleneniDPH": "0",
+                "id_coupon": "",
+                "id_parent": "3368987",
+                "id_eet_pokl": "0",
+                "type": "1",
+                "flags": "1",
+                "tags": "0",
+                "eet_status": "1",
+                "eet_data": "",
+                "number": "FV22023",
+                "date_created": "2022-02-10",
+                "date_due": "2022-02-21",
+                "date_taxable_supply": "2022-02-10",
+                "date_paid": "0000-00-00",
+                "date_reminder": "0000-00-00",
+                "date_reminder_2": "0000-00-00",
+                "date_reminder_3": "0000-00-00",
+                "days_due": "11",
+                "supplier_IC": "00000019",
+                "supplier_DIC": "CZ00000019",
+                "supplier_IDNUM3": "",
+                "supplier_name": "Demo s.r.o. plátce",
+                "supplier_street": "Ukázková 123",
+                "supplier_city": "Ukázkov",
+                "supplier_zip": "12334",
+                "supplier_country": "Česká republika",
+                "supplier_country_code": "CZ",
+                "supplier_contact_name": "",
+                "supplier_contact_tel": "",
+                "supplier_contact_mail": "info@redbit.cz",
+                "supplier_contact_web": "www.redbit.cz",
+                "customer_IC": "123456789",
+                "customer_DIC": "CZ123456789",
+                "customer_IDNUM3": "",
+                "customer_name": "Ukázková Firma",
+                "customer_firstname": "",
+                "customer_lastname": "",
+                "customer_street": "Pouliční 79/C",
+                "customer_city": "Praha",
+                "customer_zip": "10300",
+                "customer_country": "Česká republika",
+                "customer_country_code": "CZ",
+                "customer_tel": "",
+                "customer_delivery_company": "",
+                "customer_delivery_firstname": "",
+                "customer_delivery_lastname": "",
+                "customer_delivery_street": "",
+                "customer_delivery_city": "",
+                "customer_delivery_zip": "",
+                "customer_delivery_country": "",
+                "customer_delivery_country_code": "",
+                "customer_delivery_tel": "",
+                "bank_account_number": "",
+                "bank_IBAN": "",
+                "bank_BIC": "",
+                "payment_method": "8",
+                "calculate_vat": "1",
+                "round_invoice": "1",
+                "order_number": "",
+                "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                "text_under_customer": "",
+                "text_before_items": "",
+                "text_invoice_footer": "",
+                "mail_to": [],
+                "language": "cs",
+                "VS": "22023",
+                "KS": "0308",
+                "SS": "",
+                "currency": "CZK",
+                "currency_domestic": "CZK",
+                "search": "fv22023 22023 123456789 ukazkova firma 0 fakturujeme vam ... sterac na ponorku (zf2200005) #2 (zf2200006)",
+                "exchange_rate": 1,
+                "total": "0.00",
+                "total_without_vat": "0.00",
+                "domestic-total_without_vat": "0.00",
+                "simpleshop_note": "",
+                "X_1": "",
+                "X_2": "",
+                "X_3": "",
+                "items": [
+                    {
+                        "quantity": "1",
+                        "unit": "",
+                        "text": "Fakturujeme vám ...",
+                        "unit_price": "13000",
+                        "vat_rate": 0,
+                        "vat_rate_type": 32,
+                        "vat": 0,
+                        "total": 13000,
+                        "total_without_vat": 13000,
+                        "domestic-unit_price": 13000,
+                        "domestic-vat": 0,
+                        "domestic-total": 13000,
+                        "domestic-total_without_vat": 13000,
+                        "data": []
+                    },
+                    {
+                        "quantity": "1",
+                        "unit": "",
+                        "text": "Stěrač na ponorku (ZF2200005)",
+                        "unit_price": "-1000",
+                        "vat_rate": 0,
+                        "vat_rate_type": 32,
+                        "vat": 0,
+                        "total": -1000,
+                        "total_without_vat": -1000,
+                        "domestic-unit_price": -1000,
+                        "domestic-vat": 0,
+                        "domestic-total": -1000,
+                        "domestic-total_without_vat": -1000,
+                        "data": []
+                    },
+                    {
+                        "quantity": "1",
+                        "unit": "",
+                        "text": "Stěrač na ponorku #2 (ZF2200006)",
+                        "unit_price": "-12000",
+                        "vat_rate": 0,
+                        "vat_rate_type": 32,
+                        "vat": 0,
+                        "total": -12000,
+                        "total_without_vat": -12000,
+                        "domestic-unit_price": -12000,
+                        "domestic-vat": 0,
+                        "domestic-total": -12000,
+                        "domestic-total_without_vat": -12000,
+                        "data": []
+                    }
+                ],
+                "vats": [
+                    {
+                        "vat_rate": 0,
+                        "base": 0,
+                        "vat": 0,
+                        "total": 0
+                    }
+                ],
+                "disable_automated_mails": false,
+                "storno": false,
+                "moss": false,
+                "oss": false,
+                "need_attention": false,
+                "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3368989/6e0344/",
+                "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3368989/6e0344/",
+                "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3368989/6e0344/download/",
+                "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3368989/6e0344/nostamp/",
+                "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3368989/",
+                "log": [
+                    {
+                        "date": "2022-02-10 08:50:11",
+                        "text": "Vytvořeno přes API."
+                    },
+                    {
+                        "date": "2022-02-10 08:50:11",
+                        "text": "Vytvoření dokumentu."
+                    }
+                ],
+                "related_documents": {
+                    "3368987": {
+                        "id": "3368987",
+                        "id_identity": "0",
+                        "id_customer": "-1",
+                        "id_number_series": "177422",
+                        "id_payment_method": "33662",
+                        "id_center": "0",
+                        "id_tag": "0",
+                        "id_predkontace": "0",
+                        "id_cleneniDPH": "0",
+                        "id_coupon": "",
+                        "id_parent": "0",
+                        "id_eet_pokl": "0",
+                        "type": "2",
+                        "flags": "1",
+                        "tags": "0",
+                        "eet_status": "1",
+                        "eet_data": "",
+                        "number": "ZF2200005",
+                        "date_created": "2022-02-10",
+                        "date_due": "2022-02-21",
+                        "date_taxable_supply": "2022-02-10",
+                        "date_paid": "0000-00-00",
+                        "date_reminder": "0000-00-00",
+                        "date_reminder_2": "0000-00-00",
+                        "date_reminder_3": "0000-00-00",
+                        "days_due": "11",
+                        "supplier_IC": "00000019",
+                        "supplier_DIC": "CZ00000019",
+                        "supplier_IDNUM3": "",
+                        "supplier_name": "Demo s.r.o. plátce",
+                        "supplier_street": "Ukázková 123",
+                        "supplier_city": "Ukázkov",
+                        "supplier_zip": "12334",
+                        "supplier_country": "Česká republika",
+                        "supplier_country_code": "CZ",
+                        "supplier_contact_name": "",
+                        "supplier_contact_tel": "",
+                        "supplier_contact_mail": "info@redbit.cz",
+                        "supplier_contact_web": "www.redbit.cz",
+                        "customer_IC": "123456789",
+                        "customer_DIC": "CZ123456789",
+                        "customer_IDNUM3": "",
+                        "customer_name": "Ukázková Firma",
+                        "customer_firstname": "",
+                        "customer_lastname": "",
+                        "customer_street": "Pouliční 79/C",
+                        "customer_city": "Praha",
+                        "customer_zip": "10300",
+                        "customer_country": "Česká republika",
+                        "customer_country_code": "CZ",
+                        "customer_tel": "",
+                        "customer_delivery_company": "",
+                        "customer_delivery_firstname": "",
+                        "customer_delivery_lastname": "",
+                        "customer_delivery_street": "",
+                        "customer_delivery_city": "",
+                        "customer_delivery_zip": "",
+                        "customer_delivery_country": "",
+                        "customer_delivery_country_code": "",
+                        "customer_delivery_tel": "",
+                        "bank_account_number": "",
+                        "bank_IBAN": "",
+                        "bank_BIC": "",
+                        "payment_method": "8",
+                        "calculate_vat": "1",
+                        "round_invoice": "1",
+                        "order_number": "",
+                        "text_under_subscriber": "Č. j. MMOP 51859/2007/ZIVN/BaM",
+                        "text_under_customer": "",
+                        "text_before_items": "",
+                        "text_invoice_footer": "",
+                        "mail_to": [],
+                        "language": "cs",
+                        "VS": "72200005",
+                        "KS": "0308",
+                        "SS": "",
+                        "currency": "CZK",
+                        "currency_domestic": "CZK",
+                        "search": "zf2200005 72200005 123456789 ukazkova firma 1000 sterac na ponorku",
+                        "exchange_rate": 1,
+                        "total": "1000.00",
+                        "total_without_vat": "1000.00",
+                        "domestic-total_without_vat": "1000.00",
+                        "simpleshop_note": "",
+                        "X_1": "",
+                        "X_2": "",
+                        "X_3": "",
+                        "items": [
+                            {
+                                "quantity": "1",
+                                "unit": "",
+                                "text": "Stěrač na ponorku",
+                                "unit_price": "1000",
+                                "vat_rate": 0,
+                                "vat_rate_type": 32,
+                                "vat": 0,
+                                "total": 1000,
+                                "total_without_vat": 1000,
+                                "domestic-unit_price": 1000,
+                                "domestic-vat": 0,
+                                "domestic-total": 1000,
+                                "domestic-total_without_vat": 1000,
+                                "data": []
+                            }
+                        ],
+                        "vats": [
+                            {
+                                "vat_rate": 0,
+                                "base": 1000,
+                                "vat": 0,
+                                "total": 1000
+                            }
+                        ],
+                        "disable_automated_mails": false,
+                        "storno": false,
+                        "moss": false,
+                        "oss": false,
+                        "need_attention": false,
+                        "url_public_webpage": "https://www.vyfakturuj.cz/print/document/3368987/ceb0ae/",
+                        "url_online_payment": "https://www.vyfakturuj.cz/print/document/online-payment/3368987/ceb0ae/",
+                        "url_download_pdf": "https://www.vyfakturuj.cz/print/document/pdf/3368987/ceb0ae/download/",
+                        "url_download_pdf_no_stamp": "https://www.vyfakturuj.cz/print/document/pdf/3368987/ceb0ae/nostamp/",
+                        "url_app_detail": "https://app.simpleshop.cz/faktury/detail/3368987/",
+                        "log": [
+                            {
+                                "date": "2022-02-10 08:50:10",
+                                "text": "Vytvořeno přes API."
+                            },
+                            {
+                                "date": "2022-02-10 08:50:10",
+                                "text": "Vytvoření dokumentu."
+                            }
+                        ]
+                    }
+                }
+            }
+
+
 ## Práce s fakturou [/invoice/{id}/]
 
 ### Získání faktury [GET]
